@@ -1,8 +1,9 @@
-export default function AcademicsPage() {
+// app/research/page.tsx
+export default function ResearchPage() {
     return (
       <div>
-        <h1>Academics</h1>
-        <p>Welcome to the academics section.</p>
+        <h1>Research</h1>
+        <p>This is the research page.</p>
       </div>
     );
   }
