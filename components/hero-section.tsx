@@ -1,17 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ChevronRight } from "lucide-react"
+import image9 from './../asset/image9.jpeg'
+import image4 from './../asset/image4.jpeg'
+import image3 from './../asset/image3.jpeg'
 
 interface HeroSlide {
   id: number
   title: string
   subtitle: string
-  image: string
+  image: string | StaticImageData
   cta: {
     text: string
     link: string
@@ -25,7 +28,7 @@ export function HeroSection() {
       title: "A Foundation for Contextualized Theology in Africa",
       subtitle:
         "A center for theological and international studies dedicated to academic excellence, research, and community engagement.",
-      image: "/placeholder.svg?height=1080&width=1920",
+      image: image9,
       cta: {
         text: "Explore Programs",
         link: "/academics",
@@ -36,7 +39,7 @@ export function HeroSection() {
       title: "Transformative Education with African Perspectives",
       subtitle:
         "Integrating universally valid academic knowledge with African cultural contexts for holistic learning.",
-      image: "/placeholder.svg?height=1080&width=1920",
+      image: image4,
       cta: {
         text: "Our Approach",
         link: "/about#approach",
@@ -46,7 +49,7 @@ export function HeroSection() {
       id: 3,
       title: "Join Our Global Community of Scholars",
       subtitle: "Connect with students and faculty from across Africa and around the world.",
-      image: "/placeholder.svg?height=1080&width=1920",
+      image: image3,
       cta: {
         text: "Apply Now",
         link: "/admissions/apply",
@@ -112,7 +115,7 @@ export function HeroSection() {
               priority
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-primary/30 z-10"></div>
           <div className="container h-full px-4 md:px-6 mx-auto relative z-20 flex items-center">
             <motion.div
               key={slide.id}

@@ -7,6 +7,11 @@ import { TestimonialCarousel } from "@/components/testimonial-carousel"
 import { HeroSection } from "@/components/hero-section"
 import { VirtualTour } from "@/components/virtual-tour"
 import { CourseFilter } from "@/components/course-filter"
+import image5 from '../asset/image5.png'
+import image1 from '../asset/image1.jpeg'
+import image13 from '../asset/image13.jpeg'
+import image11 from '../asset/image11.jpeg'
+import image12 from '../asset/image12.jpeg'
 
 export default function Home() {
   return (
@@ -19,7 +24,7 @@ export default function Home() {
         <div className="container px-4 md:px-6 mx-auto">
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div className="relative aspect-video overflow-hidden rounded-xl">
-              <Image src="/placeholder.svg?height=720&width=1280" alt="AIIS Campus" fill className="object-cover" />
+              <Image src={image5} alt="AIIS Campus" fill className="object-contain" />
             </div>
             <div className="space-y-6">
               <div>
@@ -286,20 +291,20 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="aspect-square relative rounded-xl overflow-hidden">
-                <Image src="/placeholder.svg?height=400&width=400" alt="AIIS Campus" fill className="object-cover" />
+                <Image src={image12} alt="AIIS Campus" fill className="object-cover filter grayscale hover:grayscale-0  duration-300" />
               </div>
               <div className="aspect-square relative rounded-xl overflow-hidden mt-12">
-                <Image src="/placeholder.svg?height=400&width=400" alt="AIIS Students" fill className="object-cover" />
+                <Image src={image13} alt="AIIS Students" fill className="object-cover filter grayscale hover:grayscale-0 duration-300" />
               </div>
               <div className="aspect-square relative rounded-xl overflow-hidden -mt-12">
-                <Image src="/placeholder.svg?height=400&width=400" alt="AIIS Library" fill className="object-cover" />
+                <Image src={image11} alt="AIIS Library" fill className="object-cover filter grayscale hover:grayscale-0 duration-300" />
               </div>
               <div className="aspect-square relative rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=400&width=400"
+                  src={image1}
                   alt="AIIS Graduation"
                   fill
-                  className="object-cover"
+                  className="object-cover filter grayscale hover:grayscale-0 duration-300"
                 />
               </div>
             </div>
