@@ -1,4 +1,5 @@
 // types/Course.ts
+import { ReactNode } from "react";
 
 export interface Course {
     [x: string]: ReactNode

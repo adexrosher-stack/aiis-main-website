@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, Calendar, Share2, Bookmark } from "lucide-react"
 
+export async function generateStaticParams() {
+  return Object.keys(newsItems).map((id) => ({ id }));
+}
+
 // This would typically come from a database
 const newsItems = {
   "aiis-signs-new-partnership": {

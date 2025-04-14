@@ -1,20 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { DashboardShell } from "@/components/dashboard-shell"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { DashboardShell } from "@/components/dashboard-shell";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -22,31 +13,52 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Label } from "@/components/ui/label"
-import { useToast } from "@/components/ui/use-toast"
+} from "@/components/ui/dialog";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  BookOpen,
+  Calendar,
   Download,
+  Edit,
+  Eye,
+  FileText,
   Filter,
+  GraduationCap,
+  Mail,
+  MapPin,
+  Phone,
   Search,
   Trash2,
   UserPlus,
   Users,
-  FileText,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  BookOpen,
-  GraduationCap,
-  Edit,
-  Eye,
-} from "lucide-react"
-import Image from "next/image"
-import { Textarea } from "@/components/ui/textarea"
-  
+} from "lucide-react";
+import Image from "next/image";
+
 // Mock data for students
 const mockStudents = [
   {
@@ -119,7 +131,7 @@ const mockStudents = [
     gpa: "3.4",
     image: "/placeholder.svg?height=40&width=40",
   },
-]
+];
 
 // Mock data for student details
 const studentDetails = {
@@ -148,8 +160,12 @@ const studentDetails = {
   financialStatus: "Scholarship (75%)",
   balance: "$1,250",
   lastPayment: "15 March 2023",
-  activities: ["Student Council Representative", "Chapel Worship Team", "Community Outreach Program"],
-}
+  activities: [
+    "Student Council Representative",
+    "Chapel Worship Team",
+    "Community Outreach Program",
+  ],
+};
 
 // Mock programs for dropdown
 const programs = [
@@ -159,20 +175,20 @@ const programs = [
   "PhD in Religious Studies",
   "Certificate in Biblical Studies",
   "Bachelor of Religious Education",
-]
+];
 
 // Mock statuses for dropdown
-const statuses = ["Active", "On Leave", "Suspended", "Alumni", "Withdrawn"]
+const statuses = ["Active", "On Leave", "Suspended", "Alumni", "Withdrawn"];
 
 export default function StudentsPage() {
-  const { toast } = useToast()
-  const [students, setStudents] = useState(mockStudents)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedStudent, setSelectedStudent] = useState(null)
-  const [isViewDialogOpen, setIsViewDialogOpen] = useState(false)
-  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
+  const { toast } = useToast();
+  const [students, setStudents] = useState(mockStudents);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [isViewDialogOpen, setIsViewDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [editFormData, setEditFormData] = useState({
     id: "",
     name: "",
@@ -181,7 +197,7 @@ export default function StudentsPage() {
     year: "",
     status: "",
     gpa: "",
-  })
+  });
 
   // Filter students based on search term
   const filteredStudents = students.filter(
@@ -189,18 +205,18 @@ export default function StudentsPage() {
       student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.program.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      student.id.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+      student.id.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Handle view student
   const handleViewStudent = (student) => {
-    setSelectedStudent(student)
-    setIsViewDialogOpen(true)
-  }
+    setSelectedStudent(student);
+    setIsViewDialogOpen(true);
+  };
 
   // Handle edit student
   const handleEditStudent = (student) => {
-    setSelectedStudent(student)
+    setSelectedStudent(student);
     setEditFormData({
       id: student.id,
       name: student.name,
@@ -209,49 +225,51 @@ export default function StudentsPage() {
       year: student.year,
       status: student.status,
       gpa: student.gpa,
-    })
-    setIsEditDialogOpen(true)
-  }
+    });
+    setIsEditDialogOpen(true);
+  };
 
   // Handle delete student
   const handleDeleteStudent = (student) => {
-    setSelectedStudent(student)
-    setIsDeleteDialogOpen(true)
-  }
+    setSelectedStudent(student);
+    setIsDeleteDialogOpen(true);
+  };
 
   // Handle edit form change
   const handleEditFormChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setEditFormData({
       ...editFormData,
       [name]: value,
-    })
-  }
+    });
+  };
 
   // Handle edit form submit
   const handleEditFormSubmit = () => {
     const updatedStudents = students.map((student) =>
-      student.id === editFormData.id ? { ...student, ...editFormData } : student,
-    )
-    setStudents(updatedStudents)
-    setIsEditDialogOpen(false)
+      student.id === editFormData.id ? { ...student, ...editFormData } : student
+    );
+    setStudents(updatedStudents);
+    setIsEditDialogOpen(false);
     toast({
       title: "Student updated",
       description: `${editFormData.name}'s information has been updated.`,
-    })
-  }
+    });
+  };
 
   // Handle delete confirm
   const handleDeleteConfirm = () => {
-    const updatedStudents = students.filter((student) => student.id !== selectedStudent.id)
-    setStudents(updatedStudents)
-    setIsDeleteDialogOpen(false)
+    const updatedStudents = students.filter(
+      (student) => student.id !== selectedStudent.id
+    );
+    setStudents(updatedStudents);
+    setIsDeleteDialogOpen(false);
     toast({
       title: "Student deleted",
       description: `${selectedStudent.name} has been removed from the system.`,
       variant: "destructive",
-    })
-  }
+    });
+  };
 
   // Handle add new student
   const handleAddNewStudent = () => {
@@ -264,14 +282,14 @@ export default function StudentsPage() {
       status: editFormData.status,
       gpa: editFormData.gpa,
       image: "/placeholder.svg?height=40&width=40",
-    }
-    setStudents([...students, newStudent])
-    setIsAddDialogOpen(false)
+    };
+    setStudents([...students, newStudent]);
+    setIsAddDialogOpen(false);
     toast({
       title: "Student added",
       description: `${editFormData.name} has been added to the system.`,
-    })
-  }
+    });
+  };
 
   // Navigation items for the dashboard
   const navItems = [
@@ -310,14 +328,14 @@ export default function StudentsPage() {
       href: "/dashboard/admin/settings",
       icon: <FileText className="h-4 w-4" />,
     },
-  ]
+  ];
 
   // Mock user for the dashboard shell
   const user = {
     name: "Admin User",
     role: "Administrator",
     image: "/placeholder.svg?height=32&width=32",
-  }
+  };
 
   return (
     <DashboardShell navItems={navItems} user={user}>
@@ -325,7 +343,9 @@ export default function StudentsPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Students</h1>
-            <p className="text-muted-foreground">Manage student records and information</p>
+            <p className="text-muted-foreground">
+              Manage student records and information
+            </p>
           </div>
           <Button
             onClick={() => {
@@ -337,8 +357,8 @@ export default function StudentsPage() {
                 year: "",
                 status: "Active",
                 gpa: "",
-              })
-              setIsAddDialogOpen(true)
+              });
+              setIsAddDialogOpen(true);
             }}
           >
             <UserPlus className="mr-2 h-4 w-4" />
@@ -430,10 +450,10 @@ export default function StudentsPage() {
                           student.status === "Active"
                             ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
                             : student.status === "On Leave"
-                              ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
-                              : student.status === "Alumni"
-                                ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
-                                : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+                            : student.status === "Alumni"
+                            ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+                            : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
                         }`}
                       >
                         {student.status}
@@ -442,15 +462,27 @@ export default function StudentsPage() {
                     <TableCell>{student.gpa}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
-                        <Button variant="ghost" size="icon" onClick={() => handleViewStudent(student)}>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleViewStudent(student)}
+                        >
                           <Eye className="h-4 w-4" />
                           <span className="sr-only">View</span>
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleEditStudent(student)}>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleEditStudent(student)}
+                        >
                           <Edit className="h-4 w-4" />
                           <span className="sr-only">Edit</span>
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleDeleteStudent(student)}>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => handleDeleteStudent(student)}
+                        >
                           <Trash2 className="h-4 w-4" />
                           <span className="sr-only">Delete</span>
                         </Button>
@@ -463,7 +495,8 @@ export default function StudentsPage() {
           </CardContent>
           <CardFooter className="flex items-center justify-between border-t p-4">
             <div className="text-xs text-muted-foreground">
-              Showing <strong>{filteredStudents.length}</strong> of <strong>{students.length}</strong> students
+              Showing <strong>{filteredStudents.length}</strong> of{" "}
+              <strong>{students.length}</strong> students
             </div>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" disabled>
@@ -482,7 +515,9 @@ export default function StudentsPage() {
         <DialogContent className="max-w-3xl">
           <DialogHeader>
             <DialogTitle>Student Details</DialogTitle>
-            <DialogDescription>Comprehensive information about the student</DialogDescription>
+            <DialogDescription>
+              Comprehensive information about the student
+            </DialogDescription>
           </DialogHeader>
           {selectedStudent && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -496,7 +531,9 @@ export default function StudentsPage() {
                   />
                 </div>
                 <h3 className="text-xl font-bold">{studentDetails.name}</h3>
-                <p className="text-sm text-muted-foreground mb-2">{studentDetails.id}</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {studentDetails.id}
+                </p>
                 <div className="flex items-center gap-1 text-sm mb-1">
                   <Mail className="h-4 w-4" />
                   <span>{studentDetails.email}</span>
@@ -524,36 +561,52 @@ export default function StudentsPage() {
                   <TabsContent value="general" className="space-y-4 mt-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Nationality</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Nationality
+                        </h4>
                         <p>{studentDetails.nationality}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Status</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Status
+                        </h4>
                         <p>{studentDetails.status}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Program</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Program
+                        </h4>
                         <p>{studentDetails.program}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Year</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Year
+                        </h4>
                         <p>{studentDetails.year}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Enrollment Date</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Enrollment Date
+                        </h4>
                         <p>{studentDetails.enrollmentDate}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Expected Graduation</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Expected Graduation
+                        </h4>
                         <p>{studentDetails.expectedGraduation}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Advisor</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Advisor
+                        </h4>
                         <p>{studentDetails.advisor}</p>
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">Activities & Involvement</h4>
+                      <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                        Activities & Involvement
+                      </h4>
                       <ul className="list-disc pl-5">
                         {studentDetails.activities.map((activity, index) => (
                           <li key={index}>{activity}</li>
@@ -565,7 +618,10 @@ export default function StudentsPage() {
                     <div className="flex items-center justify-between">
                       <h4 className="text-sm font-medium">Current Courses</h4>
                       <div className="text-sm font-medium">
-                        GPA: <span className="text-primary">{studentDetails.gpa}</span>
+                        GPA:{" "}
+                        <span className="text-primary">
+                          {studentDetails.gpa}
+                        </span>
                       </div>
                     </div>
                     <Table>
@@ -590,20 +646,28 @@ export default function StudentsPage() {
                   <TabsContent value="financial" className="space-y-4 mt-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Financial Status</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Financial Status
+                        </h4>
                         <p>{studentDetails.financialStatus}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Current Balance</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Current Balance
+                        </h4>
                         <p>{studentDetails.balance}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-muted-foreground">Last Payment</h4>
+                        <h4 className="text-sm font-medium text-muted-foreground">
+                          Last Payment
+                        </h4>
                         <p>{studentDetails.lastPayment}</p>
                       </div>
                     </div>
                     <div className="mt-4">
-                      <h4 className="text-sm font-medium mb-2">Payment History</h4>
+                      <h4 className="text-sm font-medium mb-2">
+                        Payment History
+                      </h4>
                       <Table>
                         <TableHeader>
                           <TableRow>
@@ -637,13 +701,16 @@ export default function StudentsPage() {
             </div>
           )}
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsViewDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setIsViewDialogOpen(false)}
+            >
               Close
             </Button>
             <Button
               onClick={() => {
-                setIsViewDialogOpen(false)
-                handleEditStudent(selectedStudent)
+                setIsViewDialogOpen(false);
+                handleEditStudent(selectedStudent);
               }}
             >
               Edit Student
@@ -657,14 +724,22 @@ export default function StudentsPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edit Student</DialogTitle>
-            <DialogDescription>Update student information in the system</DialogDescription>
+            <DialogDescription>
+              Update student information in the system
+            </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="id" className="text-right">
                 Student ID
               </Label>
-              <Input id="id" name="id" value={editFormData.id} className="col-span-3" disabled />
+              <Input
+                id="id"
+                name="id"
+                value={editFormData.id}
+                className="col-span-3"
+                disabled
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -698,7 +773,9 @@ export default function StudentsPage() {
               <Select
                 name="program"
                 value={editFormData.program}
-                onValueChange={(value) => setEditFormData({ ...editFormData, program: value })}
+                onValueChange={(value) =>
+                  setEditFormData({ ...editFormData, program: value })
+                }
               >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select program" />
@@ -719,7 +796,9 @@ export default function StudentsPage() {
               <Select
                 name="year"
                 value={editFormData.year}
-                onValueChange={(value) => setEditFormData({ ...editFormData, year: value })}
+                onValueChange={(value) =>
+                  setEditFormData({ ...editFormData, year: value })
+                }
               >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select year" />
@@ -740,7 +819,9 @@ export default function StudentsPage() {
               <Select
                 name="status"
                 value={editFormData.status}
-                onValueChange={(value) => setEditFormData({ ...editFormData, status: value })}
+                onValueChange={(value) =>
+                  setEditFormData({ ...editFormData, status: value })
+                }
               >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select status" />
@@ -768,7 +849,10 @@ export default function StudentsPage() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setIsEditDialogOpen(false)}
+            >
               Cancel
             </Button>
             <Button onClick={handleEditFormSubmit}>Save Changes</Button>
@@ -782,7 +866,8 @@ export default function StudentsPage() {
           <DialogHeader>
             <DialogTitle>Confirm Deletion</DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete this student? This action cannot be undone.
+              Are you sure you want to delete this student? This action cannot
+              be undone.
             </DialogDescription>
           </DialogHeader>
           {selectedStudent && (
@@ -805,7 +890,10 @@ export default function StudentsPage() {
             </div>
           )}
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setIsDeleteDialogOpen(false)}
+            >
               Cancel
             </Button>
             <Button variant="destructive" onClick={handleDeleteConfirm}>
@@ -820,7 +908,9 @@ export default function StudentsPage() {
         <DialogContent className="max-w-4xl">
           <DialogHeader>
             <DialogTitle>Student Registration</DialogTitle>
-            <DialogDescription>Enter comprehensive details for the new student</DialogDescription>
+            <DialogDescription>
+              Enter comprehensive details for the new student
+            </DialogDescription>
           </DialogHeader>
           <Tabs defaultValue="personal">
             <TabsList className="grid grid-cols-3 mb-4">
@@ -847,12 +937,14 @@ export default function StudentsPage() {
                     id="dob"
                     name="dob"
                     type="date"
-                    onChange={(e) => setEditFormData({ ...editFormData, dob: e.target.value })}
+                    onChange={(e) =>
+                      setEditFormData({ ...editFormData, year: e.target.value })
+                    }
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="gender">Gender</Label>
-                  <Select name="gender" onValueChange={(value) => setEditFormData({ ...editFormData, gender: value })}>
+                  {/* <Label htmlFor="gender">Gender</Label> */}
+                  {/* <Select name="gender" onValueChange={(value) => setEditFormData({ ...editFormData, gender: value })}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select gender" />
                     </SelectTrigger>
@@ -861,25 +953,25 @@ export default function StudentsPage() {
                       <SelectItem value="female">Female</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
-                  </Select>
+                  </Select> */}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="nationality">Nationality</Label>
+                  {/* <Label htmlFor="nationality">Nationality</Label>
                   <Input
                     id="nationality"
                     name="nationality"
                     placeholder="Enter nationality"
                     onChange={(e) => setEditFormData({ ...editFormData, nationality: e.target.value })}
-                  />
+                  /> */}
                 </div>
                 <div className="space-y-2 col-span-2">
-                  <Label htmlFor="bio">Brief Biography</Label>
+                  {/* <Label htmlFor="bio">Brief Biography</Label>
                   <Textarea
                     id="bio"
                     name="bio"
                     placeholder="Enter a brief biography"
                     onChange={(e) => setEditFormData({ ...editFormData, bio: e.target.value })}
-                  />
+                  /> */}
                 </div>
               </div>
             </TabsContent>
@@ -891,7 +983,9 @@ export default function StudentsPage() {
                   <Select
                     name="program"
                     value={editFormData.program}
-                    onValueChange={(value) => setEditFormData({ ...editFormData, program: value })}
+                    onValueChange={(value) =>
+                      setEditFormData({ ...editFormData, program: value })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select program" />
@@ -905,7 +999,7 @@ export default function StudentsPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="department">Department</Label>
                   <Select
                     name="department"
@@ -921,13 +1015,15 @@ export default function StudentsPage() {
                       <SelectItem value="philosophy">Philosophy</SelectItem>
                     </SelectContent>
                   </Select>
-                </div>
+                </div> */}
                 <div className="space-y-2">
                   <Label htmlFor="year">Year</Label>
                   <Select
                     name="year"
                     value={editFormData.year}
-                    onValueChange={(value) => setEditFormData({ ...editFormData, year: value })}
+                    onValueChange={(value) =>
+                      setEditFormData({ ...editFormData, year: value })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select year" />
@@ -940,7 +1036,7 @@ export default function StudentsPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="enrollmentDate">Enrollment Date</Label>
                   <Input
                     id="enrollmentDate"
@@ -948,13 +1044,15 @@ export default function StudentsPage() {
                     type="date"
                     onChange={(e) => setEditFormData({ ...editFormData, enrollmentDate: e.target.value })}
                   />
-                </div>
+                </div> */}
                 <div className="space-y-2">
                   <Label htmlFor="status">Status</Label>
                   <Select
                     name="status"
                     value={editFormData.status}
-                    onValueChange={(value) => setEditFormData({ ...editFormData, status: value })}
+                    onValueChange={(value) =>
+                      setEditFormData({ ...editFormData, status: value })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
@@ -968,7 +1066,7 @@ export default function StudentsPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="previousEducation">Previous Education</Label>
                   <Input
                     id="previousEducation"
@@ -976,7 +1074,7 @@ export default function StudentsPage() {
                     placeholder="Enter previous education"
                     onChange={(e) => setEditFormData({ ...editFormData, previousEducation: e.target.value })}
                   />
-                </div>
+                </div> */}
               </div>
             </TabsContent>
 
@@ -993,7 +1091,7 @@ export default function StudentsPage() {
                     placeholder="Enter email address"
                   />
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
                     id="phone"
@@ -1037,7 +1135,7 @@ export default function StudentsPage() {
                     placeholder="Enter relationship"
                     onChange={(e) => setEditFormData({ ...editFormData, relationship: e.target.value })}
                   />
-                </div>
+                </div> */}
               </div>
             </TabsContent>
           </Tabs>
@@ -1050,6 +1148,5 @@ export default function StudentsPage() {
         </DialogContent>
       </Dialog>
     </DashboardShell>
-  )
+  );
 }
-

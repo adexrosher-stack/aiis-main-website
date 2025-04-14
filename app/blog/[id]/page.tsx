@@ -13,6 +13,9 @@ const someFunction = () => {
   }
   return brevity
 }
+export async function generateStaticParams() {
+  return Object.keys(["1","2"]).map((id) => ({ id }));
+}
 
 export default function Page() {
   return (

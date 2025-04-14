@@ -1,3 +1,7 @@
+export async function generateStaticParams() {
+  return Object.keys(["1","2"]).map((id) => ({ id }));
+}
+
 const PodcastPage = () => {
   // Declare the missing variables here.  The specific types and initial values
   // will depend on how they are used in the original code.  I'm using 'any'

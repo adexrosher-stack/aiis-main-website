@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Mail, Phone, GraduationCap, BookOpen, Award, FileText } from "lucide-react"
 
 // This would typically come from a database
+export async function generateStaticParams() {
+  return Object.keys(facultyMembers).map((id) => ({ id }));
+}
+
 const facultyMembers = {
   "dr-esckinder-taddesse": {
     id: "dr-esckinder-taddesse",

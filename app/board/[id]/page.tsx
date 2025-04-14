@@ -1,9 +1,21 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Mail, Phone, GraduationCap, Award, Briefcase, Globe, Users } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Award,
+  Briefcase,
+  Globe,
+  GraduationCap,
+  Mail,
+  Phone,
+  Users,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+export async function generateStaticParams() {
+  return Object.keys(boardMembers).map((id) => ({ id }));
+}
 
 // This would typically come from a database
 const boardMembers = {
@@ -17,32 +29,55 @@ const boardMembers = {
     phone: "+251 911 12 34 56",
     bio: "Beyene Geleta serves as the Chairman of the AIIS Board of Directors. With extensive experience in both academic and ministry settings, he brings valuable leadership and vision to the institute. His background in science and theology provides a unique perspective on integrating faith and learning.",
     education: [
-      { degree: "MSc in Computer Science", institution: "Addis Ababa University", year: "2010" },
-      { degree: "BSc in Information Technology", institution: "Jimma University", year: "2005" },
-      { degree: "MDiv (Master of Divinity)", institution: "Ethiopian Graduate School of Theology", year: "2015" },
-      { degree: "MTh (Master of Theology)", institution: "AIIS", year: "In progress" },
+      {
+        degree: "MSc in Computer Science",
+        institution: "Addis Ababa University",
+        year: "2010",
+      },
+      {
+        degree: "BSc in Information Technology",
+        institution: "Jimma University",
+        year: "2005",
+      },
+      {
+        degree: "MDiv (Master of Divinity)",
+        institution: "Ethiopian Graduate School of Theology",
+        year: "2015",
+      },
+      {
+        degree: "MTh (Master of Theology)",
+        institution: "AIIS",
+        year: "In progress",
+      },
     ],
     experience: [
       {
         position: "IT Director",
         organization: "Ethiopian Airlines",
         period: "2010-2018",
-        description: "Led the IT department, overseeing systems development and digital transformation initiatives.",
+        description:
+          "Led the IT department, overseeing systems development and digital transformation initiatives.",
       },
       {
         position: "Senior Pastor",
         organization: "Mekanisa Evangelical Church",
         period: "2018-Present",
-        description: "Provides spiritual leadership and oversees church ministries and community outreach programs.",
+        description:
+          "Provides spiritual leadership and oversees church ministries and community outreach programs.",
       },
       {
         position: "Board Member",
         organization: "Ethiopian Evangelical Church Fellowship",
         period: "2016-2020",
-        description: "Contributed to strategic planning and governance of the national church fellowship.",
+        description:
+          "Contributed to strategic planning and governance of the national church fellowship.",
       },
     ],
-    committees: ["Executive Committee (Chair)", "Finance Committee", "Academic Affairs Committee"],
+    committees: [
+      "Executive Committee (Chair)",
+      "Finance Committee",
+      "Academic Affairs Committee",
+    ],
     contributions: [
       "Led the strategic planning process for AIIS's five-year development plan",
       "Established partnerships with international theological institutions",
@@ -60,22 +95,36 @@ const boardMembers = {
     phone: "+251 922 23 45 67",
     bio: "Zebene Fikre brings legal expertise to the AIIS Board of Directors. As a practicing attorney with specialization in non-profit and educational law, he provides crucial guidance on legal and regulatory matters. His ongoing theological studies reflect his commitment to integrating faith with his professional practice.",
     education: [
-      { degree: "LLM in International Law", institution: "University of Pretoria, South Africa", year: "2014" },
-      { degree: "LLB (Bachelor of Laws)", institution: "Addis Ababa University", year: "2008" },
-      { degree: "MDiv (Master of Divinity)", institution: "AIIS", year: "In progress" },
+      {
+        degree: "LLM in International Law",
+        institution: "University of Pretoria, South Africa",
+        year: "2014",
+      },
+      {
+        degree: "LLB (Bachelor of Laws)",
+        institution: "Addis Ababa University",
+        year: "2008",
+      },
+      {
+        degree: "MDiv (Master of Divinity)",
+        institution: "AIIS",
+        year: "In progress",
+      },
     ],
     experience: [
       {
         position: "Senior Partner",
         organization: "Fikre & Associates Law Office",
         period: "2015-Present",
-        description: "Leads a law practice specializing in non-profit, educational, and corporate law.",
+        description:
+          "Leads a law practice specializing in non-profit, educational, and corporate law.",
       },
       {
         position: "Legal Advisor",
         organization: "Ethiopian Ministry of Education",
         period: "2010-2015",
-        description: "Provided legal counsel on educational policy and regulatory frameworks.",
+        description:
+          "Provided legal counsel on educational policy and regulatory frameworks.",
       },
       {
         position: "Lecturer (Part-time)",
@@ -84,7 +133,11 @@ const boardMembers = {
         description: "Taught courses on non-profit law and educational policy.",
       },
     ],
-    committees: ["Legal Affairs Committee (Chair)", "Governance Committee", "Ethics Committee"],
+    committees: [
+      "Legal Affairs Committee (Chair)",
+      "Governance Committee",
+      "Ethics Committee",
+    ],
     contributions: [
       "Developed AIIS's legal and regulatory compliance framework",
       "Led the revision of the institute's bylaws and governance policies",
@@ -102,30 +155,46 @@ const boardMembers = {
     phone: "+251 933 34 56 78",
     bio: "Kidist Bekele serves on the AIIS Board with a focus on community engagement and women's leadership development. Her background in theology and community development enables her to advocate for inclusive theological education and community-based ministry approaches. She is particularly passionate about empowering women in ministry and theological education.",
     education: [
-      { degree: "BA in Community Development", institution: "Unity University", year: "2010" },
-      { degree: "BTh (Bachelor of Theology)", institution: "Evangelical Theological College", year: "2015" },
+      {
+        degree: "BA in Community Development",
+        institution: "Unity University",
+        year: "2010",
+      },
+      {
+        degree: "BTh (Bachelor of Theology)",
+        institution: "Evangelical Theological College",
+        year: "2015",
+      },
     ],
     experience: [
       {
         position: "Director",
-        organization: "Women's Ministry Development, Ethiopian Kale Heywet Church",
+        organization:
+          "Women's Ministry Development, Ethiopian Kale Heywet Church",
         period: "2016-Present",
-        description: "Leads programs focused on women's leadership development and ministry training.",
+        description:
+          "Leads programs focused on women's leadership development and ministry training.",
       },
       {
         position: "Program Manager",
         organization: "Compassion International Ethiopia",
         period: "2011-2016",
-        description: "Managed child development programs and community initiatives.",
+        description:
+          "Managed child development programs and community initiatives.",
       },
       {
         position: "Board Member",
         organization: "Ethiopian Women Theologians Network",
         period: "2017-Present",
-        description: "Contributes to advocacy and networking for women in theological education.",
+        description:
+          "Contributes to advocacy and networking for women in theological education.",
       },
     ],
-    committees: ["Student Affairs Committee (Chair)", "Community Engagement Committee", "Curriculum Committee"],
+    committees: [
+      "Student Affairs Committee (Chair)",
+      "Community Engagement Committee",
+      "Curriculum Committee",
+    ],
     contributions: [
       "Established AIIS's women's leadership development program",
       "Developed community engagement frameworks for theological education",
@@ -133,21 +202,29 @@ const boardMembers = {
       "Led initiatives to increase female enrollment in theological programs",
     ],
   },
-}
+};
 
-export default function BoardMemberDetailPage({ params }: { params: { id: string } }) {
-  const member = boardMembers[params.id as keyof typeof boardMembers]
+export default function BoardMemberDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const member = boardMembers[params.id as keyof typeof boardMembers];
 
   if (!member) {
     return (
       <div className="container px-4 md:px-6 py-16 mx-auto text-center">
-        <h1 className="text-3xl font-bold tracking-tight">Board Member Not Found</h1>
-        <p className="mt-4 text-muted-foreground">The board member you are looking for does not exist.</p>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Board Member Not Found
+        </h1>
+        <p className="mt-4 text-muted-foreground">
+          The board member you are looking for does not exist.
+        </p>
         <Button asChild className="mt-8">
           <Link href="/faculty">View All Board Members</Link>
         </Button>
       </div>
-    )
+    );
   }
 
   return (
@@ -166,7 +243,9 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/60 z-10"></div>
         <div className="container px-4 md:px-6 mx-auto relative z-20">
           <div className="max-w-3xl mx-auto text-center space-y-6 text-white">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">{member.name}</h1>
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              {member.name}
+            </h1>
             <p className="text-xl text-gray-200">
               {member.role} • {member.credentials}
             </p>
@@ -179,7 +258,12 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-1 space-y-8">
             <div className="relative aspect-square overflow-hidden rounded-xl shadow-xl">
-              <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
+              <Image
+                src={member.image || "/placeholder.svg"}
+                alt={member.name}
+                fill
+                className="object-cover"
+              />
             </div>
 
             <Card className="border-none shadow-lg">
@@ -210,7 +294,9 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
 
                 <div className="pt-4">
                   <Button asChild className="w-full">
-                    <Link href={`mailto:${member.email}`}>Contact {member.name.split(" ")[0]}</Link>
+                    <Link href={`mailto:${member.email}`}>
+                      Contact {member.name.split(" ")[0]}
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
@@ -249,14 +335,21 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
                 <h3 className="text-2xl font-bold">Education</h3>
                 <div className="space-y-6">
                   {member.education.map((edu, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg"
+                    >
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
                         <GraduationCap className="h-5 w-5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-semibold">{edu.degree}</h4>
-                        <p className="text-muted-foreground">{edu.institution}</p>
-                        <p className="text-sm text-muted-foreground">{edu.year}</p>
+                        <p className="text-muted-foreground">
+                          {edu.institution}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {edu.year}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -267,14 +360,21 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
                 <h3 className="text-2xl font-bold">Professional Experience</h3>
                 <div className="space-y-6">
                   {member.experience.map((exp, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg"
+                    >
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
                         <Briefcase className="h-5 w-5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-semibold">{exp.position}</h4>
-                        <p className="text-muted-foreground">{exp.organization}</p>
-                        <p className="text-sm text-muted-foreground">{exp.period}</p>
+                        <p className="text-muted-foreground">
+                          {exp.organization}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {exp.period}
+                        </p>
                         <p className="mt-2">{exp.description}</p>
                       </div>
                     </div>
@@ -286,7 +386,10 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
                 <h3 className="text-2xl font-bold">Contributions to AIIS</h3>
                 <div className="grid gap-4">
                   {member.contributions.map((contribution, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg"
+                    >
                       <Award className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                       <span>{contribution}</span>
                     </div>
@@ -296,7 +399,9 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
             </Tabs>
 
             <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl mt-8">
-              <h3 className="text-2xl font-bold mb-6">Board Responsibilities</h3>
+              <h3 className="text-2xl font-bold mb-6">
+                Board Responsibilities
+              </h3>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-4">
                   <h4 className="font-semibold">Governance</h4>
@@ -342,7 +447,9 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
       <section className="bg-slate-50 dark:bg-slate-900 py-16">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold tracking-tight">Other Board Members</h2>
+            <h2 className="text-3xl font-bold tracking-tight">
+              Other Board Members
+            </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Meet our other distinguished board members at AIIS.
             </p>
@@ -367,10 +474,16 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
                   </div>
                   <CardContent className="p-6 bg-white dark:bg-slate-900">
                     <h3 className="font-bold text-lg">{otherMember.name}</h3>
-                    <p className="text-primary font-medium mt-1">{otherMember.role}</p>
-                    <p className="text-sm text-muted-foreground mt-2">{otherMember.credentials}</p>
+                    <p className="text-primary font-medium mt-1">
+                      {otherMember.role}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      {otherMember.credentials}
+                    </p>
                     <Button asChild variant="outline" className="w-full mt-4">
-                      <Link href={`/board/${otherMember.id}`}>View Profile</Link>
+                      <Link href={`/board/${otherMember.id}`}>
+                        View Profile
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -379,6 +492,5 @@ export default function BoardMemberDetailPage({ params }: { params: { id: string
         </div>
       </section>
     </div>
-  )
+  );
 }
-

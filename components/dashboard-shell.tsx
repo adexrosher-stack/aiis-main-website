@@ -34,6 +34,12 @@ interface NavItem {
 interface DashboardShellProps {
   children: React.ReactNode
   role?: "admin" | "student" | "teacher"
+  user:{
+    role: String
+    image:String | ImageData
+    name:String
+  }
+  navItems: { label: string;icon:React.ReactNode; href: string }[]
 }
 
 export function DashboardShell({ children, role = "admin" }: DashboardShellProps) {

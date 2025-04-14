@@ -5,6 +5,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Clock, MapPin, Calendar, ChevronLeft, Share2, Download } from "lucide-react"
 
 // This would typically come from a database
+export async function generateStaticParams() {
+  return Object.keys(events).map((id) => ({ id }));
+}
+
 const events = {
   "theological-symposium-2023": {
     id: "theological-symposium-2023",

@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle, Clock, GraduationCap, BookOpen, Users, Calendar } from "lucide-react"
 
 // This would typically come from a database
+export async function generateStaticParams() {
+  return Object.keys(programs).map((id) => ({ id }));
+}
+
 const programs = {
   "bachelor-of-theology": {
     id: "bachelor-of-theology",
@@ -306,7 +310,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                   ))}
                 </div>
 
-                {program.specializations && (
+                {/* {program.specializations && (
                   <div className="mt-8 space-y-4">
                     <h4 className="text-xl font-semibold">Specializations</h4>
                     <ul className="grid gap-2 sm:grid-cols-2">
@@ -318,7 +322,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                       ))}
                     </ul>
                   </div>
-                )}
+                )} */}
               </TabsContent>
 
               <TabsContent value="admission" className="space-y-6">
