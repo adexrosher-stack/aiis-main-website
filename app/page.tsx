@@ -59,9 +59,11 @@ export default function Home() {
 
           <CourseFilter />
         </div>
+     
       </section>
 
       {/* Testimonials Section */}
+      
       <section className="w-full py-16 bg-white dark:bg-slate-950">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center space-y-4 mb-8">
@@ -217,6 +219,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Why Choose Us Section */}
       <section className="w-full py-20 bg-slate-50 dark:bg-slate-900">
