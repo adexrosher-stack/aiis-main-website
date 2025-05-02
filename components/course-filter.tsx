@@ -12,14 +12,26 @@ interface Program {
   id: string
   title: string
   level: "undergraduate" | "graduate" | "doctoral"
-  format: "residential" | "online" | "hybrid"
+  format: "residential" | "remote" | "hybrid"
   duration: string
   credits: number
+  campuses: "Addis Ababa" | "Addis Ababa, Adama" | "Addis Ababa, Adama, Mekelle"
   description: string
 }
 
 export function CourseFilter() {
   const [programs, setPrograms] = useState<Program[]>([
+    {
+      id: "diploma-in-theology",
+      title: "Diploma in Theology (DipTh)",
+      level: "undergraduate",
+      format: "residential",
+      duration: "2 years",
+      credits: 60,
+      campuses: "Addis Ababa, Adama, Mekelle",
+      description:
+        "The Diploma in Theology program offers essential theological training for those seeking to serve in ministry without completing a full bachelor's degree.",
+    },
     {
       id: "bachelor-of-theology",
       title: "Bachelor of Theology (BTh)",
@@ -27,19 +39,11 @@ export function CourseFilter() {
       format: "residential",
       duration: "4 years",
       credits: 120,
+      campuses: "Addis Ababa, Adama, Mekelle",
       description:
         "The Bachelor of Theology program provides students with a solid foundation in biblical studies, theology, church history, and practical ministry skills.",
     },
-    {
-      id: "diploma-in-theology",
-      title: "Diploma in Theology (DipTh)",
-      level: "undergraduate",
-      format: "hybrid",
-      duration: "2 years",
-      credits: 60,
-      description:
-        "The Diploma in Theology program offers essential theological training for those seeking to serve in ministry without completing a full bachelor's degree.",
-    },
+   
     {
       id: "master-of-divinity",
       title: "Master of Divinity (MDiv)",
@@ -47,6 +51,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "3 years",
       credits: 90,
+      campuses: "Addis Ababa",
       description:
         "A comprehensive, three-year residential program designed to prepare students for pastoral ministry, theological teaching, and leadership roles.",
     },
@@ -57,16 +62,18 @@ export function CourseFilter() {
       format: "hybrid",
       duration: "2 years",
       credits: 48,
+      campuses: "Addis Ababa",
       description:
         "An advanced academic program designed to equip students with theological depth, critical research skills, and practical ministry applications.",
     },
     {
       id: "mth-in-practical-studies",
-      title: "MTh in Practical Studies",
+      title: "Master of Theology in Practical Studies (MTh-PS)",
       level: "graduate",
-      format: "online",
+      format: "hybrid",
       duration: "2 years",
       credits: 48,
+      campuses: "Addis Ababa",
       description:
         "Designed to equip students with practical ministry skills, leadership competence, and interdisciplinary knowledge.",
     },
@@ -74,9 +81,10 @@ export function CourseFilter() {
       id: "ma-in-counseling-psychology",
       title: "MA in Counseling Psychology",
       level: "graduate",
-      format: "hybrid",
+      format: "residential",
       duration: "2 years",
       credits: 48,
+      campuses: "Addis Ababa",
       description:
         "Specialized program for counseling and pastoral care, integrating psychological principles with Christian counseling.",
     },
@@ -84,11 +92,23 @@ export function CourseFilter() {
       id: "ma-in-organizational-leadership",
       title: "MA in Organizational Leadership",
       level: "graduate",
-      format: "online",
+      format: "residential",
       duration: "2 years",
       credits: 35,
+      campuses: "Addis Ababa",
       description:
         "Leadership-focused program for professionals in church leadership, business, and nonprofit management.",
+    },
+    {
+      id: "ma-in-developemt-studies",
+      title: "MA in Developemt and Theological Studies",
+      level: "graduate",
+      format: "residential",
+      duration: "2 years",
+      credits: 35,
+      campuses: "Addis Ababa",
+      description:
+        "Interdisciplinary program blending theology and development studies to address global challenges with faith-based solutions.",
     },
     {
       id: "doctor-of-philosophy",
@@ -97,6 +117,7 @@ export function CourseFilter() {
       format: "hybrid",
       duration: "3 years",
       credits: 60,
+      campuses: "Addis Ababa",
       description:
         "Our premier doctoral program focusing on advanced research and scholarship in theology and related disciplines.",
     },
@@ -243,6 +264,36 @@ export function CourseFilter() {
                   </div>
                 </div>
               </div>
+              <div className="h-px bg-border"></div>
+              <div>
+  <h3 className="font-medium mb-3">Campuses</h3>
+  <div className="space-y-2">
+    <div className="flex items-center space-x-2">
+      <Checkbox
+        id="Addis Ababa"
+        checked={filters.format.includes("Addis Ababa")}
+        onCheckedChange={() => handleFormatChange("Addis Ababa")}
+      />
+      <Label htmlFor="Addis Ababa">Addis Ababa</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Checkbox
+        id="Adama"
+        checked={filters.format.includes("Adama")}
+        onCheckedChange={() => handleFormatChange("Adama")}
+      />
+      <Label htmlFor="Adama">Adama</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Checkbox
+        id="Mekelle"
+        checked={filters.format.includes("Mekelle")}
+        onCheckedChange={() => handleFormatChange("Mekelle")}
+      />
+      <Label htmlFor="Mekelle">Mekelle</Label>
+    </div>
+  </div>
+</div>
 
               <div className="h-px bg-border"></div>
 
@@ -329,6 +380,10 @@ export function CourseFilter() {
                         <div>
                           <p className="text-muted-foreground">Credits</p>
                           <p className="font-medium">{program.credits}</p>
+                        </div>
+                        <div>
+                          <p className="text-muted-foreground">Campuses</p>
+                          <p className="font-medium">{program.campuses}</p>
                         </div>
                       </div>
                       <Button asChild variant="outline" className="w-full">

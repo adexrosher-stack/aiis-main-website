@@ -101,11 +101,11 @@ export default function Header() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/about#mission" title="Our Mission">
+                    <ListItem href="/about#mission" title="Who are we?">
                       Discover our purpose and goals
                     </ListItem>
-                    <ListItem href="/about#directors-message" title="Director's Message">
-                      A personal note from our director
+                    <ListItem href="/about#directors-message" title="Our Approach">
+                      our approach to teaching and learning
                     </ListItem>
                     <ListItem href="/about#accreditation" title="Accreditation">
                       Our academic credentials and partnerships
@@ -194,7 +194,7 @@ export default function Header() {
                           : "text-foreground dark:text-white",
                     )}
                   >
-                    News & Events
+                    Knowledge & Events
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -289,17 +289,17 @@ export default function Header() {
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
-                  Our Mission
+                  Who are We?
                 </Link>
                 <Link
-                  href="/about#directors-message"
+                  href="/about#who are we?"
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
-                  Director's Message
+                  Our Approach
                 </Link>
                 <Link
-                  href="/about#approach"
+                  href="/about#Our Approach"
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
@@ -373,7 +373,7 @@ export default function Header() {
               className="flex items-center justify-between text-lg font-medium hover:text-primary"
               onClick={toggleMenu}
             >
-              News & Events
+              Knowledge & Events
               <span className="text-primary">→</span>
             </Link>
             <Link

@@ -140,6 +140,9 @@ export default function Footer() {
               <Link href="/terms-of-service" className="text-sm text-white/60 hover:text-white">
                 Terms of Service
               </Link>
+              <Link href="/terms-of-service" className="text-sm text-white/100">
+                Powered by Ashara Technologies
+              </Link>
             </div>
           </div>
         </div>
