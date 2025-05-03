@@ -201,13 +201,16 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               <div className="space-y-4">
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                   <Image
-                    src={activeImage.startsWith('/') ? activeImage : `/${activeImage}`}
+                    src={activeImage}
                     alt={post.title}
                     fill
                     className="object-cover"
                     priority
                   />
                 </div>
+                {post.imageSource && (
+                  <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
+                )}
                 <div className="flex gap-2 overflow-x-auto pb-2">
                   {[post.image, ...(post.gallery || [])].map((img, index) => (
                     <button
@@ -218,7 +221,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                       onClick={() => setActiveImage(img)}
                     >
                       <Image
-                        src={img.startsWith('/') ? img : `/${img}`}
+                        src={img}
                         alt={`Gallery image ${index + 1}`}
                         fill
                         className="object-cover"
@@ -228,14 +231,19 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                 </div>
               </div>
             ) : (
-              <div className="relative aspect-video rounded-lg overflow-hidden">
-                <Image
-                  src={post.image.startsWith('/') ? post.image : `/${post.image}`}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              <div className="space-y-2">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src={post.image || "/placeholder.svg"}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                {post.imageSource && (
+                  <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
+                )}
               </div>
             )}
             

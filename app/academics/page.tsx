@@ -34,11 +34,7 @@ export default function AcademicsPage() {
       duration: "4 years",
       credits: 120,
       description: "The Bachelor of Theology program provides students with a solid foundation in biblical studies, theology, church history, and practical ministry skills.",
-      features: [
-        "Foundational theological education for ministry and advanced studies.",
-        "Offered in both Amharic and English for accessibility",
-        "Prepares students for diverse roles in religious and community settings.",
-      ]
+
     },
     {
       id: "master-of-divinity",
@@ -128,7 +124,7 @@ export default function AcademicsPage() {
       ]
     },
     {
-      id: "phd-in-theology",
+      id: "doctor-of-philosophy",
       title: "Doctor of Philosophy (PhD)",
       level: "doctoral",
       format: "residential",
@@ -149,7 +145,7 @@ export default function AcademicsPage() {
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/Faculity.jpg"
             alt="Academics"
             fill
             className="object-cover brightness-[0.6]"
@@ -191,51 +187,31 @@ export default function AcademicsPage() {
           <TabsContent value="all" className="space-y-8">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {programs.map((program) => (
-                <Card key={program.id} className="flex flex-col h-full">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-xl">{program.title}</CardTitle>
-                      <Badge variant="outline" className="capitalize">
-                        {program.level}
-                      </Badge>
-                    </div>
-                    <CardDescription>{program.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-primary" />
-                        <span className="text-sm">{program.duration}</span>
+                <Link href={`/programs/${program.id}`} key={program.id} className="block h-full">
+                  <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:translate-y-[-5px] cursor-pointer">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-xl">{program.title}</CardTitle>
+                        <Badge variant="outline" className="capitalize">
+                          {program.level}
+                        </Badge>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <GraduationCap className="h-4 w-4 text-primary" />
-                        <span className="text-sm">{program.credits} Credits</span>
+                    </CardHeader>
+                    <CardContent className="flex-1">
+                      <p className="text-muted-foreground">{program.description}</p>
+                    </CardContent>
+                    <CardFooter className="flex flex-col items-start gap-2 border-t pt-4">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Clock className="h-4 w-4" />
+                        <span>{program.duration}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <BookOpen className="h-4 w-4 text-primary" />
-                        <span className="text-sm capitalize">{program.format}</span>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <GraduationCap className="h-4 w-4" />
+                        <span>{program.credits} Credits</span>
                       </div>
-                      <div className="mt-4">
-                        <h4 className="text-sm font-medium mb-2">Program Features:</h4>
-                        <ul className="space-y-1">
-                          {program.features.map((feature, index) => (
-                            <li key={index} className="text-sm flex items-start gap-2">
-                              <span className="text-primary text-lg leading-none">•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button asChild className="w-full">
-                      <Link href={`/programs/${program.id}`}>
-                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
+                    </CardFooter>
+                  </Card>
+                </Link>
               ))}
             </div>
           </TabsContent>
@@ -245,68 +221,135 @@ export default function AcademicsPage() {
               {programs
                 .filter((program) => program.level === "undergraduate")
                 .map((program) => (
-                  <Card key={program.id} className="flex flex-col h-full">
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <CardTitle className="text-xl">{program.title}</CardTitle>
-                        <Badge variant="outline" className="capitalize">
-                          {program.level}
-                        </Badge>
-                      </div>
-                      <CardDescription>{program.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-grow">
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-primary" />
-                          <span className="text-sm">{program.duration}</span>
+                  <Link href={`/programs/${program.id}`} key={program.id} className="block h-full">
+                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:translate-y-[-5px] cursor-pointer">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <CardTitle className="text-xl">{program.title}</CardTitle>
+                          <Badge variant="outline" className="capitalize">
+                            {program.level}
+                          </Badge>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <GraduationCap className="h-4 w-4 text-primary" />
-                          <span className="text-sm">{program.credits} Credits</span>
+                      </CardHeader>
+                      <CardContent className="flex-1">
+                        <p className="text-muted-foreground">{program.description}</p>
+                      </CardContent>
+                      <CardFooter className="flex flex-col items-start gap-2 border-t pt-4">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="h-4 w-4" />
+                          <span>{program.duration}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <BookOpen className="h-4 w-4 text-primary" />
-                          <span className="text-sm capitalize">{program.format}</span>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <GraduationCap className="h-4 w-4" />
+                          <span>{program.credits} Credits</span>
                         </div>
-                        <div className="mt-4">
-                          <h4 className="text-sm font-medium mb-2">Program Features:</h4>
-                          <ul className="space-y-1">
-                            {program.features.map((feature, index) => (
-                              <li key={index} className="text-sm flex items-start gap-2">
-                                <span className="text-primary text-lg leading-none">•</span>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <Button asChild className="w-full">
-                        <Link href={`/programs/${program.id}`}>
-                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  </Card>
+                      </CardFooter>
+                    </Card>
+                  </Link>
                 ))}
             </div>
           </TabsContent>
 
-          {/* Similar TabsContent blocks for graduate, doctoral, and certificate programs */}
-          {/* These follow the same pattern as the undergraduate tab, just filtering by different level values */}
-          
           <TabsContent value="graduate" className="space-y-8">
-            {/* Similar structure as undergraduate tab, filtered for graduate programs */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {programs
+                .filter((program) => program.level === "graduate")
+                .map((program) => (
+                  <Link href={`/programs/${program.id}`} key={program.id} className="block h-full">
+                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:translate-y-[-5px] cursor-pointer">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <CardTitle className="text-xl">{program.title}</CardTitle>
+                          <Badge variant="outline" className="capitalize">
+                            {program.level}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="flex-1">
+                        <p className="text-muted-foreground">{program.description}</p>
+                      </CardContent>
+                      <CardFooter className="flex flex-col items-start gap-2 border-t pt-4">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="h-4 w-4" />
+                          <span>{program.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <GraduationCap className="h-4 w-4" />
+                          <span>{program.credits} Credits</span>
+                        </div>
+                      </CardFooter>
+                    </Card>
+                  </Link>
+                ))}
+            </div>
           </TabsContent>
-          
+
           <TabsContent value="doctoral" className="space-y-8">
-            {/* Similar structure as undergraduate tab, filtered for doctoral programs */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {programs
+                .filter((program) => program.level === "doctoral")
+                .map((program) => (
+                  <Link href={`/programs/${program.id}`} key={program.id} className="block h-full">
+                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:translate-y-[-5px] cursor-pointer">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <CardTitle className="text-xl">{program.title}</CardTitle>
+                          <Badge variant="outline" className="capitalize">
+                            {program.level}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="flex-1">
+                        <p className="text-muted-foreground">{program.description}</p>
+                      </CardContent>
+                      <CardFooter className="flex flex-col items-start gap-2 border-t pt-4">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="h-4 w-4" />
+                          <span>{program.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <GraduationCap className="h-4 w-4" />
+                          <span>{program.credits} Credits</span>
+                        </div>
+                      </CardFooter>
+                    </Card>
+                  </Link>
+                ))}
+            </div>
           </TabsContent>
-          
+
           <TabsContent value="certificate" className="space-y-8">
-            {/* Similar structure as undergraduate tab, filtered for certificate programs */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {programs
+                .filter((program) => program.level === "certificate")
+                .map((program) => (
+                  <Link href={`/programs/${program.id}`} key={program.id} className="block h-full">
+                    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:translate-y-[-5px] cursor-pointer">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <CardTitle className="text-xl">{program.title}</CardTitle>
+                          <Badge variant="outline" className="capitalize">
+                            {program.level}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="flex-1">
+                        <p className="text-muted-foreground">{program.description}</p>
+                      </CardContent>
+                      <CardFooter className="flex flex-col items-start gap-2 border-t pt-4">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="h-4 w-4" />
+                          <span>{program.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <GraduationCap className="h-4 w-4" />
+                          <span>{program.credits} Credits</span>
+                        </div>
+                      </CardFooter>
+                    </Card>
+                  </Link>
+                ))}
+            </div>
           </TabsContent>
         </Tabs>
       </section>
@@ -348,7 +391,7 @@ export default function AcademicsPage() {
               </div>
             </div>
             <div className="relative aspect-video overflow-hidden rounded-xl">
-              <Image src="/placeholder.svg?height=600&width=800" alt="Academic Approach" fill className="object-cover" />
+              <Image src="/images/programs/about-hero.jpeg" alt="Academic Approach" fill className="object-cover" />
             </div>
           </div>
         </div>

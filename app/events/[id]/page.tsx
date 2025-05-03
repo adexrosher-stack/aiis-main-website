@@ -279,57 +279,67 @@ facts given above.</p>
     "description": "This article is a book review of 'An Introduction to Africana Philosophy' by Lewis R. Gordon, exploring the philosophical traditions and critical reflections of African and African diasporic thought.",
     "image": "/images/programs/African.jpg",
     imageSource: "Freepik",
-    "content": `
-      <div class="article-content">
-        <h2 class="text-2xl font-bold mb-4">Introduction</h2>
-        <p class="mb-6">Africana Philosophy has garnered significant attention among scholars in recent decades. Lewis R. Gordon’s book, <i>An Introduction to Africana Philosophy</i>, provides a comprehensive exploration of this field, tracing its emergence from an Africana (African diasporic) consciousness in the Afro-Arabic world of the Middle Ages. The book is structured in two parts, with six chapters. Part I includes Chapter 1: Africana Philosophy as a Modern Philosophy, and Chapter 2: Classic Eighteenth and Nineteenth-Century Foundations. Part II comprises Chapter 3: Three Pillars of African-American Philosophy, Chapter 4: Africana Philosophical Movements in the United States and Britain, Chapter 5: Afro-Caribbean Philosophy, and Chapter 6: African Philosophy. This review summarizes the main issues, offers reactions to Gordon’s arguments, defends the book’s positions, reflects on its themes, explores future prospects, and raises critical questions.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Summary of Main Issues</h2>
-        <p class="mb-6">Gordon defines Africana Philosophy as a species of Africana thought, involving theoretical questions arising from critical engagement with ideas in African cultures and their hybrid, mixed, or creolized forms worldwide. The term 'philosophy' derives from the Greek 'philia' (brotherly love) and 'sophia' (wisdom), but Africana Philosophy faces unique challenges due to racial and ethnic biases that marginalize philosophers of color. The origins of Africana Philosophy are linked to ancient Northeast African civilizations, referred to as Km’t (Kemet), meaning 'black lands.' Gordon highlights a historical bias where African philosophers are often dismissed as naive or mystical, while ancient Greek philosophers are revered.</p>
-        <p class="mb-6">Africana Philosophy addresses fundamental questions such as: What is there? How should we live? What can we know? These align with academic disciplines like ontology, ethics, epistemology, metaphysics, and political philosophy. It also tackles modern concerns like race, racism, colonialism, identity, and social transformation. The modern moment of Africana Philosophy begins with the conquest of the Americas and the Atlantic slave trade, which shaped discourses on Africa. The Caribbean played a pivotal role as a hub of modern capitalist expansion, cultural exchange, and philosophical anxieties. Key figures like Anton Wilhelm Amo addressed questions of identity and humanity in the context of slavery.</p>
-        <p class="mb-6">The book identifies recurring themes in Africana thought:</p>
-        <ul class="mb-6 space-y-2">
-          <li>Philosophical anthropology in combating racism and colonialism.</li>
-          <li>The problem of modernization and Eurocentric notions of civilization.</li>
-          <li>Freedom and liberation as central philosophical concerns.</li>
-          <li>Identity and the critique of dualisms like superiority/inferiority.</li>
-          <li>The emancipatory role of knowledge and its contradictions.</li>
-          <li>The influence of history on human identity.</li>
-          <li>Meta-philosophical reflections on method and thought.</li>
-        </ul>
-        <p class="mb-6">In African-American philosophy, three influential figures—Anna Julia Cooper, W.E.B. Du Bois, and Frantz Fanon—form its pillars. The field engages with theodicean questions about justice and evil, as well as philosophical movements like pragmatism, Afro-feminism, Afrocentrism, and existentialism. Afro-Caribbean philosophy, rooted in the Caribbean’s modern context, addresses the African presence and questions of blackness. Marcus Garvey’s Universal Negro Improvement Association and the Rastafari movement, inspired by Haile Selassie’s coronation, exemplify its political and prophetic dimensions.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Reaction to the Book</h2>
-        <p class="mb-6">Gordon’s work is a thorough account of how African-descended peoples have philosophized since the late fifteenth century, particularly in response to enslavement, colonialism, and dehumanization. It highlights their intellectual resilience in addressing existential and moral questions despite systemic marginalization. The book underscores the sophistication of Africana thinkers who were often denied recognition as philosophers.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Defense of the Book’s Position</h2>
-        <p class="mb-6">The book effectively demonstrates that Africana Philosophy is not a derivative of European thought but a parallel tradition that emerged alongside it. By centering the experiences of enslaved and colonized peoples, Gordon validates their contributions to global philosophical discourse. The emphasis on critical reflection and the unique challenges faced by Africana thinkers strengthens the case for its distinct place in philosophical studies.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Reflections on the Issues</h2>
-        <p class="mb-6">Africana Philosophy emerged with its own set of recurring themes:</p>
-        <ul class="mb-6 space-y-2">
-          <li>The significance of philosophical anthropology in battling racism and colonialism, especially for colonized, enslaved, or oppressed peoples.</li>
-          <li>The problems of theorizing human reality in Western modernity and its Eurocentric conception of civilization.</li>
-          <li>The importance of freedom and liberation as subjects of philosophical reflection for oppressed peoples.</li>
-          <li>The significance of questioning identity formation in environments where certain human features are deemed superior.</li>
-          <li>The emancipatory significance of knowledge and the lived reality of its contradictions.</li>
-          <li>The weight of history in the formation of human identity.</li>
-          <li>The importance of meta-philosophical reflections on method and thought itself.</li>
-        </ul>
-        <p class="mb-6">From an economic perspective, the book focuses heavily on colonialism, enslavement, and oppression, with less emphasis on economic factors. A more comprehensive approach could explore how economic systems intersect with these issues. Additionally, the suggestion that Jesus would align with black power rather than white power risks perpetuating racial binaries. A balanced view would recognize Jesus as transcending racial categories, belonging to neither black nor white exclusively.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Future Prospects</h2>
-        <p class="mb-6">Africana Philosophy could expand to include economic, social, spiritual, academic, and intellectual dimensions, moving beyond its current focus on race, slavery, and colonialism. By addressing broader human concerns, it could foster a more inclusive philosophical dialogue that resonates globally.</p>
-  
-        <h2 class="text-2xl font-bold mb-4">Critical Questions</h2>
-        <ul class="mb-6 space-y-2">
-          <li>How can we confidently claim that slavery no longer exists today?</li>
-          <li>Was slavery the primary catalyst for Africans to engage in philosophical reflection?</li>
-          <li>What are the future directions for Africana Philosophy?</li>
-          <li>Is philosophy exclusively the domain of scholars, or can it encompass broader societal contributions?</li>
-        </ul>
-      </div>
-    `
+      "content": `
+        <div class="article-content">
+          <h2 class="mb-6 text-2xl font-bold">Introduction</h2>
+          <p class="mb-6">Africana Philosophy has emerged as a significant field of study, drawing the attention of scholars in recent decades. Lewis R. Gordon’s book, <i>An Introduction to Africana Philosophy</i>, provides a comprehensive treatment of this discipline, tracing its roots to an Africana (African diasporic) consciousness in the Afro-Arabic world of the Middle Ages. The book is organized into two parts, comprising six chapters. Part I includes Chapter 1: Africana Philosophy as a Modern Philosophy, and Chapter 2: Classic Eighteenth and Nineteenth-Century Foundations. Part II covers Chapter 3: Three Pillars of African-American Philosophy, Chapter 4: Africana Philosophical Movements in the United States and Britain, Chapter 5: Afro-Caribbean Philosophy, and Chapter 6: African Philosophy. This article summarizes the book’s key issues, offers reactions to Gordon’s arguments, defends the book’s perspectives, reflects on its themes, explores future prospects, and raises critical questions.</p>
+    
+          <h2 class="mb-6 text-2xl font-bold">Summary of Main Issues</h2>
+          <p class="mb-6">Gordon defines Africana Philosophy as a species of Africana thought, encompassing theoretical questions arising from critical engagement with ideas in African cultures and their hybrid, mixed, or creolized forms worldwide. The term “philosophy” originates from the Greek words <i>philia</i> (brotherly love) and <i>sophia</i> (wisdom). However, Africana Philosophy faces unique challenges due to racial and ethnic biases that marginalize philosophers of color, often treating them as naive or mystical compared to the revered ancient Greek philosophers.</p>
+          
+          <p class="mb-6">The origins of Africana Philosophy are tied to ancient Northeast African civilizations, such as Km’t (Kemet), meaning “black lands.” Gordon notes a historical bias where African philosophers are dismissed, while their Greek counterparts are celebrated for their supposed genius. Africana Philosophy addresses fundamental questions like: What is there? How should we live? What can we know? These align with academic disciplines such as ontology, ethics, epistemology, metaphysics, political philosophy, aesthetics, and logic. It also engages with modern concerns, including race, racism, colonialism, identity, consciousness, ethics, politics, freedom, and bondage.</p>
+          
+          <p class="mb-6">The modern moment of Africana Philosophy begins with the conquest of the Americas and the Atlantic slave trade, which shaped discourses on Africa. The Caribbean played a pivotal role as a hub of modern capitalist expansion, cultural exchange, and philosophical anxieties. Key figures like Anton Wilhelm Amo, the first recorded Africana thinker to engage these questions in the modern world, addressed issues of identity and humanity amidst slavery.</p>
+          
+          <p class="mb-6">The book highlights recurring themes in Africana thought during the eighteenth and nineteenth centuries, including:</p>
+          <ul class="mb-6 space-y-2">
+            <li>The centrality of philosophical anthropology in combating racism and colonialism.</li>
+            <li>The problem of modernization and the meaning of civilization in theorizing human reality.</li>
+            <li>The importance of freedom and liberation as subjects of philosophical reflection.</li>
+            <li>The significance of identity questions, addressing dualisms of superiority and inferiority.</li>
+            <li>The emancipating significance of knowledge and the lived reality of its contradictions.</li>
+            <li>The weight of history in the formation of human identity.</li>
+            <li>The importance of meta-philosophical reflections on method and thought itself.</li>
+          </ul>
+          
+          <p class="mb-6">In African-American philosophy, three influential figures—Anna Julia Cooper, W.E.B. Du Bois, and Frantz Fanon—form its pillars. This field engages with theodicean questions about God’s justice in a world marked by injustice and evil, as well as philosophical movements such as pragmatism, prophetic pragmatism, analytical philosophy, Afro-feminism, Afrocentrism, Afropostmodernism, Afropoststructuralism, African-American existentialism, and phenomenology. Prophetic pragmatism, for instance, draws on Christian resources, though Gordon notes that approximately 30% of enslaved Africans in the New World were Muslim, highlighting a diversity of religious influences.</p>
+          
+          <p class="mb-6">Afro-Caribbean philosophy, a subset of Africana and Caribbean philosophy, addresses the African presence in the Caribbean and questions of blackness in the modern world. The Caribbean’s modern creation, marked by Columbus’s arrival, shapes its philosophical concerns. Marcus Garvey’s Universal Negro Improvement Association and the Rastafari movement, inspired by Haile Selassie’s coronation in 1930, exemplify its political and prophetic dimensions. Garvey’s framework of Black Nationalism and race pride, alongside Rastafari’s messianic vision, underscores the region’s contributions to Africana thought.</p>
+          
+          <h2 class="mb-6 text-2xl font-bold">Reaction to the Book</h2>
+          <p class="mb-6">Gordon’s book offers a comprehensive account of how African-descended peoples have philosophized since the late fifteenth century, particularly in response to enslavement, colonialism, and dehumanization following the expulsion of the Moors from the Iberian Peninsula in 1492. It underscores their intellectual resilience, as many Africana thinkers philosophized about their struggles, triumphs, moral determination, freedom, and courage, despite being dismissed as incapable of sophisticated thought.</p>
+          
+          <h2 class="mb-6 text-2xl font-bold">Defense of the Book’s Position</h2>
+          <p class="mb-6">Gordon effectively argues that Africana Philosophy is not a derivative of European thought but a parallel tradition that emerged alongside it. By centering the experiences of enslaved and colonized peoples, the book validates their contributions to global philosophical discourse, challenging Eurocentric narratives that marginalize Africana thinkers.</p>
+          
+          <h2 class="mb-6 text-2xl font-bold">Reflections on the Issues</h2>
+          <p class="mb-6">Africana Philosophy is characterized by several recurring themes:</p>
+          <ul class="mb-6 space-y-2">
+            <li>The significance of philosophical anthropology in battling racism and colonialism, particularly for colonized, enslaved, or oppressed peoples.</li>
+            <li>The challenges of theorizing human reality within Western modernity’s Eurocentric conception of civilization.</li>
+            <li>The importance of freedom and liberation as subjects of philosophical reflection for oppressed groups.</li>
+            <li>The significance of questioning identity formation in environments where certain human features are deemed superior.</li>
+            <li>The emancipatory role of knowledge and the lived reality of its contradictions for Africana peoples.</li>
+            <li>The weight of history in shaping human identity.</li>
+            <li>The importance of meta-philosophical reflections on method and thought itself.</li>
+          </ul>
+          
+          <p class="mb-6">From an economic perspective, the book focuses heavily on colonialism, enslavement, and oppression, with less emphasis on economic factors. A more balanced approach could enrich the understanding of Africana thought by exploring economic dimensions of these struggles.</p>
+          
+          <p class="mb-6">The suggestion that Jesus would align with black power rather than white power, as discussed in the context of African-American feminist and womanist thought, risks perpetuating racial binaries. A balanced perspective would recognize Jesus as transcending racial categories, belonging neither to black nor white but to all humanity.</p>
+          
+          <h2 class="mb-6 text-2xl font-bold">Future Prospects</h2>
+          <p class="mb-6">The future of Africana Philosophy lies in adopting a more holistic approach, incorporating economic, social, spiritual, academic, and intellectual dimensions. Moving beyond its current focus on race, slavery, colonialism, and oppression, it could address broader human concerns, fostering a more inclusive philosophical discourse.</p>
+          
+          <h2 class="mb-6 text-2xl font-bold">Critical Questions</h2>
+          <ul class="mb-6 space-y-2">
+            <li>How can we confidently claim that slavery no longer exists today?</li>
+            <li>Was slavery the primary catalyst for Africans to engage in philosophical reflection?</li>
+            <li>What are the future directions for Africana Philosophy?</li>
+            <li>Is philosophy exclusively the domain of scholars, or can it encompass broader societal contributions?</li>
+          </ul>
+        </div>
+      `
   },
   {
     "id": "4",

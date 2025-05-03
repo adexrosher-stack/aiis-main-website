@@ -1,3 +1,4 @@
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -48,37 +49,37 @@ export default function AboutPage() {
             </TabsList>
           </div>
 
-      {/* About Brief Section */}
-      <section className="w-full py-16 bg-slate-50 dark:bg-slate-900">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="grid gap-10 lg:grid-cols-2 items-center">
-            <div className="relative aspect-video overflow-hidden rounded-xl">
-              <Image src="/images/programs/logo 2.jpg" alt="AIIS Campus" fill className="object-contain" />
-            </div>
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight">About AIIS</h2>
-                <div className="w-20 h-1 bg-primary mt-4"></div>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                AIIS exists for high-quality learning, educational availability, and transformative education with
-                contextual relevance. We are committed to providing education at different levels through a variety of
-                programs adaptable to the diverse needs of students.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Our programs integrate universally valid academic knowledge with African cultural perspectives, creating
-                a unique educational model that is community-oriented and beyond traditional scholastic methods.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                AIIS operates across three campuses located in Addis Ababa, Adama, and Mekelle, making our programs more accessible to a wider community. 
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
           {/* Mission & Vision Tab */}
           <TabsContent value="mission" className="space-y-12">
+            {/* About Brief Section - Moved inside Mission tab */}
+            <section className="w-full py-16 bg-slate-50 dark:bg-slate-900">
+              <div className="container px-4 md:px-6 mx-auto">
+                <div className="grid gap-10 lg:grid-cols-2 items-center">
+                  <div className="relative aspect-video overflow-hidden rounded-xl">
+                    <Image src="/images/programs/logo 2.jpg" alt="AIIS Campus" fill className="object-contain" />
+                  </div>
+                  <div className="space-y-6">
+                    <div>
+                      <h2 className="text-3xl font-bold tracking-tight">About AIIS</h2>
+                      <div className="w-20 h-1 bg-primary mt-4"></div>
+                    </div>
+                    <p className="text-lg text-muted-foreground">
+                      AIIS exists for high-quality learning, educational availability, and transformative education with
+                      contextual relevance. We are committed to providing education at different levels through a variety of
+                      programs adaptable to the diverse needs of students.
+                    </p>
+                    <p className="text-lg text-muted-foreground">
+                      Our programs integrate universally valid academic knowledge with African cultural perspectives, creating
+                      a unique educational model that is community-oriented and beyond traditional scholastic methods.
+                    </p>
+                    <p className="text-lg text-muted-foreground">
+                      AIIS operates across three campuses located in Addis Ababa, Adama, and Mekelle, making our programs more accessible to a wider community. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <div className="grid gap-12 lg:grid-cols-2 items-center">
               <div className="space-y-6">
                 <div>
@@ -102,7 +103,7 @@ export default function AboutPage() {
 
             <div className="grid gap-12 lg:grid-cols-2 items-center">
               <div className="relative aspect-video overflow-hidden rounded-xl shadow-xl order-last lg:order-first">
-                <Image src="/images/programs/Mission.jpeg"  alt="AIIS Vision" fill className="object-cover" />
+                <Image src="/images/programs/Mission.jpeg" alt="AIIS Vision" fill className="object-cover" />
               </div>
               <div className="space-y-6">
                 <div>
@@ -184,11 +185,11 @@ export default function AboutPage() {
               </div>
             </div>
             
-            {/* Our Campuses Section - Now inside Mission tab */}
+            {/* Our Campuses Section */}
             <section id="campuses" className="w-full py-16 bg-slate-50 dark:bg-slate-900 rounded-xl">
               <div className="container px-4 md:px-6 mx-auto">
                 <div className="text-center space-y-4 mb-12">
-                  <h2 className="text-3xl font-bold tracking-tight">Our Campuses</h2>
+                  <h2 className="text-3xl font-bold tracking-tight"> Nantes Campuses</h2>
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     AIIS currently operates three campuses in different regions of Ethiopia, strategically positioned to 
                     address and serve a broad community across the country.
@@ -197,7 +198,6 @@ export default function AboutPage() {
                 </div>
 
                 <div className="grid gap-8 md:grid-cols-3">
-                  {/* Addis Ababa Campus */}
                   <Card className="overflow-hidden">
                     <div className="relative h-48">
                       <Image
@@ -220,7 +220,6 @@ export default function AboutPage() {
                     </CardContent>
                   </Card>
                   
-                  {/* Adama Campus */}
                   <Card className="overflow-hidden">
                     <div className="relative h-48">
                       <Image
@@ -243,7 +242,6 @@ export default function AboutPage() {
                     </CardContent>
                   </Card>
                   
-                  {/* Mekelle Campus */}
                   <Card className="overflow-hidden">
                     <div className="relative h-48">
                       <Image
@@ -269,7 +267,7 @@ export default function AboutPage() {
               </div>
             </section>
 
-            {/* Director's Message Section - Now inside Mission tab */}
+            {/* Director's Message Section */}
             <section id="director-message" className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight text-center">
@@ -301,7 +299,7 @@ export default function AboutPage() {
                           <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                         </svg>
                         <p className="text-lg italic">
-                          Have you been looking for a place to expand your knowledge of Theology and Arts? AIIS specializes in contextualization, rooted in African theological frameworks. We offer accredited degrees at the Bachelor's and Master's levels, focusing on both quality and flexibility to ensure that you receive the best education in a way that suits you.ation, rooted in African theological frameworks. We offer accredited degrees at the Bachelor's and Master's levels, focusing on both quality and flexibility to ensure that you receive the best education in a way that suits you.
+                          Have you been looking for a place to expand your knowledge of Theology and Arts? AIIS specializes in contextualization, rooted in African theological frameworks. We offer accredited degrees at the Bachelor's and Master's levels, focusing on both quality and flexibility to ensure that you receive the best education in a way that suits you.
                         </p>
                         <p className="text-lg italic">
                           AIIS is accredited by Faith Theological Seminary (Nagaland, India) and collaborates with the African Network of Theological Schools (ANTS), which operates in West, Central, South, and East Africa. Our commitment is to provide theological education that is academically sound, contextually relevant, and widely accessible.
@@ -331,7 +329,7 @@ export default function AboutPage() {
               </Card>
             </section>
             
-            {/* Academic Dean Section - Just a photograph */}
+            {/* Academic Dean Section */}
             <section id="academic-dean" className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight text-center">
@@ -428,7 +426,7 @@ export default function AboutPage() {
                 <CardContent className="p-8 space-y-6">
                   <h3 className="text-2xl font-bold">Community-Oriented Learning</h3>
                   <p className="text-lg text-muted-foreground">
-                    Our educational model extends beyond traditional classroom settings to engage with communities,
+                    Our educational model extends beyond traditional classroom grabbing to engage with communities,
                     creating opportunities for applied learning and service.
                   </p>
                   <ul className="space-y-3 mt-4">
@@ -547,36 +545,15 @@ export default function AboutPage() {
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
                   <Building className="h-10 w-10 text-primary" />
                   <div>
-                    <h4 className="font-semibold">African Network of Theological Schools</h4>
-                    <p className="text-sm text-muted-foreground">Pan-African</p>
+                    <h4 className="font-semibold">African Network of Theological Schools (ANTS) - Côte d'Ivoire Center</h4>
+                    <p className="text-sm text-muted-foreground">West & Central Africa</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
                   <Building className="h-10 w-10 text-primary" />
                   <div>
-                    <h4 className="font-semibold">Global Theological Initiative</h4>
-                    <p className="text-sm text-muted-foreground">United States</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
-                  <Building className="h-10 w-10 text-primary" />
-                  <div>
-                    <h4 className="font-semibold">Evangelical Theological College</h4>
-                    <p className="text-sm text-muted-foreground">Ethiopia</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
-                  <Building className="h-10 w-10 text-primary" />
-                  <div>
-                    <h4 className="font-semibold">Oxford Centre for Mission Studies</h4>
-                    <p className="text-sm text-muted-foreground">United Kingdom</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
-                  <Building className="h-10 w-10 text-primary" />
-                  <div>
-                    <h4 className="font-semibold">Theological College of Central Africa</h4>
-                    <p className="text-sm text-muted-foreground">Zambia</p>
+                    <h4 className="font-semibold">African Network of Theological Schools (ANTS) - Addis Ababa Center</h4>
+                    <p className="text-sm text-muted-foreground">East & North Africa</p>
                   </div>
                 </div>
               </div>
@@ -623,3 +600,4 @@ export default function AboutPage() {
     </div>
   )
 }
+``

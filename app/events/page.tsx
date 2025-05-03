@@ -108,18 +108,18 @@ export default function EventsPage() {
               </CardHeader>
               <CardContent>
                 <p className="line-clamp-3">{post.description}</p>
-                {post.category === "Event" && (
+                {post.category === "Event" && "time" in post && (
                   <div className="mt-4 space-y-2 text-sm text-muted-foreground">
                     {post.time && (
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4" />
-                        <span>{post.time}</span>
+                        <span>{String(post.time)}</span>
                       </div>
                     )}
-                    {post.location && (
+                    {"location" in post && post.location && (
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4" />
-                        <span>{post.location}</span>
+                        <span>{String(post.location)}</span>
                       </div>
                     )}
                   </div>

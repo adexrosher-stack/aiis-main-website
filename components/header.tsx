@@ -101,13 +101,13 @@ export default function Header() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/about#mission" title="Who are we?">
+                    <ListItem href="/about?tab=mission" title="Who are we?">
                       Discover our purpose and goals
                     </ListItem>
-                    <ListItem href="/about#directors-message" title="Our Approach">
+                    <ListItem href="/about?tab=approach" title="Our Approach">
                       our approach to teaching and learning
                     </ListItem>
-                    <ListItem href="/about#accreditation" title="Accreditation">
+                    <ListItem href="/about?tab=accreditation" title="Accreditation">
                       Our academic credentials and partnerships
                     </ListItem>
                   </ul>
@@ -285,28 +285,21 @@ export default function Header() {
               </div>
               <div className="grid grid-cols-2 gap-2 pl-4">
                 <Link
-                  href="/about#mission"
+                  href="/about?tab=mission"
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
                   Who are We?
                 </Link>
                 <Link
-                  href="/about#who are we?"
+                  href="/about?tab=approach"
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
                   Our Approach
                 </Link>
                 <Link
-                  href="/about#Our Approach"
-                  className="text-sm text-muted-foreground hover:text-primary"
-                  onClick={toggleMenu}
-                >
-                  Our Approach
-                </Link>
-                <Link
-                  href="/about#accreditation"
+                  href="/about?tab=accreditation"
                   className="text-sm text-muted-foreground hover:text-primary"
                   onClick={toggleMenu}
                 >
