@@ -11,11 +11,7 @@ import { Input } from "@/components/ui/input"
 const searchCategories = [
   { id: "programs", name: "Programs", results: ["Bachelor of Theology", "Master of Divinity", "PhD in Theology"] },
   { id: "faculty", name: "Faculty", results: ["Dr. Esckinder Taddesse", "Pr. Tsadiku Abdo", "Dr. Endale Gebremeskel"] },
-  {
-    id: "events",
-    name: "Events",
-    results: ["Theological Symposium 2023", "Leadership Workshop Series", "Graduation Ceremony 2023"],
-  },
+
 ]
 
 export function SearchDialog() {
