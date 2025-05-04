@@ -74,18 +74,20 @@ export default function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={cn(
-                    "bg-transparent",
-                    pathname.startsWith("/about")
-                      ? "text-primary font-semibold"
-                      : isScrolled
-                        ? "text-foreground"
-                        : "text-foreground dark:text-white",
-                  )}
-                >
-                  About
-                </NavigationMenuTrigger>
+                <Link href="/about" legacyBehavior passHref>
+                  <NavigationMenuTrigger
+                    className={cn(
+                      "bg-transparent",
+                      pathname.startsWith("/about")
+                        ? "text-primary font-semibold"
+                        : isScrolled
+                          ? "text-foreground"
+                          : "text-foreground dark:text-white",
+                    )}
+                  >
+                    About
+                  </NavigationMenuTrigger>
+                </Link>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                     <li className="row-span-3">
@@ -132,36 +134,38 @@ export default function Header() {
                 </Link>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={cn(
-                    "bg-transparent",
-                    pathname.startsWith("/academics")
-                      ? "text-primary font-semibold"
-                      : isScrolled
-                        ? "text-foreground"
-                        : "text-foreground dark:text-white",
-                  )}
-                >
-                  Academics
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <ListItem href="/academics#undergraduate" title="Undergraduate Programs">
-                      Bachelor's degrees and diplomas
-                    </ListItem>
-                    <ListItem href="/academics#graduate" title="Graduate Programs">
-                      Master's level education
-                    </ListItem>
-                    <ListItem href="/academics#doctoral" title="Doctoral Programs">
-                      PhD and advanced research degrees
-                    </ListItem>
-                    <ListItem href="/academics#certificates" title="Certificate Programs">
-                      Short-term specialized training
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/academics" legacyBehavior passHref>
+                    <NavigationMenuTrigger
+                      className={cn(
+                        "bg-transparent",
+                        pathname.startsWith("/academics")
+                          ? "text-primary font-semibold"
+                          : isScrolled
+                            ? "text-foreground"
+                            : "text-foreground dark:text-white",
+                      )}
+                    >
+                      Academics
+                    </NavigationMenuTrigger>
+                  </Link>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <ListItem href="/academics#undergraduate" title="Undergraduate Programs">
+                        Bachelor's degrees and diplomas
+                      </ListItem>
+                      <ListItem href="/academics#graduate" title="Graduate Programs">
+                        Master's level education
+                      </ListItem>
+                      <ListItem href="/academics#doctoral" title="Doctoral Programs">
+                        PhD and advanced research degrees
+                      </ListItem>
+                      <ListItem href="/academics#certificates" title="Certificate Programs">
+                        Short-term specialized training
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <Link href="/admissions" legacyBehavior passHref>

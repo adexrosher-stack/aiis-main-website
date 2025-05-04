@@ -13,7 +13,7 @@ export default function ContactPage() {
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/PhD.jpeg"
             alt="Contact"
             fill
             className="object-cover brightness-[0.6]"
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-lg">Email</h3>
                   <p className="text-muted-foreground mt-1">
-                    aiisseminary@gmail.com
+                  touch.esck@yahoo.com
                     <br />
                     touch.esckinder@gmail.com
                   </p>
@@ -99,7 +99,9 @@ export default function ContactPage() {
                   <p className="text-muted-foreground mt-1">
                     For international student inquiries:
                     <br />
-                    international.admissions@aiis.edu
+                    touch.esck@yahoo.com
+                    <br />
+                    chale.eshetu@gmail.com
                   </p>
                 </div>
               </div>
@@ -108,7 +110,7 @@ export default function ContactPage() {
             <div className="pt-6">
               <div className="rounded-xl overflow-hidden shadow-lg h-[400px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5384710870507!2d38.7899!3d9.0131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDAnNDcuMiJOIDM4wrA0Nyc0My42IkU!5e0!3m2!1sen!2sus!4v1616661315372!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1010.0443387068914!2d38.84269316421424!3d9.021848488968862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1746357675293!5m2!1sen!2set"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

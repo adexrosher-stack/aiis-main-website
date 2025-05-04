@@ -18,20 +18,13 @@ export function TestimonialCarousel() {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Samuel Bekele",
-      role: "MTh Graduate, 2022",
+      name: "Ruth Debebe",
+      role: "MTh Graduate, 2024",
       quote:
-        "My experience at AIIS transformed my understanding of theology in the African context. The faculty's dedication to contextual learning and academic excellence prepared me well for my ministry.",
-      image: "/placeholder.svg?height=200&width=200",
+        "AIIS is more than an institute—it’s a launchpad for ministry and scholarship, and I couldn’t be more thankful to be part of the 2024 batch. To anyone considering theological or leadership training, I wholeheartedly recommend AIIS. Here, you’ll find knowledge, purpose, and a family that challenges and supports you every step of the way.",
+      image: "/images/programs/Testimony1.jpg"
     },
-    {
-      id: 2,
-      name: "Ruth Tadesse",
-      role: "Current PhD Student",
-      quote:
-        "The doctoral program at AIIS offers a unique blend of rigorous academic research and practical ministry application. The mentorship I've received has been invaluable to my growth as a scholar and leader.",
-      image: "/placeholder.svg?height=200&width=200",
-    },
+
     {
       id: 3,
       name: "Daniel Mulugeta",

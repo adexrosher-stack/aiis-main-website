@@ -118,7 +118,7 @@ export default function AdmissionsPage() {
 
             <div className="flex justify-center mt-12">
               <Button asChild className="gap-2 rounded-md">
-                <Link href="/application-form.pdf" target="_blank">
+                <Link href="/AIIS Application Form.pdf" target="_blank">
                   <Download className="h-4 w-4" /> Download Application Form
                 </Link>
               </Button>
@@ -357,21 +357,63 @@ export default function AdmissionsPage() {
                 <CardContent className="p-8">
                   <ul className="space-y-4">
                     <li className="flex justify-between items-center pb-4 border-b">
-                      <span className="font-medium">MA, MDiv, MTh-PS:</span>
+                      <span className="font-medium">Diploma in Theology (DipTh):</span>
                       <span className="text-xl font-bold">
                         800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
                       </span>
                     </li>
                     <li className="flex justify-between items-center pb-4 border-b">
-                      <span className="font-medium">MTh:</span>
+                      <span className="font-medium">Bachelor of Theology (BTh):</span>
                       <span className="text-xl font-bold">
-                        900 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Divinity (MDiv):</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Theology (MTh):</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Theology in Practical Studies (MTh-PS):</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Bachelor of Theology (BTh):</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Counseling Psychology:</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Developemt and Theological Studies:</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Organizational Leadership:</span>
+                      <span className="text-xl font-bold">
+                        800 ETB <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
                       </span>
                     </li>
                     <li className="flex justify-between items-center">
-                      <span className="font-medium">PhD:</span>
+                      <span className="font-medium">Doctor of Philosophy (PhD):</span>
                       <span className="text-xl font-bold">
-                        350 USD <span className="text-sm font-normal text-muted-foreground">per phase</span>
+                        25,000 ETB <span className="text-sm font-normal text-muted-foreground">per phase</span>
                       </span>
                     </li>
                   </ul>
@@ -384,23 +426,65 @@ export default function AdmissionsPage() {
                   <p className="text-white/80">Fees for non-Ethiopian students</p>
                 </div>
                 <CardContent className="p-8">
-                  <ul className="space-y-4">
+                <ul className="space-y-4">
                     <li className="flex justify-between items-center pb-4 border-b">
-                      <span className="font-medium">MA/MDiv/MTPS:</span>
+                      <span className="font-medium">Diploma in Theology (DipTh):</span>
                       <span className="text-xl font-bold">
-                        25 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
                       </span>
                     </li>
                     <li className="flex justify-between items-center pb-4 border-b">
-                      <span className="font-medium">MTh:</span>
+                      <span className="font-medium">Bachelor of Theology (BTh):</span>
                       <span className="text-xl font-bold">
-                        30 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Divinity (MDiv):</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Theology (MTh):</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Master of Theology in Practical Studies (MTh-PS):</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">Bachelor of Theology (BTh):</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Counseling Psychology:</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Developemt and Theological Studies:</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center pb-4 border-b">
+                      <span className="font-medium">MA in Organizational Leadership:</span>
+                      <span className="text-xl font-bold">
+                        50 USD <span className="text-sm font-normal text-muted-foreground">per credit hour</span>
                       </span>
                     </li>
                     <li className="flex justify-between items-center">
-                      <span className="font-medium">PhD:</span>
+                      <span className="font-medium">Doctor of Philosophy (PhD):</span>
                       <span className="text-xl font-bold">
-                        50 USD <span className="text-sm font-normal text-muted-foreground">per seminar session</span>
+                        350 USD <span className="text-sm font-normal text-muted-foreground">per phase</span>
                       </span>
                     </li>
                   </ul>
@@ -469,13 +553,16 @@ export default function AdmissionsPage() {
                       <div>
                         <h3 className="font-semibold text-lg">For Academic inquiries:</h3>
                         <p className="text-muted-foreground mt-2">
-                          Esckinder Taddesse; Principal also Head to the Graduate and Postgraduate Faculty
+                          Ins. Eyob Mulatu, head of Academic Affairs
                           <br />
-                          Tel. No. 0927 95 68 70
+                          Phone No: +251 912 35 7038
                           <br />
-                          Eyob Mulatu, head of Academic Affairs- 0912357038
                           <br />
-                          E-mail: touch.esck@yahoo.com; touch.esckinder@gmail.com / aiisseminary@gmail.com
+                          Dr. Esckinder Taddesse, Principal of AIIS
+                          <br />
+                          Phone No: +251 927 95 6870
+                          <br />
+                          E-mail: touch.esck@yahoo.com/touch.esckinder@gmail.com
                         </p>
                       </div>
                     </div>
@@ -484,7 +571,7 @@ export default function AdmissionsPage() {
                       <div>
                         <h3 className="font-semibold text-lg">Canada Center:</h3>
                         <p className="text-muted-foreground mt-2">
-                          Chalachew Mekere Eshetu(Pr): BTh, MA, MTh
+                          Pr. Chalachew Mekere Eshetu
                           <br />
                           Alberta-Canada center
                           <br />
@@ -529,10 +616,15 @@ export default function AdmissionsPage() {
                         </label>
                         <select id="program" className="w-full p-2 border rounded-md">
                           <option>Select a program</option>
+                          <option>Diploma in Theology (DipTh)</option>
                           <option>Bachelor of Theology (BTh)</option>
                           <option>Master of Divinity (MDiv)</option>
                           <option>Master of Theology (MTh)</option>
-                          <option>PhD in Theology</option>
+                          <option>Master of Theology in Practical Studies (MTh-PS)</option>
+                          <option>MA in Counseling Psychology</option>
+                          <option>MA in Organizational Leadership</option>
+                          <option>MA in Developemt and Theological Studies</option>
+                          <option>Doctor of Philosophy (PhD)</option>
                         </select>
                       </div>
                       <div className="space-y-2">
@@ -555,4 +647,3 @@ export default function AdmissionsPage() {
     </div>
   )
 }
-

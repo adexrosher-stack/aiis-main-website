@@ -40,11 +40,21 @@ export default function EventsPage() {
 
   return (
     <div>
-      {/* Hero Section - No image background */}
-      <section className="relative w-full py-20 md:py-24 bg-slate-900">
+      {/* Hero Section - Image Background */}
+      <section className="relative w-full py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/programs/Bachelor.jpeg"
+            alt="Admissions"
+            fill
+            className="object-cover brightness-[0.6] shadow-inner"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
+        </div>
         <div className="container px-4 md:px-6 mx-auto relative z-20">
           <div className="max-w-3xl mx-auto text-center space-y-6 text-white">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Events & News</h1>
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Knowledge & Events</h1>
             <p className="text-xl text-gray-200">
               Stay updated with the latest events, news, and announcements from AIIS
             </p>

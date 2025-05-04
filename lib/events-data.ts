@@ -32,43 +32,7 @@ export interface NewsItem {
 
 // Sample upcoming events data
 export const upcomingEvents: Event[] = [
-  {
-    id: "event-001",
-    title: "Theological Symposium 2023",
-    date: "2023-12-15",
-    time: "9:00 AM - 4:00 PM",
-    location: "AIIS Main Campus, Addis Ababa",
-    description: "Join us for a day of theological discussions and presentations by leading scholars in the field.",
-    image: "/placeholder.svg?height=400&width=800",
-    category: "Event",
-    content: `
-      <div class="article-content">
-        <h2 class="text-2xl font-bold mb-4">About the Symposium</h2>
-        <p class="mb-6">The AIIS Theological Symposium brings together scholars, students, and religious leaders to explore contemporary theological issues in the African context.</p>
-        
-        <h2 class="text-2xl font-bold mb-4">Speakers</h2>
-        <ul class="mb-6 space-y-2">
-          <li>Dr. Esckinder Taddesse - "Contextual Theology in Ethiopia"</li>
-          <li>Dr. Endale Gebremeskel - "Biblical Interpretation in African Churches"</li>
-          <li>Pr. Tsadiku Abdo - "Pastoral Leadership Challenges"</li>
-        </ul>
-        
-        <h2 class="text-2xl font-bold mb-4">Schedule</h2>
-        <p class="mb-6">
-          <strong>9:00 AM</strong> - Opening Session<br>
-          <strong>10:30 AM</strong> - Morning Presentations<br>
-          <strong>12:00 PM</strong> - Lunch Break<br>
-          <strong>1:30 PM</strong> - Afternoon Presentations<br>
-          <strong>3:00 PM</strong> - Panel Discussion<br>
-          <strong>4:00 PM</strong> - Closing Remarks
-        </p>
-        
-        <h2 class="text-2xl font-bold mb-4">Registration</h2>
-        <p class="mb-6">Registration is required for all attendees. Please contact the AIIS office to register or use our online registration form.</p>
-      </div>
-    `,
-    status: "published"
-  },
+ 
   
 ];
 
