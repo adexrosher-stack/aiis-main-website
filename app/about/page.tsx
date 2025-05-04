@@ -189,7 +189,7 @@ export default function AboutPage() {
             <section id="campuses" className="w-full py-16 bg-slate-50 dark:bg-slate-900 rounded-xl">
               <div className="container px-4 md:px-6 mx-auto">
                 <div className="text-center space-y-4 mb-12">
-                  <h2 className="text-3xl font-bold tracking-tight"> Nantes Campuses</h2>
+                  <h2 className="text-3xl font-bold tracking-tight"> Our Campuses</h2>
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     AIIS currently operates three campuses in different regions of Ethiopia, strategically positioned to 
                     address and serve a broad community across the country.
