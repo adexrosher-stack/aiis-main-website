@@ -46,6 +46,7 @@ export const newsItems: NewsItem[] = [
     description: "AIIS is now accepting new students for its programs. Interested applicants can contact the school for more information.",
     image: "images/programs/Registration.jpg",
     category: "News",
+    imageSource: "AIIS Library",
     content: `
       <div class="article-content">
         <h2 class="text-2xl font-bold mb-4">Admissions Open</h2>
@@ -61,6 +62,7 @@ export const newsItems: NewsItem[] = [
   author: "AIIS Academic Affairs Office",
   description: "AIIS is proud to announce the launch of a new Master of Arts in Development and Theological Studies.",
   image: "images/programs/New program.jpg",
+  imageSource: "AIIS Library",
   category: "News",
   content: `
       <div class="article-content">

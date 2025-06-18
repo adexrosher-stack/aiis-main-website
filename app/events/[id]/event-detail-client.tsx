@@ -206,13 +206,14 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                     fill
                     className="object-cover"
                     priority
+                    unoptimized={true}
                   />
                 </div>
                 {post.imageSource && (
                   <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
                 )}
                 <div className="flex gap-2 overflow-x-auto pb-2">
-                  {[post.image, ...(post.gallery || [])].map((img, index) => (
+                  {[post.image, ...(post.gallery || [])].filter(Boolean).map((img, index) => (
                     <button
                       key={index}
                       className={`relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0 ${
@@ -220,12 +221,15 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                       }`}
                       onClick={() => setActiveImage(img)}
                     >
-                      <Image
-                        src={img}
-                        alt={`Gallery image ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
+                      {img && (
+                        <Image
+                          src={img}
+                          alt={`Gallery image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          unoptimized={true}
+                        />
+                      )}
                     </button>
                   ))}
                 </div>
@@ -239,6 +243,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                     fill
                     className="object-cover"
                     priority
+                    unoptimized={true}
                   />
                 </div>
                 {post.imageSource && (
@@ -321,6 +326,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                             alt={relatedPost.title}
                             fill
                             className="object-cover"
+                            unoptimized={true}
                           />
                         </div>
                         <div>
