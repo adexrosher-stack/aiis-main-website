@@ -13,7 +13,7 @@ export default function LoginPage() {
       <section className="relative w-full py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/PhD.jpeg"
             alt="Login"
             fill
             className="object-cover brightness-[0.6]"
@@ -54,14 +54,14 @@ export default function LoginPage() {
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
                             <Label htmlFor="student-password">Password</Label>
-                            <Link href="/forgot-password" className="text-sm text-primary hover:underline">
+                            <Link href="" className="text-sm text-primary hover:underline">
                               Forgot password?
                             </Link>
                           </div>
                           <Input id="student-password" type="password" placeholder="••••••••" required />
                         </div>
                         <Button type="submit" className="w-full" asChild>
-                          <Link href="/dashboard/student">Sign In</Link>
+                          <Link href="">Sign In</Link>
                         </Button>
                       </div>
                     </form>
@@ -83,7 +83,7 @@ export default function LoginPage() {
                           <Input id="faculty-password" type="password" placeholder="••••••••" required />
                         </div>
                         <Button type="submit" className="w-full" asChild>
-                          <Link href="/dashboard/admin">Sign In</Link>
+                          <Link href="">Sign In</Link>
                         </Button>
                       </div>
                     </form>
