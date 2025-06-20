@@ -65,7 +65,7 @@ export default function AboutPage() {
                     </div>
                     <p className="text-lg text-muted-foreground">
                       AIIS exists for high-quality learning, educational availability, and transformative education with
-                      contextual relevance. We are committed to providing education at different levels through a variety of
+                      contextual relevance. We are committed to providing education in different levels through variety of
                       programs adaptable to the diverse needs of students.
                     </p>
                     <p className="text-lg text-muted-foreground">
@@ -271,7 +271,7 @@ export default function AboutPage() {
             <section id="director-message" className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight text-center">
-                  The Director's Message
+                  The Principal's Message
                 </h2>
                 <div className="w-20 h-1 bg-primary mx-auto"></div>
               </div>
@@ -282,7 +282,7 @@ export default function AboutPage() {
                       <div className="relative h-full min-h-[300px] md:min-h-full">
                         <Image
                           src="/images/programs/The Director.jpeg"
-                          alt="AIIS Director"
+                          alt="AIIS Principal"
                           fill
                           className="object-cover"
                         />
@@ -318,7 +318,7 @@ export default function AboutPage() {
                               Dr. Esckinder Taddesse
                             </h4>
                             <p className="text-muted-foreground">
-                              Director, AIIS
+                              Principal, AIIS
                             </p>
                           </div>
                         </div>
@@ -574,7 +574,7 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-md">
-                  <Link href="/admissions/apply">Apply Now</Link>
+                  <Link href="/admissions">Apply Now</Link>
                 </Button>
                 <Button
                   asChild

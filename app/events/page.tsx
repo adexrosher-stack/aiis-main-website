@@ -102,7 +102,9 @@ export default function EventsPage() {
           {filteredPosts.map((post) => (
             <Card key={post.id} className="overflow-hidden">
               <div className="relative h-48">
-                <Image src={post.image} alt={post.title} fill className="object-cover" />
+                <Image 
+                src={post.image} 
+                alt={post.title} fill className="object-cover" />
                 <div className="absolute top-2 right-2">
                   <Badge variant={post.category === "Event" ? "default" : post.category === "News" ? "secondary" : "outline"}>
                     {post.category}

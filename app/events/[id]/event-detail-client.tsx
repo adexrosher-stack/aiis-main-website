@@ -8,6 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User, Play, ExternalLink } from "lucide-react"
 import { Event, NewsItem } from "@/lib/events-data"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/components/ui/use-toast"
 
 type Post = Event | NewsItem | any;
 
@@ -19,6 +22,8 @@ interface EventDetailClientProps {
 export default function EventDetailClient({ post, allPosts }: EventDetailClientProps) {
   const [isSaved, setIsSaved] = useState(false)
   const [activeImage, setActiveImage] = useState(post.image)
+  const [commentForm, setCommentForm] = useState({ name: "", email: "", comment: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   
   // Determine content type
   const isEvent = post.category === "Event"
@@ -151,6 +156,44 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
   const handleSave = () => {
     setIsSaved(!isSaved)
     // In a real app, you would save this to user preferences/localStorage/database
+  }
+
+  const handleCommentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "comment",
+          name: commentForm.name,
+          email: commentForm.email,
+          message: commentForm.comment,
+          postTitle: post.title,
+          postId: post.id,
+        }),
+      })
+
+      if (response.ok) {
+        toast({
+          title: "Comment Submitted",
+          description: "Thank you for your comment. It has been sent for review.",
+        })
+        setCommentForm({ name: "", email: "", comment: "" })
+      } else {
+        throw new Error("Failed to submit comment")
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit comment. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -292,6 +335,60 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                 </>
               )}
             </div>
+
+            {/* Comments Section for Blogs and Articles */}
+            {isBlog && (
+              <div className="pt-8 border-t">
+                <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
+                <p className="text-muted-foreground mb-6">
+                  Share your thoughts on this {post.category.toLowerCase()}. All comments are reviewed before publication.
+                </p>
+                <form onSubmit={handleCommentSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={commentForm.name}
+                      onChange={(e) => setCommentForm({ ...commentForm, name: e.target.value })}
+                      required
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={commentForm.email}
+                      onChange={(e) => setCommentForm({ ...commentForm, email: e.target.value })}
+                      required
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="comment" className="block text-sm font-medium mb-1">
+                      Comment
+                    </label>
+                    <Textarea
+                      id="comment"
+                      value={commentForm.comment}
+                      onChange={(e) => setCommentForm({ ...commentForm, comment: e.target.value })}
+                      required
+                      placeholder="Your comment"
+                      rows={5}
+                    />
+                  </div>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit Comment"}
+                  </Button>
+                </form>
+              </div>
+            )}
 
             <div className="flex flex-wrap gap-4 pt-8 border-t">
               <Button variant="outline" className="flex items-center gap-2" onClick={handleShare}>

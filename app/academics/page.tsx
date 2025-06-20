@@ -109,7 +109,7 @@ export default function AcademicsPage() {
       ]
     },
     {
-      id: "ma-in-developemt-studies",
+      id: "ma-in-development-studies",
       title: "MA in Developemt and Theological Studies",
       level: "graduate",
       format: "residential",

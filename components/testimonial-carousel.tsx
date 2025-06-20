@@ -25,14 +25,6 @@ export function TestimonialCarousel() {
       image: "/images/programs/Testimony1.jpg"
     },
 
-    {
-      id: 3,
-      name: "Daniel Mulugeta",
-      role: "BTh Graduate, 2021",
-      quote:
-        "AIIS provided me with a solid theological foundation while honoring my cultural context. The community-oriented approach to education created a supportive environment for learning and growth.",
-      image: "/placeholder.svg?height=200&width=200",
-    },
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)

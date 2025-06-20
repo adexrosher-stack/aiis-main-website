@@ -345,7 +345,14 @@ const programs = {
     curriculum: [
       {
         courses: [
-          "Organizational Behavior and Communication",
+          "Economics",
+          "Safety in Fieldwork Workshop",
+          "Anthropology:",
+          "History & Politics",
+          "Research Methods",
+          "Project Leadership Management",
+          "Organizational Leadership",
+          "Business Management",
         ],
       },
     ],
@@ -643,7 +650,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                       )}
                     </div>
                   ))}
-                  {program.specializations && (
+                  {'specializations' in program && program.specializations && (
                     <div className="space-y-4">
                       <h4 className="text-xl font-semibold">Specializations</h4>
                       <ul className="grid gap-2 sm:grid-cols-2">
@@ -939,7 +946,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
             </div>
             <div className="relative aspect-video overflow-hidden rounded-xl">
               <Image
-                src="/placeholder.svg?height=720&width=1280"
+                src="/images/programs/Leadership.jpg"
                 alt="Students at AIIS"
                 fill
                 className="object-cover"

@@ -36,7 +36,7 @@ export const blogPosts = [
     "description": "This article reviews the book 'How Africa Shaped The Christian Mind' by Thomas C. Oden, exploring the profound influence of African intellect and culture on the development of early Christianity.",
     "image": "/images/programs/Africa 2.jpg",
   },
-  {
+  { 
     "id": "5",
     "title": "The Role of Religious Language Games Within the Ethiopian Orthodox Tewhado Church: A Search for Hermeneutic Principles in the Future Reconstruction of Interpretative Approaches",
     "date": "October 2021",
@@ -89,5 +89,23 @@ export const blogPosts = [
     "category": "Article",
     "description": "This article reviews Stanley J. Grenz and Roger E. Olson's 'Twentieth Century Theology,' exploring the dynamic interplay between divine transcendence and immanence in theological developments from the Enlightenment to the postmodern era.",
     "image": "/images/programs/20th Century.jpg",
+  },
+  {
+    "id": "11",
+    "title": "Defending God: Biblical Responses to the Problem of Evil - A Review",
+    "date": "July, 2024",
+    "author": "Abenezer Eshetu",
+    "category": "Article",
+    "description": "This article reviews James L. Crenshaw’s 'Defending God: Biblical Responses to the Problem of Evil,' exploring biblical perspectives on theodicy and the complex interplay between divine justice, human suffering, and theological responses to evil.",
+    "image": "/images/programs/Defending-God.jpg",
+  },
+  {
+    "id": "12",
+    "title": "The Myth of Religious Neutrality - A Review",
+    "date": "Feb 3, 2012",
+    "author": "Dr. Esckinder Taddesse",
+    "category": "Article",
+    "description": "This article reviews Roy A. Clouser's 'The Myth of Religious Neutrality: An Essay on the Hidden Role of Religious Belief in Theories,' exploring the interplay between theories, religious beliefs, and their impact on science, philosophy, and religion.",
+    "image": "/images/programs/Religious-Neutrality.jpg",
   },
 ]

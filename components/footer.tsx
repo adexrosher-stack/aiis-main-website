@@ -118,7 +118,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-accent shrink-0" />
-                <span className="text-white/80">aiisseminary@gmail.com</span>
+                <span className="text-white/80">info.aiis.edu@gmail.com</span>
               </li>
             </ul>
             <div className="pt-4">
