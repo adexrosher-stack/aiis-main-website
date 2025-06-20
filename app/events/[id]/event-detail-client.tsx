@@ -341,7 +341,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               <div className="pt-8 border-t">
                 <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
                 <p className="text-muted-foreground mb-6">
-                  Share your thoughts on this {post.category.toLowerCase()}. All comments are reviewed before publication.
+                  Share with us your thoughts on this {post.category.toLowerCase()}.
                 </p>
                 <form onSubmit={handleCommentSubmit} className="space-y-4">
                   <div>

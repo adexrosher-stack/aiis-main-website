@@ -28,7 +28,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "2 years",
       credits: 60,
-      campuses: "Addis Ababa, Adama, Mekelle",
+      campuses: "Addis Ababa",
       description:
         "The Diploma in Theology program offers essential theological training for those seeking to serve in ministry without completing a full bachelor's degree.",
     },
@@ -39,7 +39,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "4 years",
       credits: 120,
-      campuses: "Addis Ababa, Adama, Mekelle",
+      campuses: "Addis Ababa",
       description:
         "The Bachelor of Theology program provides students with a solid foundation in biblical studies, theology, church history, and practical ministry skills.",
     },
@@ -72,7 +72,7 @@ export function CourseFilter() {
       format: "hybrid",
       duration: "2 years",
       credits: 48,
-      campuses: "Addis Ababa",
+      campuses: "Addis Ababa, Adama",
       description:
         "Designed to equip students with practical ministry skills, leadership competence, and interdisciplinary knowledge.",
     },
@@ -105,7 +105,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "2 years",
       credits: 35,
-      campuses: "Addis Ababa",
+      campuses: "Addis Ababa, Adama",
       description:
         "Interdisciplinary program blending theology and development studies to address global challenges with faith-based solutions.",
     },

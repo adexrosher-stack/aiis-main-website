@@ -449,6 +449,29 @@ const AdmissionsPage: React.FC = () => {
                 </CardContent>
               </Card>
             </section>
+
+            <section id="financial-aid" className="space-y-8">
+              <div className="text-center space-y-4 max-w-3xl mx-auto">
+                <h2 className="text-3xl font-bold tracking-tight">Financial Aid</h2>
+                <p className="text-lg text-muted-foreground">
+                  Information about financial aid and scholarship opportunities at AIIS.
+                </p>
+                <div className="w-20 h-1 bg-primary mx-auto"></div>
+              </div>
+
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <p className="text-muted-foreground">
+                    Currently, the African Institute for International Studies (AIIS) does not have active financial aid or scholarship programs. Announcements will be made when financial aid and scholarship opportunities become available. In the meantime, prospective students can contact our admissions office to request detailed information about potential aid or scholarship options.
+                  </p>
+                  <div className="flex justify-center mt-6">
+                    <Button asChild className="gap-2 rounded-md bg-primary text-white hover:bg-primary/90">
+                      <Link href="/contact">Contact Admissions</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
           </div>
 
           {/* Sidebar */}
