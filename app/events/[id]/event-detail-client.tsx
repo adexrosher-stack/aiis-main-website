@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -21,7 +21,7 @@ interface EventDetailClientProps {
 
 export default function EventDetailClient({ post, allPosts }: EventDetailClientProps) {
   const [isSaved, setIsSaved] = useState(false)
-  const [activeImage, setActiveImage] = useState(post.image)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [commentForm, setCommentForm] = useState({ name: "", email: "", comment: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   
@@ -30,8 +30,18 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
   const isNews = post.category === "News"
   const isBlog = post.category === "Blog" || post.category === "Article"
   const hasVideo = !!post.videoUrl
-  const hasGallery = !!post.gallery && post.gallery.length > 0
+  const images = [post.image, ...(post.gallery || [])].filter(Boolean)
   
+  // Auto-rotate images every 5 seconds
+  useEffect(() => {
+    if (images.length > 1) {
+      const interval = setInterval(() => {
+        setActiveImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+      }, 5000)
+      return () => clearInterval(interval)
+    }
+  }, [images.length])
+
   // Function to generate unique fallback content based on post ID and category
   const renderFallbackContent = (post: Post) => {
     // Common intro paragraph for all posts
@@ -148,7 +158,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     } else {
       // Fallback for browsers that don't support navigator.share
       navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied to clipboard!'))
+        .then(() => alert('Link copied to clipboard!*'))
         .catch(err => console.error('Error copying link:', err))
     }
   }
@@ -171,7 +181,9 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
           name: commentForm.name,
           email: commentForm.email,
           message: commentForm.comment,
-          postTitle: post.title,
+          postTitle: post.title
+
+,
           postId: post.id,
         }),
       })
@@ -215,7 +227,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
             <div className="space-y-4">
               <h1 className="text-4xl font-extrabold tracking-tight">{post.title}</h1>
               
-              <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-4 textjsii-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>{post.date}</span>
@@ -230,7 +242,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               </div>
             </div>
 
-            {/* Media content - Always show image/video/gallery at the top of content */}
+            {/* Media content - Slideshow for multiple images */}
             {hasVideo ? (
               <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
                 <iframe 
@@ -240,54 +252,31 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                   title={post.title}
                 />
               </div>
-            ) : hasGallery ? (
+            ) : (
               <div className="space-y-4">
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                   <Image
-                    src={activeImage}
-                    alt={post.title}
+                    src={images[activeImageIndex] || "/placeholder.svg"}
+                    alt={`${post.title} - Image ${activeImageIndex + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-opacity duration-500"
                     priority
                     unoptimized={true}
                   />
-                </div>
-                {post.imageSource && (
-                  <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
-                )}
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {[post.image, ...(post.gallery || [])].filter(Boolean).map((img, index) => (
-                    <button
-                      key={index}
-                      className={`relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0 ${
-                        activeImage === img ? 'ring-2 ring-primary' : ''
-                      }`}
-                      onClick={() => setActiveImage(img)}
-                    >
-                      {img && (
-                        <Image
-                          src={img}
-                          alt={`Gallery image ${index + 1}`}
-                          fill
-                          className="object-cover"
-                          unoptimized={true}
+                  {/* Navigation dots */}
+                  {images.length > 1 && (
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                      {images.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`w-2 h-2 rounded-full ${
+                            index === activeImageIndex ? 'bg-white' : 'bg-white/50'
+                          }`}
+                          onClick={() => setActiveImageIndex(index)}
                         />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                    priority
-                    unoptimized={true}
-                  />
+                      ))}
+                    </div>
+                  )}
                 </div>
                 {post.imageSource && (
                   <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>

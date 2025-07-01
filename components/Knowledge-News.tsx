@@ -10,7 +10,7 @@ import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react"
 
 // Import all data sources
 import { upcomingEvents, newsItems } from "@/lib/events-data"
-import { blogPosts } from "@/lib/blog-data" // This will need to be created if it doesn't exist
+import { blogPosts } from "@/lib/blog-data"
 
 export default function KnowledgeNews() {
   const [featuredItems, setFeaturedItems] = useState([])
@@ -64,7 +64,7 @@ export default function KnowledgeNews() {
             <Card key={item.id} className="overflow-hidden">
               <div className="relative h-48">
                 <Image
-                  src={item.image}
+                  src={item.image} // Use only the primary image
                   alt={item.title}
                   fill
                   className="object-cover"
@@ -123,4 +123,3 @@ export default function KnowledgeNews() {
     </section>
   )
 }
-

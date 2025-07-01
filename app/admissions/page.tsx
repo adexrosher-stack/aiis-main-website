@@ -16,10 +16,10 @@ const AdmissionsPage: React.FC = () => {
   const [studentType, setStudentType] = useState("local")
 
   const programs = [
-    { id: "DipTh", name: "Diploma in Theology (DipTh)", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
-    { id: "BTh", name: "Bachelor of Theology (BTh)", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
+    { id: "DipTh", name: "Diploma in Theology (DipTh)", localFee: "700 ETB per credit hour", internationalFee: "25 USD per credit hour" },
+    { id: "BTh", name: "Bachelor of Theology (BTh)", localFee: "700 ETB per credit hour", internationalFee: "25 USD per credit hour" },
     { id: "MDiv", name: "Master of Divinity (MDiv)", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
-    { id: "MTh", name: "Master of Theology (MTh)", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
+    { id: "MTh", name: "Master of Theology (MTh)", localFee: "900 ETB per credit hour", internationalFee: "50 USD per credit hour" },
     { id: "MTh-PS", name: "Master of Theology in Practical Studies (MTh-PS)", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
     { id: "MA-CP", name: "MA in Counseling Psychology", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },
     { id: "MA-DTS", name: "MA in Development and Theological Studies", localFee: "800 ETB per credit hour", internationalFee: "50 USD per credit hour" },

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, MapPin, Search, Filter, ArrowRight, User } from "lucide-react"
 import { upcomingEvents, newsItems } from "@/lib/events-data"
-import { blogPosts } from "@/lib/blog-data" // If this exists
+import { blogPosts } from "@/lib/blog-data"
 
 export default function EventsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -18,19 +18,19 @@ export default function EventsPage() {
 
   // Combine all posts for filtering
   const allPosts = [
-    ...(Array.isArray(upcomingEvents) ? upcomingEvents : []), 
-    ...(Array.isArray(newsItems) ? newsItems : []), 
+    ...(Array.isArray(upcomingEvents) ? upcomingEvents : []),
+    ...(Array.isArray(newsItems) ? newsItems : []),
     ...(Array.isArray(blogPosts) ? blogPosts : [])
   ]
 
   // Filter posts based on search query and category filter
   const filteredPosts = allPosts.filter((post) => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          post.description.toLowerCase().includes(searchQuery.toLowerCase())
     
     // Enhanced filtering logic for the four categories
-    const matchesFilter = 
-      filter === "all" || 
+    const matchesFilter =
+      filter === "all" ||
       (filter === "blogs" && (post.category === "Blog" || post.category === "Article")) ||
       (filter === "news" && post.category === "News") ||
       (filter === "events" && post.category === "Event")
@@ -40,22 +40,22 @@ export default function EventsPage() {
 
   return (
     <div>
-      {/* Hero Section - Image Background */}
+      {/* Hero Section - Slideshow Background */}
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/programs/Bachelor.jpeg"
-            alt="Admissions"
+            <Image
+            src="/images/programs/PhD.jpeg"
+            alt="Contact"
             fill
-            className="object-cover brightness-[0.6] shadow-inner"
+            className="object-cover brightness-[0.6]"
             priority
           />
-          <div className="absolute inset-0 bg-black/50 z-10"></div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/60 z-10"></div>
         <div className="container px-4 md:px-6 mx-auto relative z-20">
           <div className="max-w-3xl mx-auto text-center space-y-6 text-white">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Knowledge & Events</h1>
-            <p className="text-xl text-gray-200">
+            <p className="text-2xl text-gray-200">
               Stay updated with the latest events, news, and announcements from AIIS
             </p>
           </div>
@@ -93,7 +93,7 @@ export default function EventsPage() {
           </Tabs>
         </div>
 
-        {/* Results Count */}
+  {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">Showing {filteredPosts.length} results</p>
         </div>
@@ -168,3 +168,53 @@ export default function EventsPage() {
   )
 }
 
+// Slideshow component for automatic image rotation
+function Slideshow({ images }: { images: string[] }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  useEffect(() => {
+    if (images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+      }, 5000)
+      return () => clearInterval(interval)
+    }
+  }, [images.length])
+
+  if (images.length === 0) {
+    return (
+      <div className="relative h-48">
+        <Image 
+          src="/placeholder.svg"
+          alt="Placeholder"
+          fill
+          className="object-cover"
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative h-48">
+      <Image
+        src={images[currentImageIndex]}
+        alt={`Slide ${currentImageIndex + 1}`}
+        fill
+        className="object-cover transition-opacity duration-500"
+      />
+      {images.length > 1 && (
+        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full ${
+                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+              }`}
+              onClick={() => setCurrentImageIndex(index)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}

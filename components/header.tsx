@@ -56,7 +56,7 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
+                <Link href="/"passHref>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
