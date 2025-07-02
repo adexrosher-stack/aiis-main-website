@@ -643,11 +643,11 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                       )}
                     </div>
                   ))}
-                  {program.specializations && (
+                  {Array.isArray((program as any).specializations) && (
                     <div className="space-y-4">
                       <h4 className="text-xl font-semibold">Specializations</h4>
                       <ul className="grid gap-2 sm:grid-cols-2">
-                        {program.specializations.map((specialization, index) => (
+                        {(program as any).specializations.map((specialization: string, index: number) => (
                           <li key={index} className="flex items-start gap-2">
                             <GraduationCap className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                             <span>{specialization}</span>
