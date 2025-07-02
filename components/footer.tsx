@@ -15,7 +15,7 @@ export default function Footer() {
               community engagement.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-white/80 hover:text-white transition-colors">
+              <Link href="https://web.facebook.com/ETHAIIIS" className="text-white/80 hover:text-white transition-colors">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
@@ -23,10 +23,7 @@ export default function Footer() {
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
+
               <Link href="#" className="text-white/80 hover:text-white transition-colors">
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">YouTube</span>
