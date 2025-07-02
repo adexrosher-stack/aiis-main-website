@@ -11,6 +11,7 @@ import { Event, NewsItem } from "@/lib/events-data"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
+import { NewsletterForm } from "@/components/newsletter-form"
 
 type Post = Event | NewsItem | any;
 
@@ -480,10 +481,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               <CardContent className="p-6 space-y-4">
                 <h3 className="text-xl font-bold">Subscribe to Our Newsletter</h3>
                 <p>Stay updated with the latest news and events from AIIS.</p>
-                <form className="space-y-4">
-                  <input type="email" placeholder="Your email address" className="w-full p-2 rounded-md text-black" />
-                  <Button className="w-full bg-white text-primary hover:bg-white/90">Subscribe</Button>
-                </form>
+                <NewsletterForm />
               </CardContent>
             </Card>
           </div>
