@@ -129,12 +129,7 @@ export default function StudentDashboard() {
       content:
         "Registration for Spring 2024 semester is now open. Please consult with your academic advisor before registering.",
     },
-    {
-      id: 2,
-      title: "Upcoming Theological Symposium",
-      date: "November 5, 2023",
-      content: "Don't miss the annual Theological Symposium on November 25. Student attendance is highly encouraged.",
-    },
+
   ]
 
   return (

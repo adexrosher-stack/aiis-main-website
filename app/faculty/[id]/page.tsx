@@ -10,19 +10,50 @@ export async function generateStaticParams() {
   return Object.keys(facultyMembers).map((id) => ({ id }));
 }
 
-const facultyMembers = {
+// Add this before the facultyMembers definition
+type FacultyMember = {
+  id: string;
+  name: string;
+  title: string;
+  credentials: string;
+  image: string;
+  email: string;
+  phone: string;
+  bio: string;
+  education: Array<{
+    degree: string;
+    institution: string;
+    year: string;
+  }>;
+  courses: string[];
+  publications: Array<{
+    title: string;
+    year: string;
+    publisher: string;
+  }>;
+  research: string[];
+  officeHours?: {
+    regular: Array<{
+      day: string;
+      hours: string;
+    }>;
+    appointmentInfo: string;
+  };
+};
+
+const facultyMembers: Record<string, FacultyMember> = {
   "dr-esckinder-taddesse": {
     id: "dr-esckinder-taddesse",
     name: "Dr. Esckinder Taddesse",
     title: "Principal",
     credentials: "PhD, ThD",
-    image: "/placeholder.svg?height=600&width=600",
+    image:"/images/programs/The Director.jpeg",
     email: "touch.esck@yahoo.com",
     phone: "+251 927 95 68 70",
     bio: "Dr. Esckinder Taddesse serves as the Principal of AIIS and brings extensive experience in theological education and leadership. With a PhD and ThD, he has dedicated his career to advancing contextual theological education in Africa. His research interests include African Christian theology, leadership development, and missiology.",
     education: [
-      { degree: "PhD in Theology", institution: "Faith Theological Seminary, Nagaland, India", year: "2015" },
-      { degree: "ThD (Doctor of Theology)", institution: "International Theological Seminary", year: "2012" },
+      { degree: "PhD in Philosophy", institution: "South African Theological Seminary Johannesburg, South Africa", year: "2015" },
+      { degree: "ThD (Doctor of Theology)", institution: "Asia Baptist Graduate Theological Seminary (ABGTS), Philippines", year: "2012" },
       { degree: "MTh (Master of Theology)", institution: "Ethiopian Graduate School of Theology", year: "2008" },
       {
         degree: "BTh (Bachelor of Theology)",
@@ -32,115 +63,573 @@ const facultyMembers = {
     ],
     courses: [
       "Advanced Systematic Theology",
-      "African Christian Theology",
-      "Leadership and Administration",
-      "Missiology",
+      "Advanced Practical and Theological Studies",
+      "Philosohy of Theology",
+      "Biblical Hermeneutics",
       "Theological Research Methods",
     ],
     publications: [
       {
-        title: "Contextualizing Theology in the Ethiopian Context",
-        year: "2018",
-        publisher: "African Theological Journal",
-      },
-      {
-        title: "Leadership Development in African Churches",
-        year: "2016",
-        publisher: "International Journal of Missiology",
-      },
-      {
-        title: "The Role of Theological Education in Community Transformation",
-        year: "2014",
-        publisher: "Journal of Contextual Theology",
+        title: "",
+        year: "",
+        publisher: "",
       },
     ],
     research: [
-      "Contextual Theology in East Africa",
-      "Leadership Development in African Churches",
-      "Integration of Faith and Culture",
-      "Theological Education Models for the Global South",
+      "Systematic Theology",
+      "Christology",
+      "Philosophy of Theology",
+      "Biblical Hermeneutics",
+      "The Ethiopian Orthodox Church context",
     ],
+    // Add office hours for this faculty member
+    officeHours: {
+      regular: [
+        { day: "Monday", hours: "10:00 AM - 2:00 PM" },
+        { day: "Wednesday", hours: "1:00 PM - 5:00 PM" },
+        { day: "Friday", hours: "9:00 AM - 12:00 PM" }
+      ],
+      appointmentInfo: "Students can schedule appointments outside of regular office hours by email or phone."
+    }
   },
   "pr-tsadiku-abdo": {
     id: "pr-tsadiku-abdo",
     name: "Pr. Tsadiku Abdo",
     title: "President of ECFE",
     credentials: "BTh, MTh",
-    image: "/placeholder.svg?height=600&width=600",
-    email: "tsadiku.abdo@aiis.edu",
-    phone: "+251 911 23 45 67",
-    bio: "Pr. Tsadiku Abdo serves as the President of the Evangelical Churches Fellowship of Ethiopia (ECFE) and is a valued faculty member at AIIS. With extensive experience in church leadership and theological education, he brings practical insights to his teaching and mentorship of students. His passion is to equip the next generation of church leaders with solid theological foundations and practical ministry skills.",
+    image: "/images/programs/Tsadiku.jpg",
+    email: "info@pastortsadiku.com",
+    phone: "",
+    bio: "Pastor Tsadiku Abdo is a prominent Ethiopian evangelical leader, theologian, and seasoned Christian minister with over 50 years of dedicated service. Currently, he serves as the President of the Evangelical Churches Fellowship of Ethiopia (ECFE) and Adjunct Faculty in AIIS. Pr. Tsadiku has substantial influence within Ethiopia's evangelical community",
     education: [
-      { degree: "MTh (Master of Theology)", institution: "Ethiopian Graduate School of Theology", year: "2010" },
+      { degree: "MTh (Master of Theology)", institution: "Ethiopian Graduate School of Theology", year: "" },
       {
         degree: "BTh (Bachelor of Theology)",
-        institution: "Evangelical Theological College, Addis Ababa",
-        year: "2005",
+        institution: "East Africa School of Theology, Nairobi Kenya",
+        year: "",
       },
     ],
     courses: [
-      "Pastoral Ministry",
-      "Church Leadership",
-      "Homiletics",
-      "Evangelism and Church Growth",
-      "Christian Ethics",
-    ],
+ ],
     publications: [
-      { title: "Effective Church Leadership in the Ethiopian Context", year: "2017", publisher: "ECFE Publications" },
-      { title: "Evangelism Strategies for Urban Ethiopia", year: "2015", publisher: "Journal of African Missiology" },
-    ],
+],
     research: [
-      "Church Growth in Urban Settings",
-      "Leadership Development in Ethiopian Churches",
-      "Evangelism and Discipleship Models",
-      "Pastoral Care in African Contexts",
-    ],
+],
+  },
+  "eyob-mulatu": {
+    id: "eyob-mulatu",
+    name: "Inst. Eyob Mulatu",
+    title: "Faculty Member",
+    credentials: "BA, BTh, MTPS, MTh",
+    image: "/images/programs/Ins. Eyob.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+ ],
+    publications: [
+],
+    research: [
+],
+officeHours: {
+  regular: [
+    { day: "Monday", hours: "10:00 AM - 2:00 PM" },
+    { day: "Wednesday", hours: "1:00 PM - 5:00 PM" },
+    { day: "Friday", hours: "9:00 AM - 12:00 PM" }
+  ],
+  appointmentInfo: "Students can schedule appointments outside of regular office hours by email or phone."
+}
   },
   "dr-endale-gebremeskel": {
     id: "dr-endale-gebremeskel",
     name: "Dr. Endale Gebremeskel",
     title: "Faculty Member",
     credentials: "MA, DMin",
-    image: "/placeholder.svg?height=600&width=600",
-    email: "endale.gebremeskel@aiis.edu",
-    phone: "+251 922 33 44 55",
-    bio: "Dr. Endale Gebremeskel is a distinguished faculty member at AIIS with expertise in practical theology and pastoral ministry. With a Doctor of Ministry degree, he combines academic excellence with practical ministry experience. His teaching approach emphasizes the integration of theological principles with real-world ministry applications, particularly in the African context.",
+    image: "/images/programs/Dr Endale.jpg",
+    email: "",
+    phone: "",
+    bio: "",
     education: [
-      { degree: "DMin (Doctor of Ministry)", institution: "Fuller Theological Seminary, USA", year: "2013" },
-      { degree: "MA in Theology", institution: "Ethiopian Graduate School of Theology", year: "2007" },
-      { degree: "BA in Bible and Theology", institution: "Evangelical Theological College", year: "2003" },
-    ],
+      { degree: "", institution: "", year: "" },
+   ],
     courses: [
-      "Pastoral Counseling",
-      "Practical Theology",
-      "Ministry Formation",
-      "Spiritual Formation",
-      "Contextual Ministry",
+   
     ],
     publications: [
       {
-        title: "Pastoral Counseling in the Ethiopian Church Context",
-        year: "2016",
-        publisher: "Journal of Pastoral Care",
+        title: "",
+        year: "",
+        publisher: "",
       },
-      {
-        title: "Spiritual Formation for African Church Leaders",
-        year: "2014",
-        publisher: "African Journal of Theology",
-      },
-      {
-        title: "Contextualizing Ministry Training in East Africa",
-        year: "2012",
-        publisher: "International Journal of Practical Theology",
-      },
+
     ],
     research: [
-      "Pastoral Care and Counseling in African Contexts",
-      "Spiritual Formation and Discipleship",
-      "Contextual Ministry Models",
-      "Church-Based Theological Education",
-    ],
+      "",
+  ],
   },
+  "dr-lidetu-alemu": {
+    id: "dr-lidetu-alemu",
+    name: "Dr. Lidetu Alemu",
+    title: "Adjunct Faculty",
+    credentials: "DVM, PhD",
+    image: "/images/programs/Dr. Lidetu 2.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "zetsaet-fiqadu": {
+    id: "zetsaet-fiqadu",
+    name: "Miss. Zetsaet Fiqadu",
+    title: "Adjunct Faculty",
+    credentials: "PhD candidate",
+    image: "/images/programs/Zetseat.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "tesfaye-yakob": {
+    id: "tesfaye-yakob",
+    name: "Dr. Tesfaye Yakob",
+    title: "Adjunct Faculty",
+    credentials: "MD MTh, PhD candidate",
+    image: "/images/programs/Dr. Tesfaye.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "bekele-deboch": {
+    id: "bekele-deboch",
+    name: "Dr. Bekele Deboch",
+    title: "Adjunct Faculty",
+    credentials: "BTh, MTh, PhD",
+    image: "/images/programs/Dr. Bekele.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "tsedey-alemayehu": {
+    id: "tsedey-alemayehu",
+    name: "Dr. Tsedey Alemayehu",
+    title: "Adjunct Faculty",
+    credentials: "PhD",
+    image: "/images/programs/Dr. Tsedey.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "yared-woldemariam": {
+    id: "yared-woldemariam",
+    name: "Kesis. Yared Woldemariam",
+    title: "Adjunct Faculty",
+    credentials: "MA, MADiev",
+    image: "/images/programs/Yared.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "mengistu-woldemariam": {
+    id: "mengistu-woldemariam",
+    name: "Mr. Mengistu Woldemariam",
+    title: "Adjunct Faculty",
+    credentials: "MA, MPhil, MTh",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "dr-abeba-belay": {
+    id: "dr-abeba-belay",
+    name: "Dr. Abeba Belay",
+    title: "Adjunct Faculty",
+    credentials: "MA, PhD",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "dr-wendaferahu-adenew": {
+    id: "dr-wendaferahu-adenew",
+    name: "Dr. Wendaferahu Adenew",
+    title: "Adjunct Faculty",
+    credentials: "PhD",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "dr-menkir-isayas": {
+    id: "dr-menkir-isayas",
+    name: "Dr. Menkir Isayas",
+    title: "Adjunct Faculty",
+    credentials: "PhD",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "pr-chalew-mekere": {
+    id: "pr-chalew-mekere",
+    name: "Pr. Chalew Mekere",
+    title: "Adjunct Faculty",
+    credentials: "BTh/MA/MTh candidate",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "terefe-bulti": {
+    id: "terefe-bulti",
+    name: "Dr. Terefe Bulti",
+    title: "Adjunct Faculty",
+    credentials: "PhD",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "nahom-engida": {
+    id: "nahom-engida",
+    name: "Ins. Nahom Engida",
+    title: "Adjunct Faculty",
+    credentials: "BTh, MTh-PS, MTh Candidate",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "wasihun-hailu": {
+    id: "wasihun-hailu",
+    name: "Ins. Wasihun Hailu",
+    title: "Adjunct Faculty",
+    credentials: "BA, MA, MTh",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "kaleab-assefa": {
+    id: "kaleab-assefa",
+    name: "Kaleab Assefa",
+    title: "Adjunct Faculty",
+    credentials: "BA, Mdiv, MTh candidate",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "dr-sisay-desalegn": {
+    id: "dr-sisay-desalegn",
+    name: "Dr Sisay Desalegn",
+    title: "Adjunct Faculty",
+    credentials: "BA, Mdiv, MTh candidate",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+  "edengenet": {
+    id: "edengenet",
+    name: "Edengenet",
+    title: "Adjunct Faculty",
+    credentials: "BA,MA,PhD candidate",
+    image: "/images/programs/Ya.jpg",
+    email: "",
+    phone: "",
+    bio: "",
+    education: [
+      { degree: "", institution: "", year: "" },
+   ],
+    courses: [
+   
+    ],
+    publications: [
+      {
+        title: "",
+        year: "",
+        publisher: "",
+      },
+
+    ],
+    research: [
+      "",
+  ],
+  },
+
 }
 
 export default function FacultyDetailPage({ params }: { params: { id: string } }) {
@@ -164,7 +653,7 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/Leadership.jpg"
             alt="Faculty Background"
             fill
             className="object-cover brightness-[0.6]"
@@ -253,6 +742,7 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
                 <TabsTrigger value="research">Research</TabsTrigger>
               </TabsList>
 
+              {/* Tabs content */}
               <TabsContent value="education" className="space-y-6">
                 <h3 className="text-2xl font-bold">Education</h3>
                 <div className="space-y-6">
@@ -302,37 +792,34 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
               </TabsContent>
             </Tabs>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl mt-8">
-              <h3 className="text-2xl font-bold mb-6">Office Hours & Availability</h3>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-4">
-                  <h4 className="font-semibold">Regular Office Hours</h4>
-                  <ul className="space-y-2">
-                    <li className="flex justify-between">
-                      <span>Monday</span>
-                      <span>10:00 AM - 2:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Wednesday</span>
-                      <span>1:00 PM - 5:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Friday</span>
-                      <span>9:00 AM - 12:00 PM</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="font-semibold">Appointments</h4>
-                  <p className="text-muted-foreground">
-                    Students can schedule appointments outside of regular office hours by email or phone.
-                  </p>
-                  <Button asChild variant="outline">
-                    <Link href={`mailto:${faculty.email}?subject=Appointment Request`}>Request Appointment</Link>
-                  </Button>
+            {/* Only show office hours if the faculty member has them */}
+            {faculty.officeHours && (
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl mt-8">
+                <h3 className="text-2xl font-bold mb-6">Office Hours & Availability</h3>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Regular Office Hours</h4>
+                    <ul className="space-y-2">
+                      {faculty.officeHours.regular.map((schedule, index) => (
+                        <li key={index} className="flex justify-between">
+                          <span>{schedule.day}</span>
+                          <span>{schedule.hours}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Appointments</h4>
+                    <p className="text-muted-foreground">
+                      {faculty.officeHours.appointmentInfo}
+                    </p>
+                    <Button asChild variant="outline">
+                      <Link href={`mailto:${faculty.email}?subject=Appointment Request`}>Request Appointment</Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

@@ -1,11 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, BookOpen, Calendar, GraduationCap, Users, CheckCircle } from "lucide-react"
+import { ArrowRight, BookOpen, Calendar, GraduationCap, Users, CheckCircle, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { TestimonialCarousel } from "@/components/testimonial-carousel"
 import { HeroSection } from "@/components/hero-section"
-import { VirtualTour } from "@/components/virtual-tour"
+import KnowledgeNews from "@/components/Knowledge-News"
 import { CourseFilter } from "@/components/course-filter"
 import image5 from '../asset/image5.png'
 import image1 from '../asset/image1.jpeg'
@@ -18,38 +18,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section with Slider */}
       <HeroSection />
-
-      {/* About Brief Section */}
-      <section className="w-full py-16 bg-slate-50 dark:bg-slate-900">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="grid gap-10 lg:grid-cols-2 items-center">
-            <div className="relative aspect-video overflow-hidden rounded-xl">
-              <Image src={image5} alt="AIIS Campus" fill className="object-contain" />
-            </div>
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight">About AIIS</h2>
-                <div className="w-20 h-1 bg-primary mt-4"></div>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                AIIS exists for high-quality learning, educational availability, and transformative education with
-                contextual relevance. We are committed to providing education at different levels through a variety of
-                programs adaptable to the diverse needs of students.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Our programs integrate universally valid academic knowledge with African cultural perspectives, creating
-                a unique educational model that is community-oriented and beyond traditional scholastic methods.
-              </p>
-              <Button asChild className="mt-4 rounded-md">
-                <Link href="/about">Learn More About Us</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Virtual Tour Section */}
-      <VirtualTour />
+      
+     {/* Knowledge and News Section - Moved here */}
+     <KnowledgeNews />
 
       {/* Featured Programs Section */}
       <section className="w-full py-16">
@@ -66,9 +37,92 @@ export default function Home() {
         </div>
      
       </section>
+ {/* Our Campuses Section - Now inside Mission tab */}
+ <section id="campuses" className="w-full py-16 bg-slate-50 dark:bg-slate-900 rounded-xl">
+              <div className="container px-4 md:px-6 mx-auto">
+                <div className="text-center space-y-4 mb-12">
+                  <h2 className="text-3xl font-bold tracking-tight">Our Campuses</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    AIIS currently operates three campuses in different regions of Ethiopia, strategically positioned to 
+                    address and serve a broad community across the country.
+                  </p>
+                  <div className="w-20 h-1 bg-primary mx-auto"></div>
+                </div>
 
+                <div className="grid gap-8 md:grid-cols-3">
+                  {/* Addis Ababa Campus */}
+                  <Card className="overflow-hidden">
+                    <div className="relative h-48">
+                      <Image
+                        src="/images/programs/Addis.jpg"
+                        alt="Addis Ababa Campus"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-2">Addis Ababa Campus</h3>
+                      <p className="text-muted-foreground mb-4">
+                        Located in the capital city of Ethiopia, our main campus offers 
+                        the full range of programs and serves as the administrative headquarters.
+                      </p>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <p>Addis Ababa, Ethiopia</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Adama Campus */}
+                  <Card className="overflow-hidden">
+                    <div className="relative h-48">
+                      <Image
+                        src="/images/programs/Adama.jpg"
+                        alt="Adama Campus"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-2">Adama Campus</h3>
+                      <p className="text-muted-foreground mb-4">
+                        Situated in the Oromia Regional State, our Adama campus provides 
+                        theological education with a focus on contextual relevance to the region.
+                      </p>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <p>Adama, Oromia Regional State</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Mekelle Campus */}
+                  <Card className="overflow-hidden">
+                    <div className="relative h-48">
+                      <Image
+                        src="/images/programs/mekellee.jpg"
+                        alt="Mekelle Campus"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-2">Mekelle Campus</h3>
+                      <p className="text-muted-foreground mb-4">
+                        Located in the Tigray Regional State, our Mekelle campus extends our 
+                        educational mission to the northern region of Ethiopia.
+                      </p>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <p>Mekelle, Tigray Regional State</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </section>
+            
       {/* Testimonials Section */}
-      
       <section className="w-full py-16 bg-white dark:bg-slate-950">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center space-y-4 mb-8">
@@ -224,6 +278,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
 
 
       {/* Why Choose Us Section */}
@@ -338,7 +393,7 @@ export default function Home() {
             </div>
             <div className="relative aspect-video overflow-hidden rounded-xl">
               <Image
-                src="/placeholder.svg?height=720&width=1280"
+                src="/images/programs/MTh-PS.jpg"
                 alt="Students at AIIS"
                 fill
                 className="object-cover"

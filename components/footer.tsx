@@ -130,10 +130,14 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/60">
-              © {new Date().getFullYear()} African Institute for International Studies (AIIS). All rights reserved.
-            </p>
-            <div className="flex gap-6">
+            <div className="flex flex-col items-center md:items-start">
+              <p className="text-sm text-white/60">
+                © {new Date().getFullYear()} All rights reserved.
+              </p>
+            </div>
+            
+            {/* Centered policy links */}
+            <div className="flex gap-6 mx-auto">
               <Link href="/privacy-policy" className="text-sm text-white/60 hover:text-white">
                 Privacy Policy
               </Link>
@@ -141,6 +145,17 @@ export default function Footer() {
                 Terms of Service
               </Link>
             </div>
+            
+            {/* Powered by link with custom hover color and font */}
+            <Link 
+              href="https://www.asharatechnologies.com" 
+              className="text-sm text-white/80 hover:text-accent transition-colors md:ml-auto"
+              style={{ fontFamily: '"Palatino Linotype", Palatino, serif' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Powered by Ashara Technologies
+            </Link>
           </div>
         </div>
       </div>

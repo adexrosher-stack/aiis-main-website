@@ -1,9 +1,10 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CheckCircle, Clock, GraduationCap, BookOpen, Users, Calendar } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CheckCircle, Clock, GraduationCap, BookOpen, Users, Calendar, MapPin } from "lucide-react";
+import { BackToProgramsButton } from "@/components/back-to-programs-button";
 
 // This would typically come from a database
 export async function generateStaticParams() {
@@ -18,14 +19,19 @@ const programs = {
     format: "residential",
     duration: "4 years",
     credits: 120,
-    image: "/placeholder.svg?height=600&width=1200",
+    campuses: "Addis Ababa, Adama, Mekelle",
+    image: "/images/programs/Bachelor.jpeg",
     description:
       "The Bachelor of Theology program provides students with a solid foundation in biblical studies, theology, church history, and practical ministry skills. This comprehensive program prepares graduates for various ministry roles or further academic study.",
     overview:
       "The Bachelor of Theology (BTh) is designed to provide students with a comprehensive understanding of biblical texts, theological concepts, church history, and practical ministry skills. This program combines academic rigor with practical application to prepare graduates for effective ministry in various contexts.",
+    features: [
+      "Foundational theological education for ministry and advanced studies.",
+      "Offered in both Amharic and English for accessibility",
+      "Prepares students for diverse roles in religious and community settings.",
+    ],
     curriculum: [
       {
-        year: "Year 1",
         courses: [
           "Introduction to Biblical Studies",
           "Old Testament Survey",
@@ -34,11 +40,6 @@ const programs = {
           "Theological Foundations",
           "Academic Writing and Research",
           "Ministry Formation I",
-        ],
-      },
-      {
-        year: "Year 2",
-        courses: [
           "Biblical Hermeneutics",
           "Systematic Theology I",
           "Church History II",
@@ -46,11 +47,6 @@ const programs = {
           "Biblical Languages (Hebrew/Greek)",
           "World Religions",
           "Ministry Formation II",
-        ],
-      },
-      {
-        year: "Year 3",
-        courses: [
           "Systematic Theology II",
           "Biblical Exegesis",
           "Christian Ethics",
@@ -58,11 +54,6 @@ const programs = {
           "Missiology",
           "Pastoral Counseling",
           "Ministry Formation III",
-        ],
-      },
-      {
-        year: "Year 4",
-        courses: [
           "Advanced Theological Studies",
           "Contemporary Theological Issues",
           "Leadership and Administration",
@@ -91,7 +82,7 @@ const programs = {
       "Ministry Coordinator",
       "Further graduate studies",
     ],
-    faculty: ["Dr. Esckinder Taddesse", "Pr. Tsadiku Abdo", "Inst. Eyob Mulau"],
+    faculty: [],
   },
   "master-of-divinity": {
     id: "master-of-divinity",
@@ -100,14 +91,19 @@ const programs = {
     format: "residential",
     duration: "3 years",
     credits: 90,
-    image: "/placeholder.svg?height=600&width=1200",
+    campuses: "Addis Ababa",
+    image: "/images/programs/Deiv.jpeg",
     description:
       "A comprehensive, three-year residential program designed to prepare students for pastoral ministry, theological teaching, and leadership roles in various contexts.",
     overview:
       "The Master of Divinity (MDiv) is our premier graduate program designed to prepare students for ordained ministry, pastoral leadership, and advanced theological study. This program provides comprehensive training in biblical studies, theology, church history, and practical ministry skills with a focus on contextual application in African settings.",
+    features: [
+      "Integrates rigorous academic study, spiritual formation, and practical ministry",
+      "Prepares for pastoral leadership in diverse contexts.",
+      "Foundations for doctoral studies in theology.",
+    ],
     curriculum: [
       {
-        year: "Year 1",
         courses: [
           "Advanced Biblical Interpretation",
           "Old Testament Theology",
@@ -116,11 +112,6 @@ const programs = {
           "Systematic Theology I",
           "Biblical Languages I",
           "Pastoral Ministry Foundations",
-        ],
-      },
-      {
-        year: "Year 2",
-        courses: [
           "Biblical Exegesis",
           "Systematic Theology II",
           "Christian Ethics",
@@ -129,11 +120,6 @@ const programs = {
           "Biblical Languages II",
           "Pastoral Counseling",
           "Field Education I",
-        ],
-      },
-      {
-        year: "Year 3",
-        courses: [
           "Advanced Preaching",
           "Leadership and Church Administration",
           "Contemporary Theological Issues",
@@ -163,7 +149,7 @@ const programs = {
       "Non-profit Organization Leader",
       "Doctoral Studies",
     ],
-    faculty: ["Dr. Esckinder Taddesse", "Dr. Endale Gebremeskel", "Mr. Mengistu Woldemariam", "Dr. Abeba Belay"],
+    faculty: [],
   },
   "master-of-theology": {
     id: "master-of-theology",
@@ -172,29 +158,32 @@ const programs = {
     format: "hybrid",
     duration: "2 years",
     credits: 48,
-    image: "/placeholder.svg?height=600&width=1200",
+    campuses: "Addis Ababa",
+    image: "/images/programs/MTh.jpeg",
     description:
       "An advanced academic program designed to equip students with theological depth, critical research skills, and practical ministry applications.",
     overview:
       "The Master of Theology (MTh) is an advanced academic degree designed for those who have completed an MDiv or equivalent and wish to pursue specialized study and research in a particular theological discipline. This program prepares students for academic teaching, advanced ministry positions, or doctoral studies.",
+    features: [
+      "Candidates must complete specialization seminars in one of the following areas: Systematic Theology, Biblical Studies, or Practical Theology.",
+      "Each candidate is required to attend a minimum of seven seminar sessions, aligned with their chosen area of specialization. Alternatively, candidates may produce a research output of at least 20,000 words based on an approved prospectus.",
+      "Foundations for doctoral studies in theology.",
+    ],
     curriculum: [
       {
-        year: "Year 1",
         courses: [
-          "Advanced Research Methods",
-          "Contemporary Theological Methods",
-          "Specialized Concentration Courses (4)",
-          "Interdisciplinary Seminar",
-          "Thesis Proposal Development",
+          "Guided Reading and Research in Biblical Foundations Area",
+          "Guided Reading and Research in Biblical Studies Area (OT, NT)",
+          "Guided Reading and Research in Theology Area",
+          "Guided Reading in Historical Systematic Theology Area",
+          "Research in Interpretation and Religious Language Games",
+          "Guided Reading and Research in Practical Theology Area",
         ],
-      },
-      {
-        year: "Year 2",
-        courses: [
-          "Advanced Specialized Courses (2)",
-          "Thesis Research and Writing",
-          "Thesis Defense",
-          "Teaching Practicum (optional)",
+        programRequirements: [
+          "Candidates must complete specialization seminars in one of the following areas: Systematic Theology, Biblical Studies, or Practical Theology.",
+          "Each candidate is required to attend a minimum of seven seminar sessions, aligned with their chosen area of specialization. Alternatively, candidates may produce a research output of at least 20,000 words based on an approved prospectus.",
+          "Candidates will receive assigned books from the seminar professor(s) relevant to their specialization. They are expected to submit a summary report for each book, focusing on its relevance to the specific area of study.",
+          "Summary reports must be submitted to the professor(s) and all seminar participants at least 48 hours prior to the seminar date. During the seminar, all Master of Theology (MTh) students, along with the professor(s), will engage in a dialogue where candidates are expected to present and defend their reports.",
         ],
       },
     ],
@@ -224,12 +213,328 @@ const programs = {
       "Doctoral Studies (PhD, ThD)",
       "Theological Writer/Publisher",
     ],
-    faculty: ["Dr. Esckinder Taddesse", "Dr. Menkir Isayas", "Dr. Wendaferahu Adenew", "Dr. Lidetu Alemu"],
+    faculty: [],
   },
-}
+  "diploma-in-theology": {
+    id: "diploma-in-theology",
+    title: "Diploma in Theology (DipTh)",
+    level: "undergraduate",
+    format: "residential",
+    duration: "2 years",
+    credits: 60,
+    campuses: "Addis Ababa, Adama, Mekelle",
+    image: "/images/programs/diplom.jpeg",
+    description:
+      "The Diploma in Theology program provides students with foundational knowledge in biblical studies, theology, and practical ministry skills, preparing them for effective service in church and community contexts.",
+    overview:
+      "The Diploma in Theology (DipTh) is designed for individuals seeking theological education without pursuing a full bachelor's degree. This program offers a solid foundation in biblical studies, theology, and practical ministry skills, equipping students for various ministry roles within churches and communities.",
+    features: [
+      "Foundational theological education for ministry and advanced studies.",
+      "Offered in both Amharic and English for accessibility",
+      "Prepares students for diverse roles in religious and community settings.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Introduction to Biblical Studies",
+          "Old Testament Survey",
+          "New Testament Survey",
+          "Introduction to Theology",
+          "Church History Overview",
+          "Foundations of Ministry",
+          "Biblical Interpretation",
+          "Christian Ethics",
+          "Evangelism and Discipleship",
+          "Pastoral Care Basics",
+          "Homiletics",
+          "Ministry Practicum",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "High school diploma or equivalent",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "Church Ministry Assistant",
+      "Youth Ministry Worker",
+      "Sunday School Coordinator",
+      "Evangelism Team Member",
+      "Church Administrator",
+      "Mission Field Worker",
+      "Community Outreach Coordinator",
+    ],
+    faculty: [],
+  },
+  "ma-in-organizational-leadership": {
+    id: "ma-in-organizational-leadership",
+    title: "MA in Organizational Leadership",
+    level: "graduate",
+    format: "residential",
+    duration: "2 years",
+    credits: 35,
+    campuses: "Addis Ababa",
+    image: "/images/programs/organization.jpeg",
+    description:
+      "Leadership-focused program for professionals in church leadership, business, and nonprofit management.",
+    overview:
+      "The Master of Arts in Organizational Leadership (MAOL) at AIIS is a leadership-focused program designed to equip professionals with advanced leadership, management, and strategic decision-making skills. This program is ideal for individuals in church leadership, business, and nonprofit management who seek to integrate Christian ethics with effective leadership practices.",
+    features: [
+      "Focuses on cross-cultural leadership, ethical decision-making, and change management.",
+      "Prepares students for leadership roles in businesses, churches, and NGOs.",
+      "Strategic planning and implementation",
+      "Offers flexibility for working professionals.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Organizational Behavior and Communication",
+          "Leadership Ethics and Corporate Social Responsibility",
+          "Leadership in Global Contexts",
+          "Human Resource Management.",
+          "Research Methods in Leadership",
+          "Leading Change and Innovation",
+          "Strategic Leadership and Management",
+          "Project Management Leadership",
+          "Thesis in Organizational Leadership",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "A Bachelor’s degree in Psychology, Counseling, Theology, or a related field.",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "Pastoral Counseling",
+      "Christian Counseling",
+      "Community Work",
+      "Teaching and Training",
+      "Marriage and Family Therapist",
+      "Chaplaincy",
+      "Addiction Counselor",
+    ],
+    faculty: [],
+  },
+  "ma-in-development-studies": {
+    id: "ma-in-development-studies",
+    title: "MA in Development and Theological Studies",
+    level: "graduate",
+    format: "residential",
+    duration: "2 years",
+    credits: 35,
+    campuses: "Addis Ababa",
+    image: "/images/programs/Development.jpeg",
+    description:
+      "Interdisciplinary program blending theology and development studies to address global challenges with faith-based solutions.",
+    overview:
+      "The MADTS at AIIS offers a dynamic blend of theological and development studies, equipping students with skills to address social, economic, and political challenges through a faith-informed perspective. It fosters expertise in sustainable development, governance, and cultural sensitivity, preparing graduates for impactful roles in international development, theological education, and community leadership.",
+    features: [
+      "Combines core development studies (covering social, political, and economic theories, plus themes like sustainable development and governance) with theological perspectives, fostering a holistic understanding of global issues.",
+      "Prepares students for leadership roles in businesses, churches, and NGOs.",
+      "Strategic planning and implementation",
+      "Offers flexibility for working professionals.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Organizational Behavior and Communication",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "A Bachelor’s degree in Psychology, Counseling, Theology, or a related field.",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "International Development Specialist",
+      "Policy Analyst (Faith-Based Organizations)",
+      "Community Development Coordinator",
+      "Missionary or Cross-Cultural Worker",
+      "Researcher and Theological Educator",
+      "Advocacy Specialist",
+    ],
+    faculty: [],
+  },
+  "mth-in-practical-studies": {
+    id: "mth-in-practical-studies",
+    title: "Master of Theology in Practical Studies (MTh-PS)",
+    level: "graduate",
+    format: "hybrid",
+    duration: "2 years",
+    credits: 48,
+    campuses: "Addis Ababa",
+    image: "/images/programs/MTh-PS.jpg",
+    description:
+      "Advanced theological education focused on practical ministry applications and leadership development.",
+    overview:
+      "The Master of Theology in Practical Studies is an advanced theological program designed to equip students with practical ministry skills, leadership competence, and interdisciplinary knowledge. This program focuses on real-world applications of theology in areas such as leadership, ethics, counseling, and mission work.",
+    features: [
+      "Emphasizes practical ministry skills through hands-on practicum and fieldwork experiences.",
+      "Offers flexible completion paths: 42 credit hours of coursework, 4 credit hours of practicum, and 2 credit hours of fieldwork, or a 20,000-word thesis crafted under expert supervision.",
+      "Foundations for doctoral studies in theology.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Cross Cultural Competence",
+          "Brief History of Biblical Mission",
+          "Understanding World Religions",
+          "Cross Cultural Communication",
+          "Philosophical Ethics",
+          "Communication Theories",
+          "Management Theory and Business Admin",
+          "Ethical Challenges in Leadership",
+          "Conflict Management",
+          "Strategic Leadership",
+          "Hermeneutics Across-the-board",
+          "Ministerial Ethics",
+          "Developing Leaders",
+          "Leadership Theories",
+          "Research Methodology",
+          "Ministry Praxis",
+          "Dissertation/Project",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "A relevant Master's degree or equivalent theological background.",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "Pastor/Minister",
+      "Chaplain",
+      "Youth or Family Minister",
+      "Academic Researcher",
+      "Church Administrator",
+      "Missionary",
+      "Community Outreach Coordinator",
+    ],
+    faculty: [],
+  },
+  "doctor-of-philosophy": {
+    id: "doctor-of-philosophy",
+    title: "Doctor of Philosophy (PhD)",
+    level: "graduate",
+    format: "hybrid",
+    duration: "3 years",
+    credits: 48,
+    campuses: "Addis Ababa",
+    image: "/images/programs/PhD.jpeg",
+    description:
+      "Our premier doctoral program focusing on advanced research and scholarship in theology and related disciplines.",
+    overview:
+      "The Doctor of Philosophy (PhD) in Theology, Biblical Studies, and Liberal Arts at AIIS is a rigorous research-focused doctoral program designed for those seeking to contribute to theological scholarship, academic leadership, and ministry innovation.",
+    features: [
+      "Embarks students on a transformative research path through a compassionate, four-phase dissertation process, nurturing original contributions to theology, biblical studies, liberal arts, or ministerial leadership.",
+      "Provides diverse research focus areas, including Theology & Biblical Studies, Liberal Arts & Ethics, and Ministerial Leadership & Interdisciplinary Studies",
+      "Offers supervision by highly qualified faculty and external examiners, ensuring academic rigor and international recognition by accredited institutions.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Research in Theology and Biblical Studies",
+          "Research in Liberal Arts and Ethics",
+          "Research in Ministerial Leadership and Interdisciplinary Studies",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "A relevant Master's degree or equivalent theological background.",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "Pastor/Minister",
+      "Chaplain",
+      "Youth or Family Minister",
+      "Academic Researcher",
+      "Church Administrator",
+      "Missionary",
+      "Community Outreach Coordinator",
+    ],
+    faculty: [],
+  },
+  "ma-in-counseling-psychology": {
+    id: "ma-in-counseling-psychology",
+    title: "MA in Counseling Psychology",
+    level: "graduate",
+    format: "residential",
+    duration: "2 years",
+    credits: 48,
+    campuses: "Addis Ababa",
+    image: "/images/programs/Council.jpeg",
+    description:
+      "Specialized program for counseling and pastoral care, integrating psychological principles with Christian counseling.",
+    overview:
+      "The Master of Arts in Counseling Psychology is an advanced program designed to equip students with practical counseling skills, psychological knowledge, and Christian principles. This program focuses on real-world applications in therapy, crisis intervention, and pastoral care.",
+    features: [
+      "Integrates psychological principles with Christian counseling.",
+      "Equips students with practical skills for therapy, crisis intervention, and pastoral care.",
+      "Prepares graduates for clinical and community-based counseling roles.",
+      "Includes a practicum component for hands-on experience.",
+    ],
+    curriculum: [
+      {
+        courses: [
+          "Research Methodology",
+          "Advanced Counseling Theories Techniques & Skills",
+          "Measurement and Statistics in Psychology",
+          "Ethical and Multicultural Practice of Counseling with Pastoral Counseling",
+          "Advanced Psychopathology",
+          "Advanced Marriage and Family Counseling",
+          "Advanced School and Career Counseling",
+          "Assessment and Diagnosis in Counseling Psychology",
+          "Practice in Counseling Psychology",
+          "Interpretative Theories and Practices",
+          "Stories of the Ancient Near East Texts",
+          "Apologetics",
+          "World Religions",
+          "Philosophical Ethics",
+        ],
+      },
+    ],
+    admissionRequirements: [
+      "A Bachelor’s degree in Psychology, Counseling, Theology, or a related field.",
+      "Completed application form",
+      "Official transcripts from previous institutions",
+      "One letter of recommendation from a pastor/church leader",
+      "Personal statement of faith and ministry goals (300 words)",
+      "Application fee",
+    ],
+    careerOpportunities: [
+      "Pastoral Counseling",
+      "Christian Counseling",
+      "Community Work",
+      "Teaching and Training",
+      "Marriage and Family Therapist",
+      "Chaplaincy",
+      "Addiction Counselor",
+    ],
+    faculty: [],
+  },
+};
 
 export default function ProgramDetailPage({ params }: { params: { id: string } }) {
-  const program = programs[params.id as keyof typeof programs]
+  const program = programs[params.id as keyof typeof programs];
 
   if (!program) {
     return (
@@ -240,11 +545,13 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
           <Link href="/academics">View All Programs</Link>
         </Button>
       </div>
-    )
+    );
   }
 
   return (
     <div>
+      {/* Add the BackToProgramsButton at the top of your component */}
+      <BackToProgramsButton />
       {/* Hero Section */}
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -278,6 +585,24 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
               <div className="w-20 h-1 bg-primary"></div>
               <p className="text-lg">{program.overview}</p>
             </div>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold tracking-tight">Program Features</h2>
+              <ul className="mt-2 space-y-2 pl-4">
+                {program.features.map((feature, index) => (
+                  <li key={index} className="flex items-start text-lg">
+                    <svg
+                      className="w-5 h-5 mr-2 text-primary flex-shrink-0 mt-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="10" cy="10" r="3" />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <Tabs defaultValue="curriculum" className="space-y-8">
               <TabsList className="grid w-full grid-cols-4">
@@ -295,34 +620,43 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                 </p>
 
                 <div className="space-y-8 mt-6">
-                  {program.curriculum.map((year) => (
-                    <div key={year.year} className="space-y-4">
-                      <h4 className="text-xl font-semibold">{year.year}</h4>
+                  {program.curriculum.map((item, index) => (
+                    <div key={index} className="space-y-4">
+                      <h4 className="text-xl font-semibold">Program Courses</h4>
                       <ul className="grid gap-2 sm:grid-cols-2">
-                        {year.courses.map((course, index) => (
-                          <li key={index} className="flex items-start gap-2">
+                        {item.courses.map((course, courseIndex) => (
+                          <li key={courseIndex} className="flex items-start gap-2">
                             <BookOpen className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                             <span>{course}</span>
                           </li>
                         ))}
                       </ul>
+                      {item.programRequirements && (
+                        <div className="space-y-2">
+                          <h5 className="text-lg font-semibold">Program Requirements</h5>
+                          <ul className="list-disc pl-5 space-y-1">
+                            {item.programRequirements.map((req, reqIndex) => (
+                              <li key={reqIndex}>{req}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   ))}
+                  {program.specializations && (
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Specializations</h4>
+                      <ul className="grid gap-2 sm:grid-cols-2">
+                        {program.specializations.map((specialization, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <GraduationCap className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                            <span>{specialization}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-
-                {/* {program.specializations && (
-                  <div className="mt-8 space-y-4">
-                    <h4 className="text-xl font-semibold">Specializations</h4>
-                    <ul className="grid gap-2 sm:grid-cols-2">
-                      {program.specializations.map((specialization, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <GraduationCap className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                          <span>{specialization}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )} */}
               </TabsContent>
 
               <TabsContent value="admission" className="space-y-6">
@@ -383,24 +717,28 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                 </p>
 
                 <div className="grid gap-4 sm:grid-cols-2 mt-6">
-                  {program.faculty.map((faculty, index) => (
-                    <Card key={index} className="border-none shadow-md">
-                      <CardContent className="p-4 flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                          <GraduationCap className="h-5 w-5 text-primary" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">{faculty}</h4>
-                          <Link
-                            href={`/faculty/${faculty.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="text-primary text-sm hover:underline"
-                          >
-                            View Profile
-                          </Link>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                  {program.faculty.length > 0 ? (
+                    program.faculty.map((faculty, index) => (
+                      <Card key={index} className="border-none shadow-md">
+                        <CardContent className="p-4 flex items-start gap-3">
+                          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                            <GraduationCap className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold">{faculty}</h4>
+                            <Link
+                              href={`/faculty/${faculty.toLowerCase().replace(/\s+/g, "-")}`}
+                              className="text-primary text-sm hover:underline"
+                            >
+                              View Profile
+                            </Link>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))
+                  ) : (
+                    <p className="text-muted-foreground">Faculty information coming soon.</p>
+                  )}
                 </div>
               </TabsContent>
             </Tabs>
@@ -449,6 +787,16 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                     <div>
                       <h4 className="font-semibold">Format</h4>
                       <p className="text-muted-foreground capitalize">{program.format}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">Campuses</h4>
+                      <p className="text-muted-foreground capitalize">{program.campuses}</p>
                     </div>
                   </div>
 
@@ -583,7 +931,7 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 rounded-md"
+                  className="border-white text-white hover:bg-white/90 hover:text-primary rounded-md"
                 >
                   <Link href="/contact">Contact Us</Link>
                 </Button>
@@ -601,6 +949,5 @@ export default function ProgramDetailPage({ params }: { params: { id: string } }
         </div>
       </section>
     </div>
-  )
+  );
 }
-

@@ -12,7 +12,7 @@ export default function AdmissionsPage() {
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/PhD.jpeg"
             alt="Admissions"
             fill
             className="object-cover brightness-[0.6]"

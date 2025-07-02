@@ -5,6 +5,7 @@ import Link from "next/link"
 
 interface CourseFilterProps {
   courses: Course[]
+  Additional: Course[]
 }
 
 const CourseFilter: React.FC<CourseFilterProps> = ({ courses }) => {

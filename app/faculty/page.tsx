@@ -26,77 +26,149 @@ export default function FacultyPage() {
       name: "Dr. Esckinder Taddesse",
       title: "Principal",
       credentials: "PhD, ThD",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/The Director.jpeg"
     },
     {
-      id: "pr-tsadiku-abdo",
-      name: "Pr. Tsadiku Abdo",
-      title: "President of ECFE",
-      credentials: "BTh, MTh",
-      image: "/placeholder.svg?height=400&width=400",
+      id: "eyob-mulatu",
+      name: "Inst. Eyob Mulatu",
+      title: "Faculty Member",
+      credentials: "BA, BTh, MTPS, MTh",
+      image: "/images/programs/Ins. Eyob.jpg"
     },
     {
       id: "dr-endale-gebremeskel",
       name: "Dr. Endale Gebremeskel",
       title: "Faculty Member",
       credentials: "MA, DMin",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/Dr Endale.jpg"
     },
     {
-      id: "eyob-mulau",
-      name: "Inst. Eyob Mulau",
-      title: "Faculty Member",
-      credentials: "BA, BTh, MTPS, MTh",
-      image: "/placeholder.svg?height=400&width=400",
-    },
-    {
-      id: "derib",
-      name: "Inst. Derib",
-      title: "Faculty Member",
-      credentials: "MA in Counseling Psychology, PhD candidate",
-      image: "/placeholder.svg?height=400&width=400",
-    },
-    {
-      id: "mengistu-woldemariam",
-      name: "Mr. Mengistu Woldemariam",
-      title: "Faculty Member",
-      credentials: "MA, MPhil, MTh",
-      image: "/placeholder.svg?height=400&width=400",
-    },
-    {
-      id: "dr-abeba-belay",
-      name: "Dr. Abeba Belay",
-      title: "Faculty Member",
-      credentials: "MA, PhD",
-      image: "/placeholder.svg?height=400&width=400",
+      id: "pr-tsadiku-abdo",
+      name: "Pr. Tsadiku Abdo",
+      title: "Adjunct Faculty",
+      credentials: "BTh, MTh",
+      image: "/images/programs/Tsadiku.jpg"
     },
     {
       id: "dr-lidetu-alemu",
       name: "Dr. Lidetu Alemu",
-      title: "Faculty Member",
+      title: "Adjunct Faculty",
       credentials: "DVM, PhD",
-      image: "/placeholder.svg?height=400&width=400",
-    },
-    {
-      id: "dr-wendaferahu-adenew",
-      name: "Dr. Wendaferahu Adenew",
-      title: "Faculty Member",
-      credentials: "PhD",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/Dr. Lidetu 2.jpg"
     },
     {
       id: "zetsaet-fiqadu",
       name: "Miss. Zetsaet Fiqadu",
-      title: "Faculty Member",
+      title: "Adjunct Faculty",
       credentials: "PhD candidate",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/Zetseat.jpg"
     },
+    {
+      id: "tesfaye-yakob",
+      name: "Dr. Tesfaye Yakob",
+      title: "Adjunct Faculty",
+      credentials: "MD MTh, PhD candidate",
+      image: "/images/programs/Dr. Tesfaye.jpg"
+    },
+    {
+      id: "bekele-deboch",
+      name: "Dr. Bekele Deboch",
+      title: "Adjunct Faculty",
+      credentials: "BTh, MTh, PhD",
+      image: "/images/programs/Dr. Bekele.jpg"
+    },
+    {
+      id: "tsedey-alemayehu",
+      name: "Dr. Tsedey Alemayehu",
+      title: "Adjunct Faculty",
+      credentials: "PhD",
+      image: "/images/programs/Dr. Tsedey.jpg"
+    },
+    {
+      id: "yared-woldemariam",
+      name: "Kesis. Yared Woldemariam",
+      title: "Adjunct Faculty",
+      credentials: "MA, MADiev",
+      image: "/images/programs/Yared.jpg"
+    },
+    {
+      id: "mengistu-woldemariam",
+      name: "Mr. Mengistu Woldemariam",
+      title: "Adjunct Faculty",
+      credentials: "MA, MPhil, MTh",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "dr-abeba-belay",
+      name: "Dr. Abeba Belay",
+      title: "Adjunct Faculty",
+      credentials: "MA, PhD",
+      image: "/images/programs/Ya.jpg"
+    },
+
+    {
+      id: "dr-wendaferahu-adenew",
+      name: "Dr. Wendaferahu Adenew",
+      title: "Adjunct Faculty",
+      credentials: "PhD",
+      image: "/images/programs/Ya.jpg"
+    },
+
     {
       id: "dr-menkir-isayas",
       name: "Dr. Menkir Isayas",
-      title: "Faculty Member",
+      title: "Adjunct Faculty",
       credentials: "PhD",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "pr-chalew-mekere",
+      name: "Pr. Chalew Mekere",
+      title: "Adjunct Faculty",
+      credentials: "BTh/MA/MTh candidate",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "terefe-bulti",
+      name: "Dr. Terefe Bulti",
+      title: "Adjunct Faculty",
+      credentials: "PhD",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "nahom-engida",
+      name: "Ins. Nahom Engida",
+      title: "Adjunct Faculty",
+      credentials: "BTh, MTh-PS, MTh Candidate",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "wasihun-hailu",
+      name: "Ins. Wasihun Hailu",
+      title: "Adjunct Faculty",
+      credentials: "BA, MA, MTh",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "kaleab-assefa",
+      name: "Kaleab Assefa",
+      title: "Adjunct Faculty",
+      credentials: "BA, Mdiv, MTh candidate",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "dr-sisay-desalegn",
+      name: "Dr Sisay Desalegn",
+      title: "Adjunct Faculty",
+      credentials: "BA, Mdiv, MTh candidate",
+      image: "/images/programs/Ya.jpg"
+    },
+    {
+      id: "edengenet",
+      name: "Edengenet",
+      title: "Adjunct Faculty",
+      credentials: "BA,MA,PhD candidate",
+      image: "/images/programs/Ya.jpg"
     },
   ]
 
@@ -105,14 +177,14 @@ export default function FacultyPage() {
       id: "beyene-geleta",
       name: "Beyene Geleta",
       role: "Board Chairman",
-      credentials: "BSc, MSc, MDiv, MTh (in process)",
-      image: "/placeholder.svg?height=400&width=400",
+      credentials: "BSc, MSc, MDiv, MTh Candidate",
+      image: "/images/programs/Beyene.jpg"
     },
     {
       id: "zebene-fikre",
       name: "Zebene Fikre",
       role: "Board Member",
-      credentials: "LLB, LLM, MDiv (in process)",
+      credentials: "LLB, LLM, MDiv Candidate",
       image: "/placeholder.svg?height=400&width=400",
     },
     {
@@ -120,14 +192,14 @@ export default function FacultyPage() {
       name: "Dr. Esckinder Taddesse",
       role: "Board Member",
       credentials: "MTh, PhD, ThD",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/The Director.jpeg"
     },
     {
       id: "eyob-mulatu-board",
       name: "Eyob Mulatu",
       role: "Board Member",
       credentials: "BA, BTh, MTPS, MTh",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/programs/Ins. Eyob.jpg"
     },
     {
       id: "kidist-bekele",
@@ -154,7 +226,7 @@ export default function FacultyPage() {
       id: "nahom-engida",
       name: "Nahom Engida",
       role: "Board Member",
-      credentials: "BA, MDiv, MTPS, MTh (in process)",
+      credentials: "BA, MDiv, MTPS, MTh Candidate",
       image: "/placeholder.svg?height=400&width=400",
     },
   ]
@@ -165,7 +237,7 @@ export default function FacultyPage() {
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/Leadership.jpg"
             alt="Faculty"
             fill
             className="object-cover brightness-[0.6]"
@@ -293,7 +365,7 @@ export default function FacultyPage() {
               </div>
               <div className="relative h-80 rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/images/programs/Leadership.jpg"
                   alt="Leadership Meeting"
                   fill
                   className="object-cover"
