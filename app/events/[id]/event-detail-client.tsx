@@ -119,10 +119,6 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
       return (
         <>
           {commonIntro}
-          <p>
-            This content represents our ongoing commitment to academic excellence and community engagement. 
-            We invite all members of our community to engage with these important developments.
-          </p>
           <h2>About AIIS</h2>
           <p>
             AIIS is a premier theological institution in Africa, dedicated to providing contextually relevant
@@ -149,18 +145,21 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     : []
 
   const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: post.description,
-        url: window.location.href,
-      }).catch(err => console.error('Error sharing:', err))
-    } else {
-      // Fallback for browsers that don't support navigator.share
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied to clipboard!*'))
-        .catch(err => console.error('Error copying link:', err))
-    }
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        toast({
+          title: "Link Copied",
+          description: "The link has been copied to your clipboard! Paste it to share the article.",
+        })
+      })
+      .catch(err => {
+        console.error('Error copying link:', err)
+        toast({
+          title: "Error",
+          description: "Failed to copy link. Please try again.",
+          variant: "destructive",
+        })
+      })
   }
 
   const handleSave = () => {
@@ -181,9 +180,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
           name: commentForm.name,
           email: commentForm.email,
           message: commentForm.comment,
-          postTitle: post.title
-
-,
+          postTitle: post.title,
           postId: post.id,
         }),
       })
@@ -227,7 +224,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
             <div className="space-y-4">
               <h1 className="text-4xl font-extrabold tracking-tight">{post.title}</h1>
               
-              <div className="flex flex-wrap items-center gap-4 textjsii-foreground">
+              <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>{post.date}</span>
@@ -380,9 +377,13 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
             )}
 
             <div className="flex flex-wrap gap-4 pt-8 border-t">
-              <Button variant="outline" className="flex items-center gap-2" onClick={handleShare}>
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2" 
+                onClick={handleShare}
+              >
                 <Share2 className="h-4 w-4" />
-                Share
+                Copy Link
               </Button>
               <Button 
                 variant="outline" 
