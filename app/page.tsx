@@ -1,17 +1,16 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, BookOpen, Calendar, GraduationCap, Users, CheckCircle, MapPin } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { TestimonialCarousel } from "@/components/testimonial-carousel"
-import { HeroSection } from "@/components/hero-section"
-import KnowledgeNews from "@/components/Knowledge-News"
-import { CourseFilter } from "@/components/course-filter"
-import image5 from '../asset/image5.png'
-import image1 from '../asset/image1.jpeg'
-import image13 from '../asset/image13.jpeg'
-import image11 from '../asset/image11.jpeg'
-import image12 from '../asset/image12.jpeg'
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, BookOpen, Calendar, GraduationCap, Users, CheckCircle, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { TestimonialCarousel } from '@/components/testimonial-carousel';
+import { HeroSection } from '@/components/hero-section';
+import KnowledgeNews from '@/components/Knowledge-News';
+import { CourseFilter } from '@/components/course-filter';
+import image1 from '../asset/image1.jpeg';
+import image13 from '../asset/image13.jpeg';
+import image11 from '../asset/image11.jpeg';
+import image12 from '../asset/image12.jpeg';
 
 export default function Home() {
   return (
@@ -158,7 +157,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-bold">Academic Programs</h3>
                   <p className="text-muted-foreground">
-                    AIIS offers programs from certificate levels to higher-level Master's and PhD studies in religion
+                    AIIS offers programs from certificate levels to higher-level Master&apos;s and PhD studies in religion
                     and leadership.
                   </p>
                   <Link
@@ -246,7 +245,7 @@ export default function Home() {
                     faculty and students.
                   </p>
                   <Link
-                    href="/resources"
+                    href="/events"
                     className="text-primary hover:underline inline-flex items-center font-medium mt-2"
                   >
                     Browse Resources <ArrowRight className="ml-1 h-4 w-4" />

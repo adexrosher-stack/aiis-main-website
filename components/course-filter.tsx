@@ -15,7 +15,7 @@ interface Program {
   format: "residential" | "remote" | "hybrid"
   duration: string
   credits: number
-  campuses: "Addis Ababa" | "Addis Ababa, Adama" | "Addis Ababa, Adama, Mekelle"
+  campuses: string // Single string containing one or more campuses
   description: string
 }
 
@@ -28,7 +28,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "2 years",
       credits: 60,
-      campuses: "Addis Ababa, Adama, Mekelle",
+      campuses: "Addis Ababa",
       description:
         "The Diploma in Theology program offers essential theological training for those seeking to serve in ministry without completing a full bachelor's degree.",
     },
@@ -39,11 +39,10 @@ export function CourseFilter() {
       format: "residential",
       duration: "4 years",
       credits: 120,
-      campuses: "Addis Ababa, Adama, Mekelle",
+      campuses: "Addis Ababa",
       description:
         "The Bachelor of Theology program provides students with a solid foundation in biblical studies, theology, church history, and practical ministry skills.",
     },
-   
     {
       id: "master-of-divinity",
       title: "Master of Divinity (MDiv)",
@@ -73,7 +72,7 @@ export function CourseFilter() {
       format: "hybrid",
       duration: "2 years",
       credits: 48,
-      campuses: "Addis Ababa",
+      campuses: "Addis Ababa, Adama",
       description:
         "Designed to equip students with practical ministry skills, leadership competence, and interdisciplinary knowledge.",
     },
@@ -106,7 +105,7 @@ export function CourseFilter() {
       format: "residential",
       duration: "2 years",
       credits: 35,
-      campuses: "Addis Ababa",
+      campuses: "Addis Ababa, Adama",
       description:
         "Interdisciplinary program blending theology and development studies to address global challenges with faith-based solutions.",
     },
@@ -127,6 +126,7 @@ export function CourseFilter() {
     level: [] as string[],
     format: [] as string[],
     duration: "" as string,
+    campuses: [] as string[], // Added campuses filter
   })
 
   const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -134,7 +134,6 @@ export function CourseFilter() {
   const handleLevelChange = (level: string) => {
     setFilters((prev) => {
       const newLevels = prev.level.includes(level) ? prev.level.filter((l) => l !== level) : [...prev.level, level]
-
       return { ...prev, level: newLevels }
     })
   }
@@ -144,8 +143,16 @@ export function CourseFilter() {
       const newFormats = prev.format.includes(format)
         ? prev.format.filter((f) => f !== format)
         : [...prev.format, format]
-
       return { ...prev, format: newFormats }
+    })
+  }
+
+  const handleCampusChange = (campus: string) => {
+    setFilters((prev) => {
+      const newCampuses = prev.campuses.includes(campus)
+        ? prev.campuses.filter((c) => c !== campus)
+        : [...prev.campuses, campus]
+      return { ...prev, campuses: newCampuses }
     })
   }
 
@@ -158,6 +165,7 @@ export function CourseFilter() {
       level: [],
       format: [],
       duration: "",
+      campuses: [], // Reset campuses
     })
   }
 
@@ -168,8 +176,11 @@ export function CourseFilter() {
       !filters.duration ||
       (filters.duration === "short" && Number.parseInt(program.duration) <= 2) ||
       (filters.duration === "long" && Number.parseInt(program.duration) > 2)
+    const campusMatch =
+      filters.campuses.length === 0 ||
+      filters.campuses.some((campus) => program.campuses.includes(campus))
 
-    return levelMatch && formatMatch && durationMatch
+    return levelMatch && formatMatch && durationMatch && campusMatch
   })
 
   return (
@@ -248,11 +259,11 @@ export function CourseFilter() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Checkbox
-                      id="online"
-                      checked={filters.format.includes("online")}
-                      onCheckedChange={() => handleFormatChange("online")}
+                      id="remote"
+                      checked={filters.format.includes("remote")}
+                      onCheckedChange={() => handleFormatChange("remote")}
                     />
-                    <Label htmlFor="online">Online</Label>
+                    <Label htmlFor="remote">Remote</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Checkbox
@@ -264,36 +275,38 @@ export function CourseFilter() {
                   </div>
                 </div>
               </div>
+
               <div className="h-px bg-border"></div>
+
               <div>
-  <h3 className="font-medium mb-3">Campuses</h3>
-  <div className="space-y-2">
-    <div className="flex items-center space-x-2">
-      <Checkbox
-        id="Addis Ababa"
-        checked={filters.format.includes("Addis Ababa")}
-        onCheckedChange={() => handleFormatChange("Addis Ababa")}
-      />
-      <Label htmlFor="Addis Ababa">Addis Ababa</Label>
-    </div>
-    <div className="flex items-center space-x-2">
-      <Checkbox
-        id="Adama"
-        checked={filters.format.includes("Adama")}
-        onCheckedChange={() => handleFormatChange("Adama")}
-      />
-      <Label htmlFor="Adama">Adama</Label>
-    </div>
-    <div className="flex items-center space-x-2">
-      <Checkbox
-        id="Mekelle"
-        checked={filters.format.includes("Mekelle")}
-        onCheckedChange={() => handleFormatChange("Mekelle")}
-      />
-      <Label htmlFor="Mekelle">Mekelle</Label>
-    </div>
-  </div>
-</div>
+                <h3 className="font-medium mb-3">Campuses</h3>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="Addis Ababa"
+                      checked={filters.campuses.includes("Addis Ababa")}
+                      onCheckedChange={() => handleCampusChange("Addis Ababa")}
+                    />
+                    <Label htmlFor="Addis Ababa">Addis Ababa</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="Adama"
+                      checked={filters.campuses.includes("Adama")}
+                      onCheckedChange={() => handleCampusChange("Adama")}
+                    />
+                    <Label htmlFor="Adama">Adama</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="Mekelle"
+                      checked={filters.campuses.includes("Mekelle")}
+                      onCheckedChange={() => handleCampusChange("Mekelle")}
+                    />
+                    <Label htmlFor="Mekelle">Mekelle</Label>
+                  </div>
+                </div>
+              </div>
 
               <div className="h-px bg-border"></div>
 
@@ -387,7 +400,9 @@ export function CourseFilter() {
                         </div>
                       </div>
                       <Button asChild variant="outline" className="w-full">
-                        <Link href={`/programs/${program.id}`}>View Details</Link>
+                        <Link href={`/programs/${program.id}`}>View Details</Link
+
+>
                       </Button>
                     </div>
                   </CardContent>
@@ -400,4 +415,3 @@ export function CourseFilter() {
     </div>
   )
 }
-

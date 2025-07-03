@@ -1244,16 +1244,201 @@ facts given above.</p>
       </div>
     `
   },
+    {
+      "id": "11",
+      "title": "Defending God: Biblical Responses to the Problem of Evil - A Review",
+      "date": "July, 2024",
+      "author": "Abenezer Eshetu",
+      "category": "Article",
+      "description": "This article reviews James L. Crenshaw’s 'Defending God: Biblical Responses to the Problem of Evil,' exploring biblical perspectives on theodicy and the complex interplay between divine justice, human suffering, and theological responses to evil.",
+      "image": "/images/programs/Defending-God.jpg",
+      "imageSource": "Freepick",
+      "content": `
+        <div class="article-content">
+          <h2 class="text-2xl font-bold mb-4">Introduction</h2>
+          <h3 class="text-xl font-semibold mb-2">About the Author</h3>
+          <p class="mb-6">James L. Crenshaw is a distinguished scholar and author, particularly known for his work in Old Testament wisdom literature. He served as the Robert L. Flowers Professor of Old Testament at Duke University’s Divinity School from 1987 to 2008 and has been recognized as one of the leading interpreters of wisdom literature in the Bible. He is one of the world’s leading scholars in Old Testament Wisdom literature.</p>
+          <h3 class="text-xl font-semibold mb-2">Course Information</h3>
+          <p class="mb-6">Institution: African Institute for International Studies Theological Seminary<br>Professor: Dr. Esckinder Tadesse<br>Course Name: Guided Reading and Research in Biblical Studies area</p>
   
+          <h2 class="text-2xl font-bold mb-4">Summary of Contents</h2>
+          <h3 class="text-xl font-semibold mb-2">I. Spreading the Blame Around</h3>
+          <p class="mb-6">This section discusses various responses to the problem of evil, such as atheistic answers, alternative gods, and the concept of a demon at work.</p>
+  
+          <h3 class="text-xl font-semibold mb-2">1. The Atheistic Answer: Abandoning the Quest</h3>
+          <p class="mb-6">This chapter sets the stage for the book’s exploration of the problem of evil and the various biblical responses to this enduring theological dilemma. It mainly delves into the biblical perspective on atheism and the practical implications of denying God’s existence.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Practical Atheism:</b> The chapter discusses the concept of ‘practical atheism’ found in biblical literature, particularly in Psalms, where the fool (nabal) is said to deny God’s existence in his heart. This denial leads to moral decay and societal degradation.</li>
+            <li><b>Divine Inactivity:</b> It explores the puzzling nature of divine inactivity in the face of evil. The psalmist questions why God does not intervene to stop the wicked, suggesting that divine aloofness might encourage lawlessness.</li>
+            <li><b>Human Depravity:</b> The chapter also touches on the theme of human depravity, with the assertion that no one is righteous or seeks after God, reflecting a dark view of humanity’s moral state.</li>
+            <li><b>Theodicy and Skepticism:</b> Crenshaw examines theodicy—the defense of God’s goodness despite the presence of evil—in the context of biblical texts. He contrasts this with modern skepticism, which often arises from witnessing or experiencing suffering and injustice.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">2. Alternative Gods: Falling back on a Convenient Worldview</h3>
+          <p class="mb-6">Discusses the shift from polytheism to monotheism and its implications for theodicy, the defense of God’s goodness in the face of evil.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Polytheistic Context:</b> The chapter begins by setting the stage in a world where belief in multiple gods was common. It explains how ancient societies attributed different aspects of life and morality to various deities.</li>
+            <li><b>Psalm 82:</b> The focus then shifts to Psalm 82, where the author presents a divine assembly with God (Elohim) standing in judgment over other gods (elohim). The psalmist accuses these gods of failing to administer justice, leading to their condemnation and mortality.</li>
+            <li><b>Theodicy Challenge:</b> With the rise of ethical monotheism, the chapter highlights the challenge of explaining the presence of evil without the convenience of blaming multiple gods. The singular God must now account for both good and evil.</li>
+            <li><b>Divine Justice:</b> The chapter concludes with the psalmist’s plea for the one true God to arise and judge the earth, emphasizing the ongoing struggle for justice and the hope placed in God’s integrity.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">3. A Demon at Work: Letting Benevolence Slip</h3>
+          <p class="mb-6">This chapter is part of a broader discussion on the nature of God and the problem of evil in the biblical context. It discusses the emergence of the figure of Satan in the biblical narrative and its implications for theodicy.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Emergence of Satan:</b> The chapter discusses how the figure of Satan evolves from a mere adversary in the Hebrew Bible to a powerful entity in later Jewish and Christian texts.</li>
+            <li><b>Divine Responsibility:</b> It examines the notion that God’s ultimate control over Satan does not absolve God from responsibility for evil.</li>
+            <li><b>Biblical Narratives:</b> The chapter analyzes stories like the binding of Isaac and the trials of Job to explore the complex portrayal of God’s character.</li>
+            <li><b>Human Freedom:</b> It suggests that the introduction of Satan as a character may be an attempt to shift the blame for evil away from God, highlighting the tension between divine omnipotence and human freedom.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">II. Redefining God</h3>
+          <p class="mb-6">It delves into how the understanding of God’s power and knowledge can be redefined, considering human freedom, the reconciliation of justice with mercy, and the idea of God’s disciplinary procedures.</p>
+  
+          <h3 class="text-xl font-semibold mb-2">4. Limited Power and Knowledge: Accentuating Human Freedom</h3>
+          <p class="mb-6">Discusses the concept of divine self-limitation in the context of human freedom.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Divine Self-Limitation:</b> The chapter explores the idea that God has intentionally limited His own power and knowledge to allow for human freedom. This self-imposed constraint is seen as a necessary condition for a genuine relationship between God and humans.</li>
+            <li><b>Human Freedom:</b> It emphasizes the importance of human free will and the ability to make choices without divine interference. The chapter suggests that this freedom is a fundamental aspect of human dignity and moral responsibility.</li>
+            <li><b>Divine Vulnerability:</b> The narrative suggests that by granting humans freedom, God becomes vulnerable to human choices. This vulnerability is portrayed as an intrinsic part of a loving and intimate relationship with humanity.</li>
+            <li><b>Theodicy and Justice:</b> The chapter also touches on theodicy, the defense of God’s goodness in the face of the existence of evil, and how human freedom plays a role in understanding divine justice and mercy.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">5. Split Personality: Reconciling Justice with Mercy</h3>
+          <p class="mb-6">This chapter is pivotal in understanding the biblical portrayal of God’s nature and the ongoing theological debate about the coexistence of justice and mercy in the divine realm.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Divine Dilemma:</b> The chapter explores the tension between God’s justice and mercy, highlighting the difficulty in harmonizing these seemingly opposing qualities within the divine character.</li>
+            <li><b>Biblical Texts:</b> It examines various biblical texts that reflect this struggle, particularly focusing on Exodus 34:6-7, which presents God as both forgiving and punitive.</li>
+            <li><b>Theological Insights:</b> Crenshaw discusses the implications of God’s dual nature for human understanding and religious practice, questioning how a deity can embody both strict justice and compassionate mercy.</li>
+            <li><b>Human Struggle:</b> The chapter also considers the human response to this divine conflict, suggesting that the balance of justice and mercy is a goal that societies strive for but find challenging to achieve.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">6. A Disciplinary Procedure: Stimulating Growth in Virtue</h3>
+          <p class="mb-6">Explores the concept of divine discipline as a means for moral and spiritual growth. It covers the nuanced understanding of suffering and its potential role in the divine plan for human development, while also addressing the complexities and challenges of this viewpoint.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Divine Pedagogy:</b> The chapter discusses how adversity and trials are seen as part of God’s teaching method, aimed at developing character and virtue in individuals.</li>
+            <li><b>Biblical Examples:</b> It examines biblical texts that depict God as a teacher or parent who disciplines their children for their own good, drawing parallels to human experiences of learning through hardship.</li>
+            <li><b>Philosophical Insights:</b> The author integrates philosophical ideas, suggesting that the universe’s opposing forces of good and evil balance each other, and that inner psychological stress can act as a form of punishment and catalyst for growth.</li>
+            <li><b>Critique of Discipline:</b> The chapter acknowledges the limitations of viewing suffering as solely disciplinary, recognizing that excessive or unjust suffering cannot be reconciled with this perspective.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">7. Punishment for Sin: Blaming the Victim</h3>
+          <p class="mb-6">The chapter critically analyzes the simplistic connection between sin and suffering and highlights the psychological need for order that underlies this belief. It also addresses the problematic nature of this response to evil, as it can lead to unjust conclusions about guilt and innocence.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Sin and Punishment:</b> The chapter discusses the assumption that the universe operates on a principle of justice, where good deeds are rewarded and sins are punished.</li>
+            <li><b>Biblical Examples:</b> It examines biblical narratives, such as the story of Job and the man born blind from the Gospel of John, to illustrate the flaws in attributing suffering solely to personal sin.</li>
+            <li><b>Prophetic Indictment:</b> The prophets, including Ezekiel, are cited as attributing the downfall of Israel to the nation’s collective sin, reinforcing the idea of divine retribution.</li>
+            <li><b>Theodicy in Historiography:</b> The chapter also looks at how Israelite historiography interprets national disasters as divine punishment for the people’s failure to obey God’s commandments.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">III. Shifting to the Human Scene</h3>
+          <p class="mb-6">The focus shifts to the human perspective on suffering, including suffering as atonement, justice deferred, the mystery of suffering, and questioning the problem itself.</p>
+  
+          <h3 class="text-xl font-semibold mb-2">8. Suffering as Atonement: Making the Most of a Bad Thing</h3>
+          <p class="mb-6">This chapter provides a nuanced view of suffering, suggesting that it can have a meaningful role in the divine plan and human experience.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Atonement Concept:</b> The chapter examines the notion that suffering can be redemptive, atoning for sin and leading to spiritual purification.</li>
+            <li><b>Biblical Examples:</b> It discusses examples from the Bible where suffering is portrayed as having atoning value, such as in the case of sacrificial rituals.</li>
+            <li><b>Jesus’ Sacrifice:</b> The New Testament idea of Jesus’ suffering and death as a means of atonement for humanity’s sins is analyzed in depth.</li>
+            <li><b>Theodicy and Redemption:</b> The chapter considers how this concept of redemptive suffering fits into the broader discussion of theodicy, offering a perspective that sees value in suffering beyond mere punishment.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">9. Justice Deferred: Banking on Life beyond the Grave</h3>
+          <p class="mb-6">This chapter examines how the seeds of belief in an afterlife and resurrection germinated from a deep sense of communion with God and the conviction of God’s unlimited power, catalyzed by the persecution of the righteous. It contrasts this with the persistent traditional view that death is the end, showing the tension between old and new beliefs within Judaism.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Dostoyevsky’s Quote:</b> The chapter opens with a quote from Fyodor Dostoyevsky, “If there is no immortality, all is permitted,” suggesting that without immortality, moral boundaries may not hold.</li>
+            <li><b>Scholarly Pursuits:</b> It discusses the irony that more is written about topics that are less known, such as the afterlife, and acknowledges the limitations of human knowledge on the subject.</li>
+            <li><b>Resurrection and Immortality:</b> The chapter delves into the development of Jewish beliefs about resurrection and immortality, particularly in response to theodicy and persecution.</li>
+            <li><b>Resistance to Belief:</b> It also covers the resistance to the belief in resurrection within Jewish tradition, citing views from texts like Job and Ecclesiastes that emphasize the finality of death.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">10. Mystery: Appealing to Human Ignorance</h3>
+          <p class="mb-6">The chapter delves into the paradox of a God who is both self-revealing and yet remains hidden from human understanding. It discusses how the Bible often speaks of God as an active participant in human affairs, with a seemingly transparent nature and activity. However, it also acknowledges that God’s ways and thoughts are ultimately inaccessible to humans.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Paradox of Knowledge:</b> The chapter explores the tension between the belief that God can be intimately known and the frequent biblical warnings that God dwells in darkness, beyond human sight.</li>
+            <li><b>Divine Activity:</b> It examines the portrayal of God’s role in the history of Israel and Judah, where divine actions are described as leading or disciplining the chosen people.</li>
+            <li><b>Limits of Human Understanding:</b> The chapter emphasizes that while the Bible gives the impression of describing reality, the knowledge of God it conveys is not subject to rational examination.</li>
+            <li><b>The Mystery of God:</b> It concludes that all knowledge of God and His ways is partial, suggesting that the biblical characterization of YHWH may only be partially accurate, and that the ultimate questions about God remain surrounded by mystery.</li>
+          </ul>
+  
+          <h3 class="text-xl font-semibold mb-2">11. Disinterested Righteousness: Questioning the Problem</h3>
+          <p class="mb-6">Provides the complexities of human understanding of God and the limitations of human knowledge in theological discourse.</p>
+          <ul class="list-disc pl-6 mb-6">
+            <li><b>Anthropocentric Theology:</b> The chapter discusses how human perceptions of God are influenced by anthropocentric tendencies, suggesting that the biblical depiction of God carries the same limitations as human knowledge.</li>
+            <li><b>Literary Construct:</b> It examines the idea that the biblical portrayal of God is a literary construct, which has been reified and absolutized over time, leading to a loss of the representational character of the divine.</li>
+            <li><b>Job’s Insight:</b> The book of Job is highlighted as a text that challenges traditional views of God, emphasizing the importance of questioning and the struggle to understand divine justice.</li>
+            <li><b>Theological Complexity:</b> Crenshaw argues for a recognition of the complexity and ambiguity inherent in theological claims, advocating for a humble approach to understanding the divine.</li>
+          </ul>
+  
+          <h2 class="text-2xl font-bold mb-4">Reflection/Reaction</h2>
+          <p class="mb-6">This book is a thought-provoking work that engages with ancient and modern perspectives on theodicy, offering insights into how different cultures have grappled with questions of divine justice and human suffering. It offers an excellent defense of scriptures, providing sound instructions on how to read and understand references to God’s actions. The book serves as a great guide to important literature and commentary on the problem of theodicy.</p>
+  
+          <h2 class="text-2xl font-bold mb-4">Gap</h2>
+          <p class="mb-6">The author focuses on Western perspectives and thought. It could benefit from a more diverse range of perspectives, including non-Western and contemporary viewpoints.</p>
+        </div>
+      `
+  },
+  {
+    "id": "12",
+    "title": "The Myth of Religious Neutrality - A Review",
+    "date": "Feb 3, 2012",
+    "author": "Dr. Esckinder Taddesse",
+    "category": "Article",
+    "description": "This article reviews Roy A. Clouser's 'The Myth of Religious Neutrality: An Essay on the Hidden Role of Religious Belief in Theories,' exploring the interplay between theories, religious beliefs, and their impact on science, philosophy, and religion.",
+    "image": "/images/programs/Religious-Neutrality.jpg",
+    "imageSource": "Freepick",
+    "content": `
+      <div class="article-content">
+        <h2 class="text-2xl font-bold mb-4">Introduction</h2>
+        <h3 class="text-xl font-semibold mb-2">About the Author</h3>
+        <p class="mb-6">Roy A. Clouser is a philosopher known for his work in the philosophy of religion, particularly his exploration of the role of religious belief in theories. He is the author of 'The Myth of Religious Neutrality,' published by Notre Dame, Indiana in 2005.</p>
+        <h3 class="text-xl font-semibold mb-2">Course Information</h3>
+        <p class="mb-6">Institution: ABGTS<br>Professor: Dr Jonathan V. Exiomo, Th.M., Th.D<br>Course Name: Research in the Philosophy of Religion Area 490-108</p>
+
+        <h2 class="text-2xl font-bold mb-4">Summary of Contents</h2>
+        <p class="mb-6">The author in his introduction discussed whether theories only belong to those beyond the average person or the average person too. But he said, the truth is that the average person is highly influenced by theories (p 61). In the discussion of religious theories, the fundamental question is like; can those of us who believe in God accept the claim that theories are the final arbiters of truth? How about the independent status of theories and religious beliefs? According to our author, a theory is closely connected with hypothesis, and a hypothesis is an educated guess proposed in order to explain something (p 62). Therefore theory in this case is used to indicate only the explanations that do offer hypothesis and try to justify them by arguments and evidence. Theories actually could be divided as abstract and common sense (p 63). A car may be identified by its color, shape etc; this is more or less common sense theory but when we talk about the car’s velocity, mass, density etc this goes to the abstraction process ( p 65). The theories of science and philosophy thus differ from common sense theories by employing high abstraction in anyone (or combination) of at least three ways.1-to ask question (s) the theory is supposed to answer, 2-to invent the hypothesis proposed as answers to questions, or 3-to evaluate the truth of hypothesis by arguments and evidence (p 65).</p>
+        <p class="mb-6">So the author chose the abstractions as his way of dealing with ideas coming next. Without abstraction of entire aspects, he said, it would not be possible to specify the kind of properties being investigated or the kind of laws being used to explain whatever a theory is seeking to explain (p 66-69). Another thing is the difference between scientific and philosophical theories. Whereas sciences are devoted to only one or a few specific aspects, philosophy aims at an all encompassing overview; it offers theories which seek to explain the general connection of all the aspects and therefore of all the sciences.(p 70). Therefore philosophy goes for the general theory of reality (ontology/metaphysics) and the general theory of knowledge (epistemology),(p 70). The general theory of knowledge tries to account for what is essential to all knowledge not just a specific kind, mathematics, aesthetics, ethics etc (p 71).</p>
+        <p class="mb-6">The other thing raised in the book is an entity hypothesis, that an experiment may or may not prove a theory is true (p 74). For example, a theory may say, if A then B, and A is true then B must be true. For example A could mean “ it is raining” and B could mean “the side walk is getting wet.” In that case, “if A then B” would translate, “if it is raining then the side walk is getting wet.” Now the rule says if it is true that it is raining, then it must be true that the side walk is getting wet. The crucial thing about this rule is that, while it works from left to right, it does not work from right to left, which means we are not entitled to say “ If A then B; B therefore A, for even the side walk is getting wet, that will not tell us assume it is raining for other things could cause the side walk to get wet besides rain ( p 75). But to claim that a successful experiment has proven a theory is to make the mistake. Thus the notion that a successful experiment can prove a theory true, is a logical mistake. There is, however, another logical rule that does go from right to left: If A then B not B, therefore not A (P 75). Applied to our sample argument, this would translate into: if it is true that rain will wet the side walk, and if it is true that the side walk is not getting wet, then it is also true that it is not raining. A theory is correct therefore the experiment will succeed but the experiment does not succeed, therefore the theory is (at least partly) false. Therefore, though experiments cannot prove a theory true, they can prove that it is at least partly false.</p>
+        <p class="mb-6">On the other end you may have pieces present as sufficient for solving the puzzle. This type of hypothesis the author calls as “perspectival” hypothesis. Such theory hypothesis argues that, its chosen aspect accounts for the connectedness between all the others because all the others are either identical with or generated by the one’s assigned priority. The priority is therefore an ontological priority (p 77). According to the author, a view of the nature of reality cannot avoid presupposing divinity (p 78). This comes as a result of an overview of the nature of reality, and thus also identifies the nature of what is taken to be divine per se. This is all about the existence of physical and non-physical properties (p 79).</p>
+        <p class="mb-6">Under his criteria for judging theories, he said, entity theories often lead to predictions which can be checked by experiments. Breadth of application is also easier to determine for an entity theory. It can be obvious whether a proposed entity, when utilized by another theory, yields to confirmable results. By contrast, these standard procedures for judging entity hypothesis do not seem to work for perspectival overviews at all because they are almost never able to be confirmed by experiment. The breadth of any overview perspective is (at least potentially) universal; all reality can be overviewed from the stand point of, say, its quantitative, special, physical, sensory, or logical aspects, etc (p 82).</p>
+        <p class="mb-6">The author has also added incoherencies over and above logical inconsistency that need to be exposed, defined and avoided (p 83). The first of these criteria rules out any theory that makes a claim which, while not contradicting any other statement of the theory, is incompatible with itself. For example the claim sometimes made by Taoists that “Nothing can be said of the Tao” taken without qualification, this is self referentially incoherent. Nothing can be said of Tao is something to say about Tao. The same way the claim once made by Freud that ‘every belief is a product of the believer’s unconscious emotional needs’. This statement is nothing more than the product of Freud’s unconscious emotional needs (p 84). The next criterion says that a theory must not be incompatible with any belief we have to assume for the theory to be true. For example, the claim by some philosophers, saying all things is exclusively physical. However, the assumption itself is non-physical. The last of the three criteria’s says, that a theory must be compatible with any state that would have to be true of a thinker, or any activity the thinker would have to perform, in order to have formulated the theory’s claims. For example, if somebody said there is no such thing as language, yet he/she says this using language, such theory is a self- performativity incoherent (p 85). The same way Descartes saw that one thing that could not reasonably be doubted was his own existence. This was because he had to exist in order to perform the act of doubting. That is where the incompatibility lies (p 86).</p>
+        <h3 class="text-xl font-semibold mb-2">Theories and Religion: The Alternatives</h3>
+        <p class="mb-6">This chapter has begun by a brief sketch of the position taken by western thought concerning the general relation of divinity beliefs to theories. In his sub topic about religious irrationalism, the irrationalist view can be stated as it says that reason and divinity beliefs have nothing to do with one another. As a consequence, neither is capable of passing any judgment on the other (p 89). This implies that philosophy and religion have nothing to do together. Christianity should not be defended unless otherwise being a de facto Judas number two. This is true for both Soren Kierkegaard and Friedrich Schleiermacher, as religious belief was isolated from reason because religion is strictly a matter of feeling (p 90). This notion somewhat makes reason autonomous and faith optional (p 91).</p>
+        <p class="mb-6">Then the author continued to discuss religious rationalism. He said, religious rationalism agrees with religious irrationalism about the neutrality of reason, respecting all matters, differs only concerning the limit’s to reasons scope, meaning reason may not be able to judge religious facts (p 93). Most theistic thinkers today hold a combination of strictly biblical position and the rationalist position which the author calls the radically biblical position and also wants to defend this position (p 94). Here the author affirms that no sort of knowledge is religiously neutral and for him religious belief guides and directs the use of reason in all of life (p 95). This position therefore disagrees with religious irrationalism by denying the notion saying “belief in God is either blind trust or walled off from rationality. On the contrary, it holds that one or another divinity belief always directs the way people use rationality to interpret the whole range of their experience, so that the full truth about any subject matter does indeed depend on having the right divinity (p 97).</p>
+        <p class="mb-6">Another important thought is religious scholasticism. As was already admitted, long before the rise of Christianity, there were strong differences of opinion among Jews concerning the proper attitude to take toward the relation of their faith to the rest of life, particularly to culture. For some Jews life and culture is maintaining worship to the true God and observing the Law of Moses. Others see most of life and culture as religiously neutral (p 98). The second view later came to be called the position of the “school men” and still later was simply called “scholasticism”. This term is not necessarily used to refer Thomas Aquinas or Aristotle but is used for the position that understands the general relation of divinity beliefs to theories. In scholasticism, the authority of revelation taken on faith is superior to that of reason alone (p 100). Moreover, it is clear that on this position most theories in many other sorts of knowledge and truth are religiously neutral. So long as they do not contradict any revealed truth, they need not be impacted by belief in God-or any other divinity at all. So the scholastic challenge was how to harmonize any potential conflict between faith and reason (p 101). There is a wide consensus between scholastic thinkers in the points such as; humans are naturally rational but not all have the faculty of faith; the faculty of faith comes as a gift from God to a person. This faculty faith supplements the person’s reason (p 102). Among thinkers who believe in God, scholasticism is still by far the most popular position in the world today (p 105). Most reforms after aimed at the rejection of the scholastic partition of religious belief and reason (p 106).</p>
+        <p class="mb-6">Our summery for this portion ends at chapter 6 of the book on the idea of religious control. Here, is the view that sacred scripture (or theology derived from it) contains inspired and thus infallible true statements about virtually every conceivable subject matter. It is this conception that typifies fundamentalist thinking (p 111). But contrary to fundamentalists, scripture does not suggest that creation witnesses to its maker by requiring that we import him regularly to explain how creation works. Scripture sees creation as revealing its maker by exhibiting itself to be dependent rather than self-existent either in part or in whole (p 114). The purpose of Biblical writings is to record God’s activities in establishing his covenant with humans and to preserve the content of that covenant message (p 115). A little focus on the creation story of the book of Genesis for example, superficially seems to tell us chronology and order of days in which God has created the universe; however it rather tells us more of a way of expressing the “why” of God’s creating rather than its “how”(p 117). The same thing lies behind the creation of man, which is concerned about the purpose rather than the process, as humans are made in the image of God (p 118). The author therefore concludes that the fundamentalist interpretation of Genesis obscures the religious nature of the account as preamble to the Mosaic covenant, ignores the internal structure of the days of creation, and fails to connect Genesis’s definition of “human” to its account of human origins (p 121-124).</p>
+
+        <h2 class="text-2xl font-bold mb-4">Reflection/Reaction</h2>
+        <p class="mb-6">As I was reading through, I had a question as to why the author chose to say the title of this book “the myth of religious neutrality”. The title became clear to me as I approached the last three chapters on religious rationalism, religious scholasticism and religious control. Science uses theories, of course those which are coherent and may be justified through hypothesis and series of arguments and experiments. The same is true for philosophy except that the focus of philosophy may be general than specific as for science. The question is; can we follow the same procedures for religious thoughts? Can we say that religion has nothing to do with theories, reason and rationalism?</p>
+        <p class="mb-6">I personally see that there is an ample chance to make religious thought theoretically verifiable, scientifically provable and philosophically sensical. The first thing that we should avoid is the religious fundamentalist attitude, which claims that religion has nothing to do with reason, science or so. Secondly we should be careful not to suggest incoherent concepts. Third, tools used as criteria’s for science and philosophy must also be inspected as to their capacity to deal with everything of nature. To make myself clear on this point; religion is not and should not be neutral as religiosity, be it right or wrong, is very natural to all human beings be them in this category or that. There is no science which totally does away the faith element though it claims to be so. The same way there is no philosophy which can do away the faith element though it may claim to be so. A simple example is the step which science calls as hypothesis. The experiment or theory moves to this step “believing” that it would prove to be true. Then series of experiments may prove the hypothesis to be true or false, yet the initial move is a faith move and of course the final conclusion is always expected to be reasonable.</p>
+        <p class="mb-6">Doesn’t this work for religion? I think it works. As the first step in religion is a faith step,  that is not all at the end. The faith element is always added by proves of whatever kind in the sojourn of a believer which I think makes the initial faith step more concrete and reasonable through time. Yet, if we are trying to put our religious thought in the frames of philosophy or scientific criteria’s we must try to put it in a coherent manner as much as possible. In addition to this the tools which we use for science or philosophy may not be enough for a taste of religious matters, as religious matters are broader than the focuses of science and philosophy.</p>
+        <p class="mb-6">Therefore, the first thing is to see which of these disciplines is really all rounded? It seems that science cares for the empirical world and for matters physical. Philosophy may care very much for matters of origins and of course the metaphysical and physical. Yet, fairly seen, religion is the umbrella for science and philosophy so to say, as religion has everything of nature, the physical, the spiritual, the ideal, the practical, the faith, the reason part and beyond. My position here of course, is never in line with religious fundamentalism. Therefore religious texts such as the Bible can be theoretically verifiable, therefore scientifically convincing and philosophically sensical, if they are examined in their own terms and on the purposes they deal with.</p>
+
+        <h2 class="text-2xl font-bold mb-4">Questions</h2>
+        <ul class="list-disc pl-6 mb-6">
+          <li>Which discipline do you think is all rounded as you may compare and contrast science, philosophy and religion?</li>
+          <li>Can you prove your claim through series of arguments to the seminar participants?</li>
+        </ul>
+      </div>
+    `
+}
+
  
 ]
 
 // Combine all posts for lookup
 const allPosts = [...upcomingEvents, ...newsItems, ...blogPosts]
 
-export default function EventPage({ params }: { params: { id: string } }) {
+type PageProps = {
+  params: Promise<{ id: string }>
+}
+
+export default async function EventPage({ params }: PageProps) {
+  // Await the params to resolve the Promise
+  const { id } = await params
+  
   // Find the post with the matching ID
-  const post = allPosts.find(post => post.id === params.id)
+  const post = allPosts.find(post => post.id === id)
   
   // If no post is found, return 404
   if (!post) {
@@ -1269,4 +1454,3 @@ export function generateStaticParams() {
     id: String(post.id),
   }))
 }
-

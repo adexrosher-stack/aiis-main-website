@@ -130,7 +130,7 @@ export default function ReportsPage() {
                       <LineChart className="h-16 w-16 text-primary mx-auto mb-4" />
                       <p className="text-muted-foreground">Enrollment trend visualization would appear here</p>
                       <p className="text-xs text-muted-foreground mt-2">
-                        Data shows increasing enrollment in Master's programs
+                        Data shows increasing enrollment in Master&apos;s programs
                       </p>
                     </div>
                   </div>

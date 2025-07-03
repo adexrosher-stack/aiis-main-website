@@ -11,7 +11,7 @@ export default function ApplyPage() {
       <section className="relative w-full py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/images/programs/PhD.jpeg"
             alt="Apply to AIIS"
             fill
             className="object-cover brightness-[0.6]"
@@ -78,13 +78,10 @@ export default function ApplyPage() {
                   <h3 className="font-semibold">Application Timeline</h3>
                   <ul className="list-disc pl-5 space-y-1 text-sm">
                     <li>
-                      <strong>Fall Semester:</strong> Application deadline - June 30
+                      <strong>Enrollment Guidelines:</strong> AIIS accepts applications year-round and places eligible students at the start of their respective courses, based on availability and program schedules.
                     </li>
-                    <li>
-                      <strong>Spring Semester:</strong> Application deadline - November 30
-                    </li>
-                    <li>Applications are reviewed within 4-6 weeks</li>
-                    <li>Admission decisions are sent via email</li>
+                    <li>Applications are reviewed within 4 weeks</li>
+                    <li>Admission decisions are sent via email and Phone</li>
                   </ul>
                 </div>
               </CardContent>
@@ -97,7 +94,7 @@ export default function ApplyPage() {
               <CardContent className="p-6 space-y-4">
                 <p>
                   Our admissions team is here to help you through the application process. If you have any questions or
-                  need assistance, please don't hesitate to contact us.
+                  need assistance, please don&apos;t hesitate to contact us.
                 </p>
 
                 <div className="space-y-4">
@@ -144,7 +141,8 @@ export default function ApplyPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold">Email</h4>
-                      <p className="text-sm text-muted-foreground">admissions@aiis.edu</p>
+                      <p className="text-sm text-muted-foreground">info.aiis.edu@gmail.com</p>
+                      <p className="text-sm text-muted-foreground">touch.esck@yahoo.com</p>
                     </div>
                   </div>
                 </div>

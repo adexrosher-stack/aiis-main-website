@@ -35,9 +35,9 @@ interface DashboardShellProps {
   children: React.ReactNode
   role?: "admin" | "student" | "teacher"
   user:{
-    role: String
-    image:String | ImageData
-    name:String
+    role: string
+    image:string | ImageData
+    name:string
   }
   navItems: { label: string;icon:React.ReactNode; href: string }[]
 }

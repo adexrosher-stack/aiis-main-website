@@ -224,11 +224,11 @@ export default function BoardMembersPage() {
           {currentBoardMember && (
             <div className="grid gap-4 py-4">
               <div className="flex justify-center mb-4">
-                <img
+                {/* <img
                   src={currentBoardMember.imageUrl || "/placeholder.svg"}
                   alt={currentBoardMember.name}
                   className="rounded-full w-32 h-32 object-cover"
-                />
+                /> */}
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label className="text-right">Name</Label>

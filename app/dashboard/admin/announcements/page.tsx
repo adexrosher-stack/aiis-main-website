@@ -83,7 +83,7 @@ interface Announcement {
   date: string;
   author: string;
   targets: string[];
-  status: "draft" | "published" | "scheduled" | String;
+  status: "draft" | "published" | "scheduled" | string;
   scheduledDate?: string;
 }
 

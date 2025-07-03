@@ -56,21 +56,20 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Home
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Home
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -105,7 +104,7 @@ export default function Header() {
                       Discover our purpose and goals
                     </ListItem>
                     <ListItem href="/about?tab=approach" title="Our Approach">
-                      our approach to teaching and learning
+                      Our approach to teaching and learning
                     </ListItem>
                     <ListItem href="/about?tab=accreditation" title="Accreditation">
                       Our academic credentials and partnerships
@@ -115,21 +114,20 @@ export default function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/faculty" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/faculty"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Faculty
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/faculty"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/faculty"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Faculty
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
@@ -164,57 +162,54 @@ export default function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/admissions" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/admissions"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Admissions
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/admissions"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/admissions"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Admissions
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/events" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/events"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Knowledge & Events
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/events"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/events"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Knowledge & Events
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/contact"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/contact"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/contact"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Contact
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -419,4 +414,3 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
   },
 )
 ListItem.displayName = "ListItem"
-

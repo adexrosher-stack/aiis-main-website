@@ -59,7 +59,7 @@ interface ApplicationRequest {
 }
 
 export default function AdminDashboard() {
-  const [students, setStudents] = useState<Student[]>([
+  const [students] = useState<Student[]>([
     {
       id: "STU2023001",
       name: "John Doe",
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
     },
   ])
 
-  const [courses, setCourses] = useState<Course[]>([
+  const [courses] = useState<Course[]>([
     {
       id: "theo101",
       code: "THEO101",
@@ -155,7 +155,7 @@ export default function AdminDashboard() {
     },
   ])
 
-  const [applications, setApplications] = useState<ApplicationRequest[]>([
+  const [applications] = useState<ApplicationRequest[]>([
     {
       id: "APP2023045",
       name: "Robert Chen",

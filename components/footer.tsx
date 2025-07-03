@@ -15,7 +15,7 @@ export default function Footer() {
               community engagement.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-white/80 hover:text-white transition-colors">
+              <Link href="https://web.facebook.com/ETHAIIIS" className="text-white/80 hover:text-white transition-colors">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
@@ -23,10 +23,7 @@ export default function Footer() {
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-white/80 hover:text-white transition-colors">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
+
               <Link href="#" className="text-white/80 hover:text-white transition-colors">
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">YouTube</span>
@@ -84,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/academics#graduate" className="text-white/80 hover:text-white transition-colors">
-                  Master's Programs
+                  Master&apos;s Programs
                 </Link>
               </li>
               <li>
@@ -118,7 +115,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-accent shrink-0" />
-                <span className="text-white/80">aiisseminary@gmail.com</span>
+                <span className="text-white/80">info.aiis.edu@gmail.com</span>
               </li>
             </ul>
             <div className="pt-4">

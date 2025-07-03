@@ -1,13 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User, Play, ExternalLink } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User } from "lucide-react"
 import { Event, NewsItem } from "@/lib/events-data"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/components/ui/use-toast"
+import { NewsletterForm } from "@/components/newsletter-form"
 
 type Post = Event | NewsItem | any;
 
@@ -18,15 +21,27 @@ interface EventDetailClientProps {
 
 export default function EventDetailClient({ post, allPosts }: EventDetailClientProps) {
   const [isSaved, setIsSaved] = useState(false)
-  const [activeImage, setActiveImage] = useState(post.image)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [commentForm, setCommentForm] = useState({ name: "", email: "", comment: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
   
   // Determine content type
   const isEvent = post.category === "Event"
-  const isNews = post.category === "News"
   const isBlog = post.category === "Blog" || post.category === "Article"
   const hasVideo = !!post.videoUrl
-  const hasGallery = !!post.gallery && post.gallery.length > 0
+  const images = [post.image, ...(post.gallery || [])].filter(Boolean)
   
+  // Auto-rotate images every 5 seconds
+  useEffect(() => {
+    if (images.length > 1) {
+      const interval = setInterval(() => {
+        setActiveImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+      }, 5000)
+      return () => clearInterval(interval)
+    }
+  }, [images.length])
+
   // Function to generate unique fallback content based on post ID and category
   const renderFallbackContent = (post: Post) => {
     // Common intro paragraph for all posts
@@ -104,10 +119,6 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
       return (
         <>
           {commonIntro}
-          <p>
-            This content represents our ongoing commitment to academic excellence and community engagement. 
-            We invite all members of our community to engage with these important developments.
-          </p>
           <h2>About AIIS</h2>
           <p>
             AIIS is a premier theological institution in Africa, dedicated to providing contextually relevant
@@ -125,26 +136,32 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 3)
   
-  // Get upcoming events (if not viewing an event)
-  const upcomingEvents = !isEvent 
-    ? allPosts
-        .filter(p => p.category === "Event" && new Date(p.date) > new Date())
-        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-        .slice(0, 3)
-    : []
+  // Share functionality with meta data
+  const handleShare = async () => {
+    const shareData = {
+      title: post.title,
+      text: post.description || `Check out this ${post.category.toLowerCase()} from AIIS: ${post.title}`,
+      url: window.location.href,
+    }
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: post.description,
-        url: window.location.href,
-      }).catch(err => console.error('Error sharing:', err))
-    } else {
-      // Fallback for browsers that don't support navigator.share
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied to clipboard!'))
-        .catch(err => console.error('Error copying link:', err))
+    try {
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback to clipboard copy
+        await navigator.clipboard.writeText(window.location.href)
+        toast({
+          title: "Link Copied",
+          description: "The link has been copied to your clipboard! Paste it to share the article.",
+        })
+      }
+    } catch (err) {
+      console.error('Error sharing:', err)
+      toast({
+        title: "Error",
+        description: "Failed to share. Please try again.",
+        variant: "destructive",
+      })
     }
   }
 
@@ -153,8 +170,60 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     // In a real app, you would save this to user preferences/localStorage/database
   }
 
+  const handleCommentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "comment",
+          name: commentForm.name,
+          email: commentForm.email,
+          message: commentForm.comment,
+          postTitle: post.title,
+          postId: post.id,
+        }),
+      })
+
+      if (response.ok) {
+        toast({
+          title: "Comment Submitted",
+          description: "Thank you for commenting, we love hearing your perspectives!",
+        })
+        setCommentForm({ name: "", email: "", comment: "" })
+        setShowThankYou(true)
+        setTimeout(() => setShowThankYou(false), 5000) // Hide thank you message after 5 seconds
+      } else {
+        throw new Error("Failed to submit comment")
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit comment. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div>
+      <head>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description || `Check out this ${post.category.toLowerCase()} from AIIS`} />
+        <meta property="og:image" content={images[0] || "/placeholder.svg"} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description || `Check out this ${post.category.toLowerCase()} from AIIS`} />
+        <meta name="twitter:image" content={images[0] || "/placeholder.svg"} />
+      </head>
+
       {/* Main Content - Grid layout like news detail page */}
       <section className="container px-4 md:px-6 py-16 mx-auto">
         <div className="grid gap-12 lg:grid-cols-3">
@@ -187,7 +256,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               </div>
             </div>
 
-            {/* Media content - Always show image/video/gallery at the top of content */}
+            {/* Media content - Slideshow for multiple images */}
             {hasVideo ? (
               <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
                 <iframe 
@@ -197,49 +266,31 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                   title={post.title}
                 />
               </div>
-            ) : hasGallery ? (
+            ) : (
               <div className="space-y-4">
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                   <Image
-                    src={activeImage}
-                    alt={post.title}
+                    src={images[activeImageIndex] || "/placeholder.svg"}
+                    alt={`${post.title} - Image ${activeImageIndex + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-opacity duration-500"
                     priority
+                    unoptimized={true}
                   />
-                </div>
-                {post.imageSource && (
-                  <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
-                )}
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {[post.image, ...(post.gallery || [])].map((img, index) => (
-                    <button
-                      key={index}
-                      className={`relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0 ${
-                        activeImage === img ? 'ring-2 ring-primary' : ''
-                      }`}
-                      onClick={() => setActiveImage(img)}
-                    >
-                      <Image
-                        src={img}
-                        alt={`Gallery image ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                  {/* Navigation dots */}
+                  {images.length > 1 && (
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                      {images.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`w-2 h-2 rounded-full ${
+                            index === activeImageIndex ? 'bg-white' : 'bg-white/50'
+                          }`}
+                          onClick={() => setActiveImageIndex(index)}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
                 {post.imageSource && (
                   <p className="text-sm text-muted-foreground italic">Image source: {post.imageSource}</p>
@@ -288,8 +339,71 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               )}
             </div>
 
+            {/* Comments Section for Blogs and Articles */}
+            {isBlog && (
+              <div className="pt-8 border-t">
+                <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
+                <p className="text-muted-foreground mb-6">
+                  Share with us your thoughts on this {post.category.toLowerCase()}.
+                </p>
+                {showThankYou && (
+                  <p className="text-green-600 mb-4">
+                    Thank you for commenting, we love hearing your perspectives!
+                  </p>
+                )}
+                <form onSubmit={handleCommentSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={commentForm.name}
+                      onChange={(e) => setCommentForm({ ...commentForm, name: e.target.value })}
+                      required
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={commentForm.email}
+                      onChange={(e) => setCommentForm({ ...commentForm, email: e.target.value })}
+                      required
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="comment" className="block text-sm font-medium mb-1">
+                      Comment
+                    </label>
+                    <Textarea
+                      id="comment"
+                      value={commentForm.comment}
+                      onChange={(e) => setCommentForm({ ...commentForm, comment: e.target.value })}
+                      required
+                      placeholder="Your comment"
+                      rows={5}
+                    />
+                  </div>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Submit Comment"}
+                  </Button>
+                </form>
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-4 pt-8 border-t">
-              <Button variant="outline" className="flex items-center gap-2" onClick={handleShare}>
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2" 
+                onClick={handleShare}
+              >
                 <Share2 className="h-4 w-4" />
                 Share
               </Button>
@@ -321,6 +435,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                             alt={relatedPost.title}
                             fill
                             className="object-cover"
+                            unoptimized={true}
                           />
                         </div>
                         <div>
@@ -387,10 +502,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
               <CardContent className="p-6 space-y-4">
                 <h3 className="text-xl font-bold">Subscribe to Our Newsletter</h3>
                 <p>Stay updated with the latest news and events from AIIS.</p>
-                <form className="space-y-4">
-                  <input type="email" placeholder="Your email address" className="w-full p-2 rounded-md text-black" />
-                  <Button className="w-full bg-white text-primary hover:bg-white/90">Subscribe</Button>
-                </form>
+                <NewsletterForm />
               </CardContent>
             </Card>
           </div>

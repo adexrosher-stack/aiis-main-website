@@ -6,11 +6,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, MapPin, Search, Filter, ArrowRight, User } from "lucide-react"
+import { Calendar, Clock, MapPin, Search, ArrowRight, User } from "lucide-react"
 import { upcomingEvents, newsItems } from "@/lib/events-data"
-import { blogPosts } from "@/lib/blog-data" // If this exists
+import { blogPosts } from "@/lib/blog-data"
 
 export default function EventsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -18,19 +18,19 @@ export default function EventsPage() {
 
   // Combine all posts for filtering
   const allPosts = [
-    ...(Array.isArray(upcomingEvents) ? upcomingEvents : []), 
-    ...(Array.isArray(newsItems) ? newsItems : []), 
+    ...(Array.isArray(upcomingEvents) ? upcomingEvents : []),
+    ...(Array.isArray(newsItems) ? newsItems : []),
     ...(Array.isArray(blogPosts) ? blogPosts : [])
   ]
 
   // Filter posts based on search query and category filter
   const filteredPosts = allPosts.filter((post) => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          post.description.toLowerCase().includes(searchQuery.toLowerCase())
     
     // Enhanced filtering logic for the four categories
-    const matchesFilter = 
-      filter === "all" || 
+    const matchesFilter =
+      filter === "all" ||
       (filter === "blogs" && (post.category === "Blog" || post.category === "Article")) ||
       (filter === "news" && post.category === "News") ||
       (filter === "events" && post.category === "Event")
@@ -40,12 +40,22 @@ export default function EventsPage() {
 
   return (
     <div>
-      {/* Hero Section - No image background */}
-      <section className="relative w-full py-20 md:py-24 bg-slate-900">
+      {/* Hero Section - Slideshow Background */}
+      <section className="relative w-full py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+            <Image
+            src="/images/programs/PhD.jpeg"
+            alt="Contact"
+            fill
+            className="object-cover brightness-[0.6]"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/60 z-10"></div>
         <div className="container px-4 md:px-6 mx-auto relative z-20">
           <div className="max-w-3xl mx-auto text-center space-y-6 text-white">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Events & News</h1>
-            <p className="text-xl text-gray-200">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Knowledge & Events</h1>
+            <p className="text-2xl text-gray-200">
               Stay updated with the latest events, news, and announcements from AIIS
             </p>
           </div>
@@ -57,7 +67,7 @@ export default function EventsPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">Latest Updates</h2>
-            <p className="text-muted-foreground mt-2">Discover what's happening at AIIS</p>
+            <p className="text-muted-foreground mt-2">Discover what&apos;s happening at AIIS</p>
           </div>
           <div className="relative w-full md:w-auto">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -83,7 +93,7 @@ export default function EventsPage() {
           </Tabs>
         </div>
 
-        {/* Results Count */}
+  {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">Showing {filteredPosts.length} results</p>
         </div>
@@ -92,7 +102,9 @@ export default function EventsPage() {
           {filteredPosts.map((post) => (
             <Card key={post.id} className="overflow-hidden">
               <div className="relative h-48">
-                <Image src={post.image} alt={post.title} fill className="object-cover" />
+                <Image 
+                src={post.image} 
+                alt={post.title} fill className="object-cover" />
                 <div className="absolute top-2 right-2">
                   <Badge variant={post.category === "Event" ? "default" : post.category === "News" ? "secondary" : "outline"}>
                     {post.category}

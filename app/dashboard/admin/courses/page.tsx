@@ -88,7 +88,7 @@ interface Course {
 }
 
 export default function CoursesPage() {
-  const [departments, setDepartments] = useState<Department[]>([
+  const [departments] = useState<Department[]>([
     { id: "dept-001", name: "Biblical Studies", code: "BIB" },
     { id: "dept-002", name: "Systematic Theology", code: "THEO" },
     { id: "dept-003", name: "Church History", code: "HIST" },

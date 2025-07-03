@@ -23,7 +23,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0a2aa8", // Royal blue from logo
+          DEFAULT: "#1c3d8d", // Royal blue from logo
           foreground: "hsl(0, 0%, 100%)",
           50: "#eef1ff",
           100: "#dfe3ff",

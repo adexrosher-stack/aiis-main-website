@@ -1,4 +1,3 @@
-// Define the types for our data
 export interface Event {
   id: string;
   title: string;
@@ -27,61 +26,57 @@ export interface NewsItem {
   category: string;
   content?: string;
   imageSource?: string;
+  gallery?: string[]; // Added gallery field to NewsItem
   status?: "draft" | "published" | "past";
 }
 
 // Sample upcoming events data
 export const upcomingEvents: Event[] = [
-  {
-    id: "event-001",
-    title: "Theological Symposium 2023",
-    date: "2023-12-15",
-    time: "9:00 AM - 4:00 PM",
-    location: "AIIS Main Campus, Addis Ababa",
-    description: "Join us for a day of theological discussions and presentations by leading scholars in the field.",
-    image: "/placeholder.svg?height=400&width=800",
-    category: "Event",
-    content: `
-      <div class="article-content">
-        <h2 class="text-2xl font-bold mb-4">About the Symposium</h2>
-        <p class="mb-6">The AIIS Theological Symposium brings together scholars, students, and religious leaders to explore contemporary theological issues in the African context.</p>
-        
-        <h2 class="text-2xl font-bold mb-4">Speakers</h2>
-        <ul class="mb-6 space-y-2">
-          <li>Dr. Esckinder Taddesse - "Contextual Theology in Ethiopia"</li>
-          <li>Dr. Endale Gebremeskel - "Biblical Interpretation in African Churches"</li>
-          <li>Pr. Tsadiku Abdo - "Pastoral Leadership Challenges"</li>
-        </ul>
-        
-        <h2 class="text-2xl font-bold mb-4">Schedule</h2>
-        <p class="mb-6">
-          <strong>9:00 AM</strong> - Opening Session<br>
-          <strong>10:30 AM</strong> - Morning Presentations<br>
-          <strong>12:00 PM</strong> - Lunch Break<br>
-          <strong>1:30 PM</strong> - Afternoon Presentations<br>
-          <strong>3:00 PM</strong> - Panel Discussion<br>
-          <strong>4:00 PM</strong> - Closing Remarks
-        </p>
-        
-        <h2 class="text-2xl font-bold mb-4">Registration</h2>
-        <p class="mb-6">Registration is required for all attendees. Please contact the AIIS office to register or use our online registration form.</p>
-      </div>
-    `,
-    status: "published"
-  },
-  
+
 ];
 
 // Sample news items data
 export const newsItems: NewsItem[] = [
+  {
+    id: "news-003",
+    title: "PAM-BAM Mission Africa Summit Held in Addis Ababa, Ethiopia",
+    date: "June 19 - 23, 2025",
+    author: "AIIS Communications Team",
+    description: "The African Institute for International Studies (AIIS) hosted the PAM-BAM Mission Africa Summit in Addis Ababa, Ethiopia, focusing on integrating business, profession, and mission for global outreach.",
+    image: "/images/events/summit-1.jpg",
+    gallery: [
+
+      "/images/events/summit-2.jpg",
+      "/images/events/summit-3.jpg",
+      "/images/events/summit-4.jpg",
+      "/images/events/summit-5.jpg",
+      "/images/events/summit-6.jpg",
+    ],
+    category: "Event",
+    imageSource: "AIIS Library",
+    content: `
+      <div class="article-content">
+        <h2 class="text-2xl font-bold mb-4">PAM-BAM Mission Africa Summit</h2>
+        <p class="mb-4">From June 19-23, 2025, the African Institute for International Studies (AIIS), in collaboration with mission institutes such as GONEANAME, Nectar Leadership Institute, and Global Connections for Advancement (GCA), hosted the PAM-BAM Mission Africa Summit in Addis Ababa, Ethiopia.</p>
+        <p class="mb-4">Ethiopia, one of the oldest Christian nations with a history of nearly 2,000 years, has a rich spiritual heritage. However, the nation has faced challenges in actively sharing the Gospel with its neighbors and the global community. The summit aimed to address this by exploring how businesses and professions can be integrated with mission work to strengthen Ethiopia's role in global missions.</p>
+        <p class="mb-4">The event brought together participants from Addis Ababa and featured distinguished trainers from the global community, including Professor Andrew B. Kim, head of GCA, Professor Helen Cho from the United States, Dr. Jae J. Jang from the Philippines, Dr. Lipok Ao from Nagaland, India, and Professor Tiyee Allison from Abidjan, West Africa.</p>
+        <p class="mb-6">The summit focused on strategies to combine business, professional skills, and mission efforts, fostering a renewed commitment to global outreach from Ethiopia.</p>
+      </div>
+    `,
+    status: "published"
+  },
   {
     id: "news-001",
     title: "New Students Registration is Open",
     date: "April 30, 2025",
     author: "AIIS Communications Team",
     description: "AIIS is now accepting new students for its programs. Interested applicants can contact the school for more information.",
-    image: "images/programs/Registration.jpg",
+    image: "/images/programs/Registration.jpg",
+    gallery: [
+
+    ],
     category: "News",
+    imageSource: "AIIS Library",
     content: `
       <div class="article-content">
         <h2 class="text-2xl font-bold mb-4">Admissions Open</h2>
@@ -89,16 +84,19 @@ export const newsItems: NewsItem[] = [
       </div>
     `,
     status: "published"
-},
-{
-  id: "news-003",
-  title: "New Program Launched",
-  date: "April 30, 2025",
-  author: "AIIS Academic Affairs Office",
-  description: "AIIS is proud to announce the launch of a new Master of Arts in Development and Theological Studies.",
-  image: "images/programs/New program.jpg",
-  category: "News",
-  content: `
+  },
+  {
+    id: "news-002",
+    title: "New Program Launched",
+    date: "April 30, 2025",
+    author: "AIIS Academic Affairs Office",
+    description: "AIIS is proud to announce the launch of a new Master of Arts in Development and Theological Studies.",
+    image: "/images/programs/New program.jpg",
+    gallery: [
+    ],
+    category: "News",
+    imageSource: "AIIS Library",
+    content: `
       <div class="article-content">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
@@ -144,8 +142,8 @@ export const newsItems: NewsItem[] = [
         <p class="mb-6">For more information about the program and application process, please contact the AIIS Admissions Office or visit the Course Handbook for detailed submission requirements and deadlines.</p>
       </div>
     `,
-  status: "published"
-}
+    status: "published"
+  }
 ];
 
 // Import blog posts from blog-data.ts

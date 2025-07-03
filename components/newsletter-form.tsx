@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,18 +32,33 @@ export function NewsletterForm() {
     }
 
     setIsSubmitting(true)
+    setErrorMessage("")
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "newsletter",
+          email,
+        }),
+      })
+
+      if (response.ok) {
+        setStatus("success")
+        setEmail("")
+        setTimeout(() => setStatus("idle"), 5000) // Reset success message after 5 seconds
+      } else {
+        const errorData = await response.json()
+        setStatus("error")
+        setErrorMessage(errorData.error || "Failed to subscribe. Please try again.")
+      }
+    } catch (error) {
+      setStatus("error")
+      setErrorMessage("An error occurred. Please try again later.")
+    } finally {
       setIsSubmitting(false)
-      setStatus("success")
-      setEmail("")
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setStatus("idle")
-      }, 5000)
-    }, 1500)
+    }
   }
 
   return (
@@ -86,4 +99,3 @@ export function NewsletterForm() {
     </div>
   )
 }
-

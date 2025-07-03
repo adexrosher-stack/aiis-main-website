@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -14,7 +14,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { CheckCircle, CircleDashed, ArrowRight, ArrowLeft } from "lucide-react"
 
 export function EnhancedApplicationForm() {
+  const router = useRouter()
   const [currentStep, setCurrentStep] = useState(1)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionSuccess, setSubmissionSuccess] = useState(false)
   const [formData, setFormData] = useState({
     personalInfo: {
       firstName: "",
@@ -35,6 +38,7 @@ export function EnhancedApplicationForm() {
     },
     academicInfo: {
       program: "",
+      Campus: "",
       startDate: "",
       studyMode: "",
       previousEducation: [
@@ -66,6 +70,15 @@ export function EnhancedApplicationForm() {
       infoCorrect: false,
     },
   })
+
+  useEffect(() => {
+    if (submissionSuccess) {
+      const timer = setTimeout(() => {
+        router.push("/")
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [submissionSuccess, router])
 
   const updatePersonalInfo = (field: string, value: string) => {
     setFormData((prev) => ({
@@ -202,9 +215,9 @@ export function EnhancedApplicationForm() {
   }
 
   const isAcademicInfoComplete = () => {
-    const { program, startDate, studyMode } = formData.academicInfo
+    const { program, Campus, startDate, studyMode } = formData.academicInfo
     const firstEducation = formData.academicInfo.previousEducation[0]
-    return program && startDate && studyMode && firstEducation.institution && firstEducation.degree
+    return program && Campus && startDate && studyMode && firstEducation.institution && firstEducation.degree
   }
 
   const isBackgroundComplete = () => {
@@ -220,10 +233,27 @@ export function EnhancedApplicationForm() {
     return formData.agreement.termsAgreed && formData.agreement.infoCorrect
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real application, you would submit the form data to your backend
-    alert("Application submitted successfully! We will contact you soon.")
+    if (isSubmitting || submissionSuccess) return
+    setIsSubmitting(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "admission", ...formData }),
+      })
+      if (response.ok) {
+        setSubmissionSuccess(true)
+      } else {
+        const errorData = await response.json()
+        alert(`Failed to submit application: ${errorData.error || "Please try again."}`)
+        setIsSubmitting(false)
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again later.")
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -311,6 +341,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.firstName}
                       onChange={(e) => updatePersonalInfo("firstName", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -322,6 +353,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.lastName}
                       onChange={(e) => updatePersonalInfo("lastName", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -334,6 +366,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.email}
                       onChange={(e) => updatePersonalInfo("email", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -345,6 +378,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.phone}
                       onChange={(e) => updatePersonalInfo("phone", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -357,6 +391,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.dateOfBirth}
                       onChange={(e) => updatePersonalInfo("dateOfBirth", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -367,6 +402,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.gender}
                       onValueChange={(value) => updatePersonalInfo("gender", value)}
                       className="flex gap-4"
+                      disabled={submissionSuccess}
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="male" id="male" />
@@ -387,6 +423,7 @@ export function EnhancedApplicationForm() {
                       value={formData.personalInfo.nationality}
                       onChange={(e) => updatePersonalInfo("nationality", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                 </div>
@@ -403,6 +440,7 @@ export function EnhancedApplicationForm() {
                       id="address"
                       value={formData.personalInfo.address}
                       onChange={(e) => updatePersonalInfo("address", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -413,6 +451,7 @@ export function EnhancedApplicationForm() {
                       id="city"
                       value={formData.personalInfo.city}
                       onChange={(e) => updatePersonalInfo("city", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -423,6 +462,7 @@ export function EnhancedApplicationForm() {
                       id="country"
                       value={formData.personalInfo.country}
                       onChange={(e) => updatePersonalInfo("country", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                 </div>
@@ -439,6 +479,7 @@ export function EnhancedApplicationForm() {
                       id="emergencyName"
                       value={formData.personalInfo.emergencyContact.name}
                       onChange={(e) => updateEmergencyContact("name", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -449,6 +490,7 @@ export function EnhancedApplicationForm() {
                       id="emergencyRelationship"
                       value={formData.personalInfo.emergencyContact.relationship}
                       onChange={(e) => updateEmergencyContact("relationship", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                   <div className="space-y-2">
@@ -459,6 +501,7 @@ export function EnhancedApplicationForm() {
                       id="emergencyPhone"
                       value={formData.personalInfo.emergencyContact.phone}
                       onChange={(e) => updateEmergencyContact("phone", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                 </div>
@@ -478,6 +521,7 @@ export function EnhancedApplicationForm() {
                     <Select
                       value={formData.academicInfo.program}
                       onValueChange={(value) => updateAcademicInfo("program", value)}
+                      disabled={submissionSuccess}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a program" />
@@ -494,24 +538,46 @@ export function EnhancedApplicationForm() {
                       </SelectContent>
                     </Select>
                   </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="startDate" className="font-medium">
+                    <Label htmlFor="StartDate" className="font-medium">
                       Desired Start Date <span className="text-red-500">*</span>
                     </Label>
                     <Select
                       value={formData.academicInfo.startDate}
-                      onValueChange={(value) => updateAcademicInfo("startDate", value)}
+                      onValueChange={(value) => updateAcademicInfo("startDate", value)} // Fixed field name
+                      disabled={submissionSuccess}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a start date" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="fall2023">Fall 2023</SelectItem>
-                        <SelectItem value="spring2024">Spring 2024</SelectItem>
-                        <SelectItem value="fall2024">Fall 2024</SelectItem>
+                        <SelectItem value="Anytime">Ready to start anytime</SelectItem>
+                        <SelectItem value="FutureConsideration">Pre-placement Registration for future consideration</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="Campus" className="font-medium">
+                      Desired Campus <span className="text-red-500">*</span>
+                    </Label>
+                    <Select
+                      value={formData.academicInfo.Campus}
+                      onValueChange={(value) => updateAcademicInfo("Campus", value)}
+                      disabled={submissionSuccess}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a Campus" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Addis Ababa Campus">Addis Ababa Campus</SelectItem>
+                        <SelectItem value="Adama Campus">Adama Campus</SelectItem>
+                        <SelectItem value="Mekelle Campus">Mekelle Campus</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   <div className="space-y-2">
                     <Label className="font-medium">
                       Study Mode <span className="text-red-500">*</span>
@@ -520,6 +586,7 @@ export function EnhancedApplicationForm() {
                       value={formData.academicInfo.studyMode}
                       onValueChange={(value) => updateAcademicInfo("studyMode", value)}
                       className="flex gap-4"
+                      disabled={submissionSuccess}
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="fulltime" id="fulltime" />
@@ -541,7 +608,13 @@ export function EnhancedApplicationForm() {
                     <div className="flex justify-between items-center mb-4">
                       <h5 className="font-medium">Education #{index + 1}</h5>
                       {index > 0 && (
-                        <Button type="button" variant="outline" size="sm" onClick={() => removeEducation(index)}>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => removeEducation(index)}
+                          disabled={submissionSuccess}
+                        >
                           Remove
                         </Button>
                       )}
@@ -556,6 +629,7 @@ export function EnhancedApplicationForm() {
                           value={education.institution}
                           onChange={(e) => updatePreviousEducation(index, "institution", e.target.value)}
                           required={index === 0}
+                          disabled={submissionSuccess}
                         />
                       </div>
                       <div className="space-y-2">
@@ -567,6 +641,7 @@ export function EnhancedApplicationForm() {
                           value={education.degree}
                           onChange={(e) => updatePreviousEducation(index, "degree", e.target.value)}
                           required={index === 0}
+                          disabled={submissionSuccess}
                         />
                       </div>
                       <div className="space-y-2">
@@ -577,6 +652,7 @@ export function EnhancedApplicationForm() {
                           id={`field-${index}`}
                           value={education.fieldOfStudy}
                           onChange={(e) => updatePreviousEducation(index, "fieldOfStudy", e.target.value)}
+                          disabled={submissionSuccess}
                         />
                       </div>
                       <div className="space-y-2">
@@ -587,6 +663,7 @@ export function EnhancedApplicationForm() {
                           id={`year-${index}`}
                           value={education.graduationYear}
                           onChange={(e) => updatePreviousEducation(index, "graduationYear", e.target.value)}
+                          disabled={submissionSuccess}
                         />
                       </div>
                       <div className="space-y-2">
@@ -597,12 +674,19 @@ export function EnhancedApplicationForm() {
                           id={`gpa-${index}`}
                           value={education.gpa}
                           onChange={(e) => updatePreviousEducation(index, "gpa", e.target.value)}
+                          disabled={submissionSuccess}
                         />
                       </div>
                     </div>
                   </div>
                 ))}
-                <Button type="button" variant="outline" onClick={addEducation} className="mt-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={addEducation}
+                  className="mt-2"
+                  disabled={submissionSuccess}
+                >
                   + Add Another Education
                 </Button>
               </div>
@@ -628,6 +712,7 @@ export function EnhancedApplicationForm() {
                       onChange={(e) => updateBackground("statement", e.target.value)}
                       className="min-h-[200px]"
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
 
@@ -644,6 +729,7 @@ export function EnhancedApplicationForm() {
                       onChange={(e) => updateBackground("ministry", e.target.value)}
                       className="min-h-[150px]"
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
                 </div>
@@ -665,6 +751,7 @@ export function EnhancedApplicationForm() {
                       value={formData.background.referenceChurch}
                       onChange={(e) => updateBackground("referenceChurch", e.target.value)}
                       required
+                      disabled={submissionSuccess}
                     />
                   </div>
 
@@ -674,6 +761,7 @@ export function EnhancedApplicationForm() {
                       placeholder="Full name, position, email, and phone number"
                       value={formData.background.referenceAcademic}
                       onChange={(e) => updateBackground("referenceAcademic", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
 
@@ -683,6 +771,7 @@ export function EnhancedApplicationForm() {
                       placeholder="Full name, relationship, email, and phone number"
                       value={formData.background.referencePersonal}
                       onChange={(e) => updateBackground("referencePersonal", e.target.value)}
+                      disabled={submissionSuccess}
                     />
                   </div>
                 </div>
@@ -706,6 +795,7 @@ export function EnhancedApplicationForm() {
                       id="transcripts"
                       checked={formData.documents.transcripts}
                       onCheckedChange={(checked) => updateDocuments("transcripts", checked as boolean)}
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="transcripts" className="font-medium">
@@ -720,6 +810,7 @@ export function EnhancedApplicationForm() {
                       id="recommendations"
                       checked={formData.documents.recommendations}
                       onCheckedChange={(checked) => updateDocuments("recommendations", checked as boolean)}
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="recommendations" className="font-medium">
@@ -736,6 +827,7 @@ export function EnhancedApplicationForm() {
                       id="statement"
                       checked={formData.documents.statement}
                       onCheckedChange={(checked) => updateDocuments("statement", checked as boolean)}
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="statement" className="font-medium">
@@ -752,6 +844,7 @@ export function EnhancedApplicationForm() {
                       id="identification"
                       checked={formData.documents.identification}
                       onCheckedChange={(checked) => updateDocuments("identification", checked as boolean)}
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="identification" className="font-medium">
@@ -766,6 +859,7 @@ export function EnhancedApplicationForm() {
                       id="photo"
                       checked={formData.documents.photo}
                       onCheckedChange={(checked) => updateDocuments("photo", checked as boolean)}
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="photo" className="font-medium">
@@ -868,13 +962,24 @@ export function EnhancedApplicationForm() {
                       <div>
                         <p className="text-sm text-muted-foreground">Start Date</p>
                         <p>
-                          {formData.academicInfo.startDate === "fall2023"
-                            ? "Fall 2023"
-                            : formData.academicInfo.startDate === "spring2024"
-                              ? "Spring 2024"
-                              : formData.academicInfo.startDate === "fall2024"
-                                ? "Fall 2024"
-                                : ""}
+                          {formData.academicInfo.startDate === "Anytime"
+                            ? "Ready to start anytime"
+                            : formData.academicInfo.startDate === "FutureConsideration"
+                              ? "Pre-placement registration for future consideration"
+                              : ""}
+
+                       </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Campus</p>
+                        <p>
+                          {formData.academicInfo.Campus === "AddisAbaba"
+                            ? "Addis Ababa Campus"
+                            : formData.academicInfo.Campus === "Adama"
+                              ? "Adama Campus"
+                            : formData.academicInfo.Campus === "Mekelle"
+                              ? "Mekelle Campus"
+                              : ""}
                         </p>
                       </div>
                       <div>
@@ -938,6 +1043,7 @@ export function EnhancedApplicationForm() {
                       checked={formData.agreement.termsAgreed}
                       onCheckedChange={(checked) => updateAgreement("termsAgreed", checked as boolean)}
                       required
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="termsAgreed" className="font-medium">
@@ -956,6 +1062,7 @@ export function EnhancedApplicationForm() {
                       checked={formData.agreement.infoCorrect}
                       onCheckedChange={(checked) => updateAgreement("infoCorrect", checked as boolean)}
                       required
+                      disabled={submissionSuccess}
                     />
                     <div>
                       <Label htmlFor="infoCorrect" className="font-medium">
@@ -977,7 +1084,7 @@ export function EnhancedApplicationForm() {
               type="button"
               variant="outline"
               onClick={prevStep}
-              disabled={currentStep === 1}
+              disabled={currentStep === 1 || submissionSuccess}
               className="flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" /> Previous
@@ -991,21 +1098,49 @@ export function EnhancedApplicationForm() {
                   (currentStep === 1 && !isPersonalInfoComplete()) ||
                   (currentStep === 2 && !isAcademicInfoComplete()) ||
                   (currentStep === 3 && !isBackgroundComplete()) ||
-                  (currentStep === 4 && !isDocumentsComplete())
+                  (currentStep === 4 && !isDocumentsComplete()) ||
+                  submissionSuccess
                 }
                 className="flex items-center gap-2"
               >
                 Next <ArrowRight className="h-4 w-4" />
               </Button>
             ) : (
-              <Button type="submit" disabled={!isAgreementComplete()} className="bg-primary hover:bg-primary/90">
-                Submit Application
+              <Button
+                type="submit"
+                disabled={!isAgreementComplete() || isSubmitting || submissionSuccess}
+                className="bg-primary hover:bg-primary/90 flex items-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <CircleDashed className="h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
               </Button>
             )}
           </div>
         </form>
+
+        {submissionSuccess && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-green-50 dark:bg-green-900 border border-green-500 p-6 rounded-lg max-w-md">
+              <h3 className="text-green-700 dark:text-green-300 flex items-center gap-2 text-lg font-semibold">
+                <CheckCircle className="h-6 w-6" />
+                Application Submitted Successfully!
+              </h3>
+              <p className="text-green-600 dark:text-green-200 mt-2">
+                Thank you for your application to the African Institute for International Studies. We have received your
+                submission, and our admissions team will review it. You will be contacted soon with further details.
+                <br />
+                <span className="font-medium">You will be redirected to the programs page shortly...</span>
+              </p>
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>
   )
 }
-

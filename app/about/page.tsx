@@ -1,10 +1,9 @@
-
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CheckCircle, Users, Award, BookOpen, GraduationCap, Building, MapPin } from "lucide-react"
+import { CheckCircle, Award, GraduationCap, Building, MapPin } from "lucide-react"
 import { Lightbulb, UserCheck, Heart, Globe } from "lucide-react"
 
 export default function AboutPage() {
@@ -65,7 +64,7 @@ export default function AboutPage() {
                     </div>
                     <p className="text-lg text-muted-foreground">
                       AIIS exists for high-quality learning, educational availability, and transformative education with
-                      contextual relevance. We are committed to providing education at different levels through a variety of
+                      contextual relevance. We are committed to providing education in different levels through variety of
                       programs adaptable to the diverse needs of students.
                     </p>
                     <p className="text-lg text-muted-foreground">
@@ -271,7 +270,7 @@ export default function AboutPage() {
             <section id="director-message" className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight text-center">
-                  The Director's Message
+                  The Principal&apos;s Message
                 </h2>
                 <div className="w-20 h-1 bg-primary mx-auto"></div>
               </div>
@@ -282,7 +281,7 @@ export default function AboutPage() {
                       <div className="relative h-full min-h-[300px] md:min-h-full">
                         <Image
                           src="/images/programs/The Director.jpeg"
-                          alt="AIIS Director"
+                          alt="AIIS Principal"
                           fill
                           className="object-cover"
                         />
@@ -299,7 +298,7 @@ export default function AboutPage() {
                           <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                         </svg>
                         <p className="text-lg italic">
-                          Have you been looking for a place to expand your knowledge of Theology and Arts? AIIS specializes in contextualization, rooted in African theological frameworks. We offer accredited degrees at the Bachelor's and Master's levels, focusing on both quality and flexibility to ensure that you receive the best education in a way that suits you.
+                          Have you been looking for a place to expand your knowledge of Theology and Arts? AIIS specializes in contextualization, rooted in African theological frameworks. We offer accredited degrees at the Bachelor&apos;s and Master&apos;s levels, focusing on both quality and flexibility to ensure that you receive the best education in a way that suits you.
                         </p>
                         <p className="text-lg italic">
                           AIIS is accredited by Faith Theological Seminary (Nagaland, India) and collaborates with the African Network of Theological Schools (ANTS), which operates in West, Central, South, and East Africa. Our commitment is to provide theological education that is academically sound, contextually relevant, and widely accessible.
@@ -318,7 +317,7 @@ export default function AboutPage() {
                               Dr. Esckinder Taddesse
                             </h4>
                             <p className="text-muted-foreground">
-                              Director, AIIS
+                              Principal, AIIS
                             </p>
                           </div>
                         </div>
@@ -545,7 +544,7 @@ export default function AboutPage() {
                 <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow">
                   <Building className="h-10 w-10 text-primary" />
                   <div>
-                    <h4 className="font-semibold">African Network of Theological Schools (ANTS) - Côte d'Ivoire Center</h4>
+                    <h4 className="font-semibold">African Network of Theological Schools (ANTS) - Côte d&apos;Ivoire Center</h4>
                     <p className="text-sm text-muted-foreground">West & Central Africa</p>
                   </div>
                 </div>
@@ -574,7 +573,7 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-md">
-                  <Link href="/admissions/apply">Apply Now</Link>
+                  <Link href="/admissions">Apply Now</Link>
                 </Button>
                 <Button
                   asChild
@@ -600,4 +599,3 @@ export default function AboutPage() {
     </div>
   )
 }
-``
