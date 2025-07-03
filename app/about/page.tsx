@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle, Award, GraduationCap, Building, MapPin } from "lucide-react"
 import { Lightbulb, UserCheck, Heart, Globe } from "lucide-react"
+import logo from '@/asset/Logo 2.jpg'
 
 export default function AboutPage() {
   return (
@@ -55,7 +56,7 @@ export default function AboutPage() {
               <div className="container px-4 md:px-6 mx-auto">
                 <div className="grid gap-10 lg:grid-cols-2 items-center">
                   <div className="relative aspect-video overflow-hidden rounded-xl">
-                    <Image src="/images/programs/logo 2.jpg" alt="AIIS Campus" fill className="object-contain" />
+                    <Image src={logo} alt="AIIS Campus" fill className="object-contain" />
                   </div>
                   <div className="space-y-6">
                     <div>
