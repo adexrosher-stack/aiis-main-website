@@ -210,13 +210,22 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     }
   }
 
+  // Add state for current URL
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
   return (
     <div>
       <head>
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description || `Check out this ${post.category.toLowerCase()} from AIIS`} />
         <meta property="og:image" content={images[0] || "/placeholder.svg"} />
-        <meta property="og:url" content={window.location.href} />
+        <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
