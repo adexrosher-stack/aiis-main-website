@@ -152,10 +152,10 @@ export default function Header() {
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <ListItem href="/academics#undergraduate" title="Undergraduate Programs">
-                        Bachelor's degrees and diplomas
+                        Bachelor&apos;s degrees and diplomas
                       </ListItem>
                       <ListItem href="/academics#graduate" title="Graduate Programs">
-                        Master's level education
+                        Master&apos;s level education
                       </ListItem>
                       <ListItem href="/academics#doctoral" title="Doctoral Programs">
                         PhD and advanced research degrees

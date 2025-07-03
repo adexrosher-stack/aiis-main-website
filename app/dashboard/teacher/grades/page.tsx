@@ -229,7 +229,7 @@ export default function TeacherGradesPage() {
 
   // State for selected course
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(courses[0])
-  const [selectedGradeItem, setSelectedGradeItem] = useState<GradeItem | null>(null)
+  const [ ] = useState<GradeItem | null>(null)
   const [isAddGradeItemDialogOpen, setIsAddGradeItemDialogOpen] = useState(false)
   const [newGradeItem, setNewGradeItem] = useState<Omit<GradeItem, "id">>({
     name: "",
@@ -773,7 +773,7 @@ export default function TeacherGradesPage() {
                         <div className="space-y-4">
                           <div>
                             <div className="flex justify-between text-sm mb-1">
-                              <span>Student's Score</span>
+                              <span>Student&apos;s Score</span>
                               <span>{calculateFinalGrade(selectedStudent.id).score}%</span>
                             </div>
                             <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">

@@ -1429,9 +1429,16 @@ facts given above.</p>
 // Combine all posts for lookup
 const allPosts = [...upcomingEvents, ...newsItems, ...blogPosts]
 
-export default function EventPage({ params }: { params: { id: string } }) {
+type PageProps = {
+  params: Promise<{ id: string }>
+}
+
+export default async function EventPage({ params }: PageProps) {
+  // Await the params to resolve the Promise
+  const { id } = await params
+  
   // Find the post with the matching ID
-  const post = allPosts.find(post => post.id === params.id)
+  const post = allPosts.find(post => post.id === id)
   
   // If no post is found, return 404
   if (!post) {
@@ -1447,4 +1454,3 @@ export function generateStaticParams() {
     id: String(post.id),
   }))
 }
-

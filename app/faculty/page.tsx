@@ -20,6 +20,7 @@ interface BoardMember {
 }
 
 export default function FacultyPage() {
+  
   const facultyMembers: FacultyMember[] = [
     {
       id: "dr-esckinder-taddesse",

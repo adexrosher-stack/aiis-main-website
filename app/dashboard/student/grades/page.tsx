@@ -31,7 +31,7 @@ interface GradeItem {
 }
 
 export default function StudentGradesPage() {
-  const [courses, setCourses] = useState<Course[]>([
+  const [courses] = useState<Course[]>([
     {
       id: "theo101",
       code: "THEO101",
@@ -109,7 +109,7 @@ export default function StudentGradesPage() {
     },
   ])
 
-  const [gradeItems, setGradeItems] = useState<GradeItem[]>([
+  const [gradeItems] = useState<GradeItem[]>([
     {
       id: "item1",
       courseId: "theo203",

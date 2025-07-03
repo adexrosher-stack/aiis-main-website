@@ -4,9 +4,8 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User, Play, ExternalLink } from "lucide-react"
+import { Card, CardContent, } from "@/components/ui/card"
+import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User, } from "lucide-react"
 import { Event, NewsItem } from "@/lib/events-data"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -28,7 +27,6 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
   
   // Determine content type
   const isEvent = post.category === "Event"
-  const isNews = post.category === "News"
   const isBlog = post.category === "Blog" || post.category === "Article"
   const hasVideo = !!post.videoUrl
   const images = [post.image, ...(post.gallery || [])].filter(Boolean)
@@ -100,7 +98,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
           {commonIntro}
           <h2>Event Details</h2>
           <p>
-            We're excited to host this event as part of our commitment to creating enriching 
+            We&apos;re excited to host this event as part of our commitment to creating enriching 
             experiences for our community. This gathering provides an opportunity for learning, 
             networking, and spiritual growth.
           </p>
@@ -138,12 +136,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     .slice(0, 3)
   
   // Get upcoming events (if not viewing an event)
-  const upcomingEvents = !isEvent 
-    ? allPosts
-        .filter(p => p.category === "Event" && new Date(p.date) > new Date())
-        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-        .slice(0, 3)
-    : []
+ 
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href)

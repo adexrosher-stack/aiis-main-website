@@ -43,7 +43,7 @@ interface Assignment {
 }
 
 export default function StudentDashboard() {
-  const [courses, setCourses] = useState<Course[]>([
+  const [courses] = useState<Course[]>([
     {
       id: "theo101",
       code: "THEO101",
@@ -82,7 +82,7 @@ export default function StudentDashboard() {
     },
   ])
 
-  const [assignments, setAssignments] = useState<Assignment[]>([
+  const [assignments] = useState<Assignment[]>([
     {
       id: "assign1",
       title: "Theological Reflection Paper",

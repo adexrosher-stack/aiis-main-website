@@ -1,18 +1,29 @@
+import { newsItems } from "@/lib/events-data";
+import { notFound } from "next/navigation";
+
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
 export function generateStaticParams() {
-  // Return an array of objects with the id parameter
-  return [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    // Add all possible news IDs here
-  ];
+  return newsItems.map((item) => ({
+    id: String(item.id),
+  }));
 }
 
-export default function NewsArticlePage({ params }: { params: { id: string } }) {
+export default async function NewsArticlePage({ params }: PageProps) {
+  const { id } = await params;
+  const article = newsItems.find((item) => item.id === id);
+
+  if (!article) {
+    notFound();
+  }
+
   return (
     <div>
-      <h1>News Article {params.id}</h1>
-      {/* Your individual news article content here */}
+      <h1>{article.title}</h1>
+      <p>{article.description}</p>
+      {/* Render other article details */}
     </div>
   );
 }

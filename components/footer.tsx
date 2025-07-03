@@ -81,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/academics#graduate" className="text-white/80 hover:text-white transition-colors">
-                  Master's Programs
+                  Master&apos;s Programs
                 </Link>
               </li>
               <li>

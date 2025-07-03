@@ -1,14 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, MapPin, Search, Filter, ArrowRight, User } from "lucide-react"
+import { Calendar, Clock, MapPin, Search, ArrowRight, User } from "lucide-react"
 import { upcomingEvents, newsItems } from "@/lib/events-data"
 import { blogPosts } from "@/lib/blog-data"
 
@@ -67,7 +67,7 @@ export default function EventsPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">Latest Updates</h2>
-            <p className="text-muted-foreground mt-2">Discover what's happening at AIIS</p>
+            <p className="text-muted-foreground mt-2">Discover what&apos;s happening at AIIS</p>
           </div>
           <div className="relative w-full md:w-auto">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -168,53 +168,3 @@ export default function EventsPage() {
   )
 }
 
-// Slideshow component for automatic image rotation
-function Slideshow({ images }: { images: string[] }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
-  useEffect(() => {
-    if (images.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-  }, [images.length])
-
-  if (images.length === 0) {
-    return (
-      <div className="relative h-48">
-        <Image 
-          src="/placeholder.svg"
-          alt="Placeholder"
-          fill
-          className="object-cover"
-        />
-      </div>
-    )
-  }
-
-  return (
-    <div className="relative h-48">
-      <Image
-        src={images[currentImageIndex]}
-        alt={`Slide ${currentImageIndex + 1}`}
-        fill
-        className="object-cover transition-opacity duration-500"
-      />
-      {images.length > 1 && (
-        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              className={`w-2 h-2 rounded-full ${
-                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-              }`}
-              onClick={() => setCurrentImageIndex(index)}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}

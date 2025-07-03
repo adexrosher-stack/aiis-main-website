@@ -5,10 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Mail, Phone, GraduationCap, BookOpen, Award, FileText } from "lucide-react"
 
-// This would typically come from a database
-export async function generateStaticParams() {
-  return Object.keys(facultyMembers).map((id) => ({ id }));
-}
+
 
 // Add this before the facultyMembers definition
 type FacultyMember = {
@@ -632,8 +629,20 @@ officeHours: {
 
 }
 
-export default function FacultyDetailPage({ params }: { params: { id: string } }) {
-  const faculty = facultyMembers[params.id as keyof typeof facultyMembers]
+export async function generateStaticParams() {
+  return Object.keys(facultyMembers).map((id) => ({ id }));
+}
+
+// Define PageProps with async params
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function FacultyDetailPage({ params }: PageProps) {
+  // Await the params to resolve the Promise
+  const { id } = await params;
+
+  const faculty = facultyMembers[id as keyof typeof facultyMembers];
 
   if (!faculty) {
     return (
@@ -644,7 +653,7 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
           <Link href="/faculty">View All Faculty</Link>
         </Button>
       </div>
-    )
+    );
   }
 
   return (
@@ -742,7 +751,6 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
                 <TabsTrigger value="research">Research</TabsTrigger>
               </TabsList>
 
-              {/* Tabs content */}
               <TabsContent value="education" className="space-y-6">
                 <h3 className="text-2xl font-bold">Education</h3>
                 <div className="space-y-6">
@@ -792,7 +800,6 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
               </TabsContent>
             </Tabs>
 
-            {/* Only show office hours if the faculty member has them */}
             {faculty.officeHours && (
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl mt-8">
                 <h3 className="text-2xl font-bold mb-6">Office Hours & Availability</h3>
@@ -810,9 +817,7 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-semibold">Appointments</h4>
-                    <p className="text-muted-foreground">
-                      {faculty.officeHours.appointmentInfo}
-                    </p>
+                    <p className="text-muted-foreground">{faculty.officeHours.appointmentInfo}</p>
                     <Button asChild variant="outline">
                       <Link href={`mailto:${faculty.email}?subject=Appointment Request`}>Request Appointment</Link>
                     </Button>
@@ -824,12 +829,13 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
         </div>
       </section>
 
-      {/* Other Faculty Section */}
       <section className="bg-slate-50 dark:bg-slate-900 py-16">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold tracking-tight">Other Faculty Members</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="
+
+text-3xl font-bold tracking-tight">Other Faculty Members</h2>
+            <p className="text-lg text-muted-foreground max-w-3-destructive max-w-3xl mx-auto">
               Meet our other distinguished faculty members at AIIS.
             </p>
             <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -865,6 +871,6 @@ export default function FacultyDetailPage({ params }: { params: { id: string } }
         </div>
       </section>
     </div>
-  )
+  );
 }
 

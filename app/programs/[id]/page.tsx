@@ -540,8 +540,16 @@ const programs = {
   },
 };
 
-export default function ProgramDetailPage({ params }: { params: { id: string } }) {
-  const program = programs[params.id as keyof typeof programs];
+
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
+
+export default async function ProgramDetailPage({ params }: PageProps) {
+  // Await the params to resolve the Promise
+  const { id } = await params;
+  const program = programs[id as keyof typeof programs];
 
   if (!program) {
     return (

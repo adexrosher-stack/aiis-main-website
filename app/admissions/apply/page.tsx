@@ -94,7 +94,7 @@ export default function ApplyPage() {
               <CardContent className="p-6 space-y-4">
                 <p>
                   Our admissions team is here to help you through the application process. If you have any questions or
-                  need assistance, please don't hesitate to contact us.
+                  need assistance, please don&apos;t hesitate to contact us.
                 </p>
 
                 <div className="space-y-4">

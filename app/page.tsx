@@ -7,7 +7,6 @@ import { TestimonialCarousel } from '@/components/testimonial-carousel';
 import { HeroSection } from '@/components/hero-section';
 import KnowledgeNews from '@/components/Knowledge-News';
 import { CourseFilter } from '@/components/course-filter';
-import image5 from '../asset/image5.png';
 import image1 from '../asset/image1.jpeg';
 import image13 from '../asset/image13.jpeg';
 import image11 from '../asset/image11.jpeg';
@@ -158,7 +157,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-bold">Academic Programs</h3>
                   <p className="text-muted-foreground">
-                    AIIS offers programs from certificate levels to higher-level Master's and PhD studies in religion
+                    AIIS offers programs from certificate levels to higher-level Master&apos;s and PhD studies in religion
                     and leadership.
                   </p>
                   <Link

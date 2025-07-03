@@ -6,7 +6,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Download, FileText, CheckCircle, Calendar, User, FileCheck, Award } from "lucide-react"
+import { Download, FileText, CheckCircle, User, FileCheck, Award } from "lucide-react"
 import { useState } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
@@ -231,7 +231,7 @@ const AdmissionsPage: React.FC = () => {
                         <li className="flex items-start gap-3">
                           <CheckCircle className="h-6 w-6 text-primary shrink-0 mt-0.5" />
                           <div>
-                            <h4 className="font-semibold">Copy of Bachelor's Degree Certificate</h4>
+                            <h4 className="font-semibold">Copy of Bachelor&apos;s Degree Certificate</h4>
                             <p className="text-sm text-muted-foreground">
                               Provide a certified copy of your undergraduate degree
                             </p>

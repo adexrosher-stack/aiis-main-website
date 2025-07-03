@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, Download, FileText, GraduationCap, Home, Settings, Users, BarChart, PlusCircle, Search, MoreHorizontal, Trash2, Edit, Eye, Mail, Phone, Calendar, Award, BookMarked } from 'lucide-react'
+import { BookOpen, Download, FileText, GraduationCap, Home, Settings, Users, BarChart, PlusCircle, Search, MoreHorizontal, Trash2, Edit, Eye, Mail, Phone, Award, BookMarked } from 'lucide-react'
 import { DashboardShell } from "@/components/dashboard-shell"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -884,7 +884,7 @@ export default function FacultyPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete {selectedFaculty?.name}'s
+              This action cannot be undone. This will permanently delete {selectedFaculty?.name}&apos;s
               record and remove their data from the system.
             </AlertDialogDescription>
           </AlertDialogHeader>

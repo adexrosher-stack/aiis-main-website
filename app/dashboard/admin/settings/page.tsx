@@ -83,7 +83,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Institution Information</CardTitle>
-                <CardDescription>Update your institution's basic information</CardDescription>
+                <CardDescription>Update your institution&apos;s basic information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
