@@ -56,38 +56,35 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/"passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Home
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Home
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuTrigger
-                    className={cn(
-                      "bg-transparent",
-                      pathname.startsWith("/about")
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    About
-                  </NavigationMenuTrigger>
-                </Link>
+                <NavigationMenuTrigger
+                  className={cn(
+                    "bg-transparent",
+                    pathname.startsWith("/about")
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  About
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                     <li className="row-span-3">
@@ -107,7 +104,7 @@ export default function Header() {
                       Discover our purpose and goals
                     </ListItem>
                     <ListItem href="/about?tab=approach" title="Our Approach">
-                      our approach to teaching and learning
+                      Our approach to teaching and learning
                     </ListItem>
                     <ListItem href="/about?tab=accreditation" title="Accreditation">
                       Our academic credentials and partnerships
@@ -117,108 +114,102 @@ export default function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/faculty" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/faculty"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Faculty
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <Link href="/academics" legacyBehavior passHref>
-                    <NavigationMenuTrigger
-                      className={cn(
-                        "bg-transparent",
-                        pathname.startsWith("/academics")
-                          ? "text-primary font-semibold"
-                          : isScrolled
-                            ? "text-foreground"
-                            : "text-foreground dark:text-white",
-                      )}
-                    >
-                      Academics
-                    </NavigationMenuTrigger>
-                  </Link>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <ListItem href="/academics#undergraduate" title="Undergraduate Programs">
-                        Bachelor&apos;s degrees and diplomas
-                      </ListItem>
-                      <ListItem href="/academics#graduate" title="Graduate Programs">
-                        Master&apos;s level education
-                      </ListItem>
-                      <ListItem href="/academics#doctoral" title="Doctoral Programs">
-                        PhD and advanced research degrees
-                      </ListItem>
-                      <ListItem href="/academics#certificates" title="Certificate Programs">
-                        Short-term specialized training
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link href="/admissions" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/admissions"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Admissions
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/faculty"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/faculty"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Faculty
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/events" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/events"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Knowledge & Events
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuTrigger
+                  className={cn(
+                    "bg-transparent",
+                    pathname.startsWith("/academics")
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Academics
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ListItem href="/academics#undergraduate" title="Undergraduate Programs">
+                      Bachelor's degrees and diplomas
+                    </ListItem>
+                    <ListItem href="/academics#graduate" title="Graduate Programs">
+                      Master's level education
+                    </ListItem>
+                    <ListItem href="/academics#doctoral" title="Doctoral Programs">
+                      PhD and advanced research degrees
+                    </ListItem>
+                    <ListItem href="/academics#certificates" title="Certificate Programs">
+                      Short-term specialized training
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "bg-transparent",
-                      pathname === "/contact"
-                        ? "text-primary font-semibold"
-                        : isScrolled
-                          ? "text-foreground"
-                          : "text-foreground dark:text-white",
-                    )}
-                  >
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink
+                  href="/admissions"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/admissions"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Admissions
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="/events"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/events"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Knowledge & Events
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  href="/contact"
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-transparent",
+                    pathname === "/contact"
+                      ? "text-primary font-semibold"
+                      : isScrolled
+                        ? "text-foreground"
+                        : "text-foreground dark:text-white",
+                  )}
+                >
+                  Contact
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -423,4 +414,3 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
   },
 )
 ListItem.displayName = "ListItem"
-

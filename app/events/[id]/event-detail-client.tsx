@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, } from "@/components/ui/card"
-import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User, } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronLeft, Calendar, Share2, Bookmark, Clock, MapPin, User } from "lucide-react"
 import { Event, NewsItem } from "@/lib/events-data"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -24,6 +24,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [commentForm, setCommentForm] = useState({ name: "", email: "", comment: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
   
   // Determine content type
   const isEvent = post.category === "Event"
@@ -98,7 +99,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
           {commonIntro}
           <h2>Event Details</h2>
           <p>
-            We&apos;re excited to host this event as part of our commitment to creating enriching 
+            We're excited to host this event as part of our commitment to creating enriching 
             experiences for our community. This gathering provides an opportunity for learning, 
             networking, and spiritual growth.
           </p>
@@ -135,25 +136,33 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 3)
   
-  // Get upcoming events (if not viewing an event)
- 
+  // Share functionality with meta data
+  const handleShare = async () => {
+    const shareData = {
+      title: post.title,
+      text: post.description || `Check out this ${post.category.toLowerCase()} from AIIS: ${post.title}`,
+      url: window.location.href,
+    }
 
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href)
-      .then(() => {
+    try {
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback to clipboard copy
+        await navigator.clipboard.writeText(window.location.href)
         toast({
           title: "Link Copied",
           description: "The link has been copied to your clipboard! Paste it to share the article.",
         })
+      }
+    } catch (err) {
+      console.error('Error sharing:', err)
+      toast({
+        title: "Error",
+        description: "Failed to share. Please try again.",
+        variant: "destructive",
       })
-      .catch(err => {
-        console.error('Error copying link:', err)
-        toast({
-          title: "Error",
-          description: "Failed to copy link. Please try again.",
-          variant: "destructive",
-        })
-      })
+    }
   }
 
   const handleSave = () => {
@@ -182,9 +191,11 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
       if (response.ok) {
         toast({
           title: "Comment Submitted",
-          description: "Thank you for your comment. It has been sent for review.",
+          description: "Thank you for commenting, we love hearing your perspectives!",
         })
         setCommentForm({ name: "", email: "", comment: "" })
+        setShowThankYou(true)
+        setTimeout(() => setShowThankYou(false), 5000) // Hide thank you message after 5 seconds
       } else {
         throw new Error("Failed to submit comment")
       }
@@ -201,6 +212,18 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
 
   return (
     <div>
+      <head>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description || `Check out this ${post.category.toLowerCase()} from AIIS`} />
+        <meta property="og:image" content={images[0] || "/placeholder.svg"} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description || `Check out this ${post.category.toLowerCase()} from AIIS`} />
+        <meta name="twitter:image" content={images[0] || "/placeholder.svg"} />
+      </head>
+
       {/* Main Content - Grid layout like news detail page */}
       <section className="container px-4 md:px-6 py-16 mx-auto">
         <div className="grid gap-12 lg:grid-cols-3">
@@ -323,6 +346,11 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                 <p className="text-muted-foreground mb-6">
                   Share with us your thoughts on this {post.category.toLowerCase()}.
                 </p>
+                {showThankYou && (
+                  <p className="text-green-600 mb-4">
+                    Thank you for commenting, we love hearing your perspectives!
+                  </p>
+                )}
                 <form onSubmit={handleCommentSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-1">
@@ -377,7 +405,7 @@ export default function EventDetailClient({ post, allPosts }: EventDetailClientP
                 onClick={handleShare}
               >
                 <Share2 className="h-4 w-4" />
-                Copy Link
+                Share
               </Button>
               <Button 
                 variant="outline" 

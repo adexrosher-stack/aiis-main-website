@@ -87,7 +87,7 @@ export default function ContactPage() {
           <div className="max-w-3xl mx-auto text-center space-y-6 text-white">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Contact Us</h1>
             <p className="text-xl text-gray-200">
-              We&apos;d love to hear from you. Reach out to us with any questions or inquiries.
+              We'd love to hear from you. Reach out to us with any questions or inquiries.
             </p>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
               <p className="text-lg text-muted-foreground">
-                Have questions about our programs, admissions process, or anything else? We&apos;re here to help.
+                Have questions about our programs, admissions process, or anything else? We're here to help.
               </p>
               <div className="w-20 h-1 bg-primary"></div>
             </div>
@@ -221,14 +221,14 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <h2 className="text-2xl font-bold">Send Us a Message</h2>
                     <p className="text-muted-foreground">
-                      Fill out the form below and we&apos;ll get back to you as soon as possible.
+                      Fill out the form below and we'll get back to you as soon as possible.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="first-name" className="font-medium">
+                        <Label htmlFor="firstName" className="font-medium">
                           First Name <span className="text-red-500">*</span>
                         </Label>
                         <Input
@@ -241,7 +241,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="last-name" className="font-medium">
+                        <Label htmlFor="lastName" className="font-medium">
                           Last Name <span className="text-red-500">*</span>
                         </Label>
                         <Input
@@ -314,7 +314,7 @@ export default function ContactPage() {
                       <div className="bg-green-50 dark:bg-green-900 border border-green-500 p-4 rounded-lg">
                         <p className="text-green-700 dark:text-green-300 flex items-center gap-2">
                           <CheckCircle className="h-5 w-5" />
-                          <span> Inquiry sent successfully! We&apos;ll get back to you soon.</span>
+                          <span> Inquiry sent successfully! We'll get back to you soon.</span>
                         </p>
                       </div>
                     )}
