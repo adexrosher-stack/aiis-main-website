@@ -218,12 +218,12 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-2">
           <SearchDialog />
           <ThemeToggle />
-          <Button asChild variant="outline" size="sm" className="ml-2">
+          {/* <Button asChild variant="outline" size="sm" className="ml-2">
             <Link href="/login">
               <User className="h-4 w-4 mr-2" />
               Login
             </Link>
-          </Button>
+          </Button> */}
           <Button asChild variant="default" size="sm" className="ml-2">
             <Link href="/admissions">Apply Now</Link>
           </Button>

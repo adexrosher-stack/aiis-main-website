@@ -1,62 +1,74 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react"
 
-// Import all data sources
-import { upcomingEvents, newsItems } from "@/lib/events-data"
-import { blogPosts } from "@/lib/blog-data"
+import { getPublicPosts } from "@/lib/public-posts"
+import { mapPostToUI, UIPost } from "@/lib/map-post-to-ui"
 
 export default function KnowledgeNews() {
-  const [featuredItems, setFeaturedItems] = useState([])
+  const [posts, setPosts] = useState<UIPost[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  
-  useEffect(() => {
-    // Combine all content types
-    const allItems = [
-      ...(blogPosts || []),
-      ...(newsItems || []),
-      ...(upcomingEvents || [])
-    ].filter(item => item) // Filter out any undefined items
-    
-    // Rotate featured items every 10 seconds
-    const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 3) % Math.max(allItems.length, 3))
-    }, 10000)
-    
-    return () => clearInterval(interval)
-  }, [])
-  
-  useEffect(() => {
-    // Combine all content types
-    const allItems = [
-      ...(blogPosts || []),
-      ...(newsItems || []),
-      ...(upcomingEvents || [])
-    ].filter(item => item) // Filter out any undefined items
-    
-    // Get 3 items starting from currentIndex, wrapping around if needed
-    const items = []
-    for (let i = 0; i < 3; i++) {
-      const index = (currentIndex + i) % allItems.length
-      items.push(allItems[index])
-    }
-    
-    setFeaturedItems(items)
-  }, [currentIndex])
 
+  /* ---------- FETCH POSTS ---------- */
+  useEffect(() => {
+    async function loadPosts() {
+      try {
+        const data = await getPublicPosts()
+        const mapped = data.map(mapPostToUI)
+        setPosts(mapped)
+      } catch (err) {
+        console.error("Failed to load public posts", err)
+      }
+    }
+
+    loadPosts()
+  }, [])
+
+  /* ---------- ROTATION TIMER ---------- */
+  useEffect(() => {
+    if (posts.length < 3) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 3) % posts.length)
+    }, 10000)
+
+    return () => clearInterval(interval)
+  }, [posts.length])
+
+  /* ---------- SELECT 3 FEATURED ---------- */
+  const featuredItems = useMemo(() => {
+    if (!posts.length) return []
+
+    return Array.from({ length: 3 }, (_, i) => {
+      const index = (currentIndex + i) % posts.length
+      return posts[index]
+    })
+  }, [posts, currentIndex])
+
+  /* ---------- RENDER ---------- */
   return (
     <section className="w-full py-16 bg-slate-50 dark:bg-slate-900">
       <div className="container px-4 md:px-6 mx-auto">
-        {/* Centered title section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight">Knowledge and News</h2>
-          <p className="text-muted-foreground mt-2">Stay updated with the latest events, news, and articles from AIIS</p>
+          <h2 className="text-3xl font-bold tracking-tight">
+            Knowledge and News
+          </h2>
+          <p className="text-muted-foreground mt-2">
+            Stay updated with the latest events, news, and articles from AIIS
+          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -64,45 +76,56 @@ export default function KnowledgeNews() {
             <Card key={item.id} className="overflow-hidden">
               <div className="relative h-48">
                 <Image
-                  src={item.image} // Use only the primary image
+                  src={item.image}
                   alt={item.title}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute top-2 right-2">
-                  <Badge variant={item.category === "Event" ? "default" : item.category === "News" ? "secondary" : "outline"}>
+                  <Badge
+                    variant={
+                      item.category === "Event"
+                        ? "default"
+                        : item.category === "News"
+                        ? "secondary"
+                        : "outline"
+                    }
+                  >
                     {item.category}
                   </Badge>
                 </div>
               </div>
+
               <CardHeader className="p-4">
-                <CardTitle className="line-clamp-2 text-xl">{item.title}</CardTitle>
+                <CardTitle className="line-clamp-2 text-xl">
+                  {item.title}
+                </CardTitle>
                 <CardDescription className="flex items-center gap-1 text-sm">
                   <Calendar className="h-3.5 w-3.5" />
                   {item.date}
                 </CardDescription>
               </CardHeader>
+
               <CardContent className="p-4 pt-0">
-                <p className="text-muted-foreground line-clamp-3">{item.description}</p>
+                <p className="text-muted-foreground line-clamp-3">
+                  {item.description}
+                </p>
               </CardContent>
-              <CardFooter className="p-4 pt-0 flex justify-between items-center">
+
+              <CardFooter className="p-4 pt-0 flex items-center gap-2">
                 {item.author && (
-                  <span className="text-sm text-muted-foreground">By {item.author}</span>
+                  <span className="text-sm text-muted-foreground">
+                    By {item.author}
+                  </span>
                 )}
-                {item.location && (
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                    <MapPin className="h-3.5 w-3.5" />
-                    {item.location}
-                  </div>
-                )}
-                {item.time && (
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                    <Clock className="h-3.5 w-3.5" />
-                    {item.time}
-                  </div>
-                )}
-                <Button asChild variant="link" size="sm" className="ml-auto p-0">
-                  <Link href={`/events/${item.id}`}>
+
+                <Button
+                  asChild
+                  variant="link"
+                  size="sm"
+                  className="ml-auto p-0"
+                >
+                  <Link href={`/events/${item.slug}`}>
                     Read More
                   </Link>
                 </Button>
@@ -111,7 +134,6 @@ export default function KnowledgeNews() {
           ))}
         </div>
 
-        {/* View All button moved to the bottom */}
         <div className="text-center mt-12">
           <Button asChild className="gap-2">
             <Link href="/events">

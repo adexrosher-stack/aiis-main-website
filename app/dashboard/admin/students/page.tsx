@@ -4,6 +4,9 @@ import { DashboardShell } from "@/components/dashboard-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
@@ -197,6 +200,7 @@ export default function StudentsPage() {
     year: "",
     status: "",
     gpa: "",
+    image: "",
   });
 
   // Filter students based on search term
@@ -207,89 +211,126 @@ export default function StudentsPage() {
       student.program.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
+const handleAddNewStudent = (student) => {
+  setSelectedStudent(student);
+  setIsViewDialogOpen(true);
+};
 
-  // Handle view student
-  const handleViewStudent = (student) => {
-    setSelectedStudent(student);
-    setIsViewDialogOpen(true);
-  };
+ const handleViewStudent = (student) => {
+  setSelectedStudent(student);
+  setIsViewDialogOpen(true);
+};
 
-  // Handle edit student
-  const handleEditStudent = (student) => {
-    setSelectedStudent(student);
-    setEditFormData({
-      id: student.id,
-      name: student.name,
-      email: student.email,
-      program: student.program,
-      year: student.year,
-      status: student.status,
-      gpa: student.gpa,
-    });
-    setIsEditDialogOpen(true);
-  };
+const handleEditStudent = (student) => {
+  setEditFormData(student); 
+  setIsEditDialogOpen(true); 
+};
 
-  // Handle delete student
-  const handleDeleteStudent = (student) => {
-    setSelectedStudent(student);
-    setIsDeleteDialogOpen(true);
-  };
 
-  // Handle edit form change
   const handleEditFormChange = (e) => {
-    const { name, value } = e.target;
-    setEditFormData({
-      ...editFormData,
-      [name]: value,
-    });
-  };
+  const { name, value } = e.target;
+  setEditFormData({
+    ...editFormData,
+    [name]: value,
+  });
+};
+const handleEditFormSubmit = async () => {
+  if (!editFormData?.id) return;
 
-  // Handle edit form submit
-  const handleEditFormSubmit = () => {
-    const updatedStudents = students.map((student) =>
-      student.id === editFormData.id ? { ...student, ...editFormData } : student
-    );
-    setStudents(updatedStudents);
-    setIsEditDialogOpen(false);
-    toast({
-      title: "Student updated",
-      description: `${editFormData.name}'s information has been updated.`,
-    });
-  };
+  try {
+    const token = localStorage.getItem("token");
 
-  // Handle delete confirm
-  const handleDeleteConfirm = () => {
-    const updatedStudents = students.filter(
-      (student) => student.id !== selectedStudent.id
+    const res = await axios.put(
+      `http://127.0.0.1:8000/api/students/${editFormData.id}`,
+      {
+        student_id: editFormData.id,
+        name: editFormData.name,
+        email: editFormData.email,
+        program: editFormData.program,
+        year: editFormData.year,
+        status: editFormData.status,
+        gpa: editFormData.gpa,
+        image: editFormData.image,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
     );
-    setStudents(updatedStudents);
-    setIsDeleteDialogOpen(false);
+
+    if (res.status === 200) {
+      // Update the student list in local state
+      setStudents((prevStudents) =>
+        prevStudents.map((s) =>
+          s.id === editFormData.id ? res.data.student ?? res.data : s
+        )
+      );
+
+      setIsEditDialogOpen(false);
+
+      toast({
+        title: "✅ Student updated",
+        description: `${editFormData.name}'s information was updated successfully.`,
+      });
+    }
+  } catch (error) {
+    console.error("Error updating student:", error);
     toast({
-      title: "Student deleted",
-      description: `${selectedStudent.name} has been removed from the system.`,
+      title: "❌ Update failed",
+      description:
+        error.response?.data?.message ||
+        "An error occurred while updating the student.",
       variant: "destructive",
     });
-  };
+  }
+};
 
-  // Handle add new student
-  const handleAddNewStudent = () => {
-    const newStudent = {
-      id: `STU${String(students.length + 1).padStart(3, "0")}`,
-      name: editFormData.name,
-      email: editFormData.email,
-      program: editFormData.program,
-      year: editFormData.year,
-      status: editFormData.status,
-      gpa: editFormData.gpa,
-      image: "/placeholder.svg?height=40&width=40",
-    };
-    setStudents([...students, newStudent]);
-    setIsAddDialogOpen(false);
+
+const handleDeleteStudent = (student) => {
+  setSelectedStudent(student);
+  setIsDeleteDialogOpen(true);
+};
+  const handleDeleteConfirm = async () => {
+  if (!selectedStudent) return;
+
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await axios.delete(
+      `http://127.0.0.1:8000/api/students/${selectedStudent.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (res.status === 200) {
+      // Remove the deleted student from local state
+      setStudents(students.filter((s) => s.id !== selectedStudent.id));
+      setIsDeleteDialogOpen(false);
+
+      toast({
+        title: "🗑️ Student deleted",
+        description: `${selectedStudent.name} has been successfully removed.`,
+      });
+    }
+  } catch (error) {
+    console.error("Error deleting student:", error);
     toast({
-      title: "Student added",
-      description: `${editFormData.name} has been added to the system.`,
+      title: "❌ Delete failed",
+      description:
+        error.response?.data?.message ||
+        "An error occurred while deleting the student.",
+      variant: "destructive",
     });
-  };
+  }
+};
+
+
 
   // Navigation items for the dashboard
   const navItems = [
@@ -337,6 +378,7 @@ export default function StudentsPage() {
     image: "/placeholder.svg?height=32&width=32",
   };
 
+
   return (
     <DashboardShell navItems={navItems} user={user}>
       <div className="flex flex-col gap-6">
@@ -357,6 +399,7 @@ export default function StudentsPage() {
                 year: "",
                 status: "Active",
                 gpa: "",
+                 image: "",
               });
               setIsAddDialogOpen(true);
             }}
@@ -1143,7 +1186,52 @@ export default function StudentsPage() {
             <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={handleAddNewStudent}>Register Student</Button>
+           <Button
+  onClick={async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        "http://127.0.0.1:8000/api/students",
+        {
+          name: editFormData.name,
+          email: editFormData.email,
+          program: editFormData.program,
+          year: editFormData.year,
+          status: editFormData.status,
+          gpa: editFormData.gpa,
+          image: editFormData.image,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (res.status === 201 || res.status === 200) {
+        setStudents([...students, res.data.student ?? res.data]);
+        setIsAddDialogOpen(false);
+        toast({
+          title: "🎉 Student Registered",
+          description: `${editFormData.name} has been successfully added.`,
+        });
+      }
+    } catch (error) {
+      console.error("Error adding student:", error);
+      toast({
+        title: "❌ Registration failed",
+        description:
+          error.response?.data?.message ||
+          "An error occurred while adding the student.",
+        variant: "destructive",
+      });
+    }
+  }}
+>
+  Register Student
+</Button>
+
           </DialogFooter>
         </DialogContent>
       </Dialog>

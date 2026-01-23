@@ -19,57 +19,68 @@ export function EnhancedApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submissionSuccess, setSubmissionSuccess] = useState(false)
   const [formData, setFormData] = useState({
-    personalInfo: {
-      firstName: "",
-      lastName: "",
-      email: "",
+  personalInfo: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    dateOfBirth: "",
+    gender: "",
+    nationality: "",
+    address: "",
+    city: "",
+    country: "",
+    emergencyContact: {
+      name: "",
+      relationship: "",
       phone: "",
-      dateOfBirth: "",
-      gender: "",
-      nationality: "",
-      address: "",
-      city: "",
-      country: "",
-      emergencyContact: {
-        name: "",
+    },
+  },
+  academicInfo: {
+    program: "",
+    campus: "",
+    startDate: "",
+    studyMode: "",
+    previousEducation: [
+      {
+        institution: "",
+        degree: "",
+        fieldOfStudy: "",
+        graduationYear: "",
+        gpa: "",
+        
+      },
+    ],
+  },
+  background: {
+    statement: "",
+    ministry: "",
+    referenceChurch: "",
+    referenceAcademic: "",
+    referencePersonal: "",
+    references: [
+      {
+        name: "",        
+        email: "",      
         relationship: "",
         phone: "",
+        notes: "",
       },
-    },
-    academicInfo: {
-      program: "",
-      Campus: "",
-      startDate: "",
-      studyMode: "",
-      previousEducation: [
-        {
-          institution: "",
-          degree: "",
-          fieldOfStudy: "",
-          graduationYear: "",
-          gpa: "",
-        },
-      ],
-    },
-    background: {
-      statement: "",
-      ministry: "",
-      referenceChurch: "",
-      referenceAcademic: "",
-      referencePersonal: "",
-    },
-    documents: {
-      transcripts: false,
-      recommendations: false,
-      statement: false,
-      identification: false,
-      photo: false,
-    },
-    agreement: {
-      termsAgreed: false,
-      infoCorrect: false,
-    },
-  })
+    ],
+  },
+  documents: {
+    transcripts: false,
+    recommendations: false,
+    statement: false,
+    identification: false,
+    photo: false,
+  },
+  agreement: {
+    termsAgreed: false,
+    infoCorrect: false,
+  },
+})
+
 
   useEffect(() => {
     if (submissionSuccess) {
@@ -79,6 +90,17 @@ export function EnhancedApplicationForm() {
       return () => clearTimeout(timer)
     }
   }, [submissionSuccess, router])
+  useEffect(() => {
+  setFormData((prev) => ({
+    ...prev,
+    documents: {
+      ...prev.documents,
+      identification: true,
+      photo: true,
+    },
+  }))
+}, [])
+
 
   const updatePersonalInfo = (field: string, value: string) => {
     setFormData((prev) => ({
@@ -184,6 +206,15 @@ export function EnhancedApplicationForm() {
       },
     }))
   }
+const [uploadedFiles, setUploadedFiles] = useState({
+  transcripts: null as File | null,
+  recommendations: null as File | null,
+  statement: null as File | null,
+  identification: null as File | null,
+  photo: null as File | null,
+})
+
+
 
   const updateAgreement = (field: string, value: boolean) => {
     setFormData((prev) => ({
@@ -215,9 +246,9 @@ export function EnhancedApplicationForm() {
   }
 
   const isAcademicInfoComplete = () => {
-    const { program, Campus, startDate, studyMode } = formData.academicInfo
+    const { program, campus, startDate, studyMode } = formData.academicInfo
     const firstEducation = formData.academicInfo.previousEducation[0]
-    return program && Campus && startDate && studyMode && firstEducation.institution && firstEducation.degree
+    return program && campus && startDate && studyMode && firstEducation.institution && firstEducation.degree
   }
 
   const isBackgroundComplete = () => {
@@ -226,35 +257,150 @@ export function EnhancedApplicationForm() {
   }
 
   const isDocumentsComplete = () => {
-    return Object.values(formData.documents).some((value) => value)
-  }
+  return (
+    uploadedFiles.identification !== null &&
+    uploadedFiles.photo !== null
+  )
+}
+
 
   const isAgreementComplete = () => {
     return formData.agreement.termsAgreed && formData.agreement.infoCorrect
   }
+const handleFileUpload = (
+  field: "transcripts" | "recommendations" | "statement" | "identification" | "photo",
+  file: File | null
+) => {
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (isSubmitting || submissionSuccess) return
-    setIsSubmitting(true)
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "admission", ...formData }),
+  setUploadedFiles((prev) => ({
+    ...prev,
+    [field]: file,
+  }))
+}
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  if (isSubmitting || submissionSuccess) return
+
+  setIsSubmitting(true)
+
+  try {
+    // ✅ Normalize references
+    const cleanedReferences = [
+      formData.background.referenceChurch && {
+        name: formData.background.referenceChurch,
+        email: "",
+        relationship: "Church / Ministry",
+      },
+      formData.background.referenceAcademic && {
+        name: formData.background.referenceAcademic,
+        email: "",
+        relationship: "Academic",
+      },
+      formData.background.referencePersonal && {
+        name: formData.background.referencePersonal,
+        email: "",
+        relationship: "Personal",
+      },
+    ].filter(Boolean)
+
+    // ✅ IMPORTANT FIX: attach studyMode to each education
+    const educationsWithStudyMode = formData.academicInfo.previousEducation.map(
+      (edu) => ({
+        ...edu,
+        studyMode: formData.academicInfo.studyMode,
       })
-      if (response.ok) {
-        setSubmissionSuccess(true)
-      } else {
-        const errorData = await response.json()
-        alert(`Failed to submit application: ${errorData.error || "Please try again."}`)
-        setIsSubmitting(false)
+    )
+
+    // 1️⃣ Submit application
+    const applyRes = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/applies`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          first_name: formData.personalInfo.firstName,
+          last_name: formData.personalInfo.lastName,
+          email: formData.personalInfo.email,
+          gender: formData.personalInfo.gender,
+          phone: formData.personalInfo.phone,
+          program: formData.academicInfo.program,
+          campus: formData.academicInfo.campus,
+
+          // ✅ FIXED HERE
+          educations: educationsWithStudyMode,
+
+          references: cleanedReferences,
+          payload: formData,
+        }),
       }
-    } catch (error) {
-      alert("An error occurred. Please try again later.")
-      setIsSubmitting(false)
+    )
+
+ if (!applyRes.ok) {
+  let errorMessage = "Failed to submit application"
+
+  try {
+    const errorData = await applyRes.json()
+
+    if (
+      applyRes.status === 409 ||
+      errorData?.message?.toLowerCase().includes("email")
+    ) {
+      alert("This email has already been used for an application.")
+      return
     }
+
+    errorMessage = errorData?.message || errorMessage
+  } catch (_) {}
+
+  throw new Error(errorMessage)
+}
+
+
+    const applyData = await applyRes.json()
+    const applyId = applyData.apply_id
+
+    if (!applyId) {
+      throw new Error("apply_id missing from response")
+    }
+
+    // 2️⃣ Upload documents
+    const documentTypeMap: Record<string, string> = {
+      transcripts: "transcript",
+      recommendations: "other",
+      statement: "other",
+      identification: "passport",
+      photo: "photo",
+    }
+
+    for (const [key, file] of Object.entries(uploadedFiles)) {
+      if (!file) continue
+
+      const fd = new FormData()
+      fd.append("type", documentTypeMap[key] || key)
+      fd.append("file", file)
+
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/applies/${applyId}/documents`,
+        {
+          method: "POST",
+          body: fd,
+        }
+      )
+    }
+
+    setSubmissionSuccess(true)
+  } catch (error) {
+    console.error(error)
+    alert("Submission failed. Please try again.")
+  } finally {
+    setIsSubmitting(false)
   }
+}
+
 
   return (
     <Card className="border-none shadow-xl">
@@ -527,14 +673,15 @@ export function EnhancedApplicationForm() {
                         <SelectValue placeholder="Select a program" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="bth">Bachelor of Theology (BTh)</SelectItem>
-                        <SelectItem value="dipth">Diploma in Theology (DipTh)</SelectItem>
-                        <SelectItem value="mdiv">Master of Divinity (MDiv)</SelectItem>
-                        <SelectItem value="mth">Master of Theology (MTh)</SelectItem>
-                        <SelectItem value="mthps">MTh in Practical Studies</SelectItem>
-                        <SelectItem value="macp">MA in Counseling Psychology</SelectItem>
-                        <SelectItem value="maol">MA in Organizational Leadership</SelectItem>
-                        <SelectItem value="phd">Doctor of Philosophy (PhD)</SelectItem>
+                      <SelectItem value="Bachelor of Theology (BTh)">Bachelor of Theology (BTh)</SelectItem>
+<SelectItem value="Diploma in Theology (DipTh)">Diploma in Theology (DipTh)</SelectItem>
+<SelectItem value="Master of Divinity (MDiv)">Master of Divinity (MDiv)</SelectItem>
+<SelectItem value="Master of Theology (MTh)">Master of Theology (MTh)</SelectItem>
+<SelectItem value="MTh in Practical Studies">MTh in Practical Studies</SelectItem>
+<SelectItem value="MA in Counseling Psychology">MA in Counseling Psychology</SelectItem>
+<SelectItem value="MA in Organizational Leadership">MA in Organizational Leadership</SelectItem>
+<SelectItem value="Doctor of Philosophy (PhD)">Doctor of Philosophy (PhD)</SelectItem>
+
                       </SelectContent>
                     </Select>
                   </div>
@@ -563,8 +710,9 @@ export function EnhancedApplicationForm() {
                       Desired Campus <span className="text-red-500">*</span>
                     </Label>
                     <Select
-                      value={formData.academicInfo.Campus}
-                      onValueChange={(value) => updateAcademicInfo("Campus", value)}
+                      value={formData.academicInfo.campus}
+                      onValueChange={(value) => updateAcademicInfo("campus", value)}
+
                       disabled={submissionSuccess}
                     >
                       <SelectTrigger>
@@ -789,86 +937,149 @@ export function EnhancedApplicationForm() {
                   are received.
                 </p>
 
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="transcripts"
-                      checked={formData.documents.transcripts}
-                      onCheckedChange={(checked) => updateDocuments("transcripts", checked as boolean)}
-                      disabled={submissionSuccess}
-                    />
-                    <div>
-                      <Label htmlFor="transcripts" className="font-medium">
-                        Official Transcripts
-                      </Label>
-                      <p className="text-sm text-muted-foreground">Sealed transcripts from all previous institutions</p>
-                    </div>
-                  </div>
+            <div className="space-y-4">
+  {/* Transcripts */}
+  <div className="flex items-start space-x-3">
+    <Checkbox
+      id="transcripts"
+      checked={formData.documents.transcripts}
+      onCheckedChange={(checked) => updateDocuments("transcripts", checked as boolean)}
+      disabled={submissionSuccess}
+    />
+    <div className="w-full">
+      <Label htmlFor="transcripts" className="font-medium">
+        Official Transcripts
+      </Label>
+      <p className="text-sm text-muted-foreground">
+        Sealed transcripts from all previous institutions
+      </p>
 
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="recommendations"
-                      checked={formData.documents.recommendations}
-                      onCheckedChange={(checked) => updateDocuments("recommendations", checked as boolean)}
-                      disabled={submissionSuccess}
-                    />
-                    <div>
-                      <Label htmlFor="recommendations" className="font-medium">
-                        Letters of Recommendation
-                      </Label>
-                      <p className="text-sm text-muted-foreground">
-                        2-3 letters from academic or professional references
-                      </p>
-                    </div>
-                  </div>
+      <Input
+  type="file"
+  accept=".pdf,image/*"
+  className="mt-2"
+  onChange={(e) =>
+    handleFileUpload("transcripts", e.target.files?.[0] || null)
+  }
+  disabled={submissionSuccess}
+/>
 
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="statement"
-                      checked={formData.documents.statement}
-                      onCheckedChange={(checked) => updateDocuments("statement", checked as boolean)}
-                      disabled={submissionSuccess}
-                    />
-                    <div>
-                      <Label htmlFor="statement" className="font-medium">
-                        Personal Statement
-                      </Label>
-                      <p className="text-sm text-muted-foreground">
-                        Essay describing your academic goals and background
-                      </p>
-                    </div>
-                  </div>
+    </div>
+  </div>
 
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="identification"
-                      checked={formData.documents.identification}
-                      onCheckedChange={(checked) => updateDocuments("identification", checked as boolean)}
-                      disabled={submissionSuccess}
-                    />
-                    <div>
-                      <Label htmlFor="identification" className="font-medium">
-                        Government-Issued ID
-                      </Label>
-                      <p className="text-sm text-muted-foreground">Copy of passport or national ID card</p>
-                    </div>
-                  </div>
+  {/* Recommendations */}
+  <div className="flex items-start space-x-3">
+    <Checkbox
+      id="recommendations"
+      checked={formData.documents.recommendations}
+      onCheckedChange={(checked) => updateDocuments("recommendations", checked as boolean)}
+      disabled={submissionSuccess}
+    />
+    <div className="w-full">
+      <Label htmlFor="recommendations" className="font-medium">
+        Letters of Recommendation
+      </Label>
+      <p className="text-sm text-muted-foreground">
+        2–3 letters from academic or professional references
+      </p>
+<Input
+  type="file"
+  accept=".pdf,image/*"
+  className="mt-2"
+  onChange={(e) =>
+    handleFileUpload("recommendations", e.target.files?.[0] || null)
+  }
+  disabled={submissionSuccess}
+/>
 
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="photo"
-                      checked={formData.documents.photo}
-                      onCheckedChange={(checked) => updateDocuments("photo", checked as boolean)}
-                      disabled={submissionSuccess}
-                    />
-                    <div>
-                      <Label htmlFor="photo" className="font-medium">
-                        Passport-Sized Photo
-                      </Label>
-                      <p className="text-sm text-muted-foreground">Recent passport-sized photograph</p>
-                    </div>
-                  </div>
-                </div>
+    </div>
+  </div>
+
+  {/* Personal Statement */}
+  <div className="flex items-start space-x-3">
+    <Checkbox
+      id="statement"
+      checked={formData.documents.statement}
+      onCheckedChange={(checked) => updateDocuments("statement", checked as boolean)}
+      disabled={submissionSuccess}
+    />
+    <div className="w-full">
+      <Label htmlFor="statement" className="font-medium">
+        Personal Statement
+      </Label>
+      <p className="text-sm text-muted-foreground">
+        Essay describing your academic goals and background
+      </p>
+
+      <Input
+  type="file"
+  accept=".pdf,image/*"
+  className="mt-2"
+  onChange={(e) =>
+    handleFileUpload("statement", e.target.files?.[0] || null)
+  }
+  disabled={submissionSuccess}
+/>
+
+    </div>
+  </div>
+
+  {/* Government ID (MANDATORY) */}
+  <div className="flex items-start space-x-3">
+    <Checkbox
+      id="identification"
+      checked={formData.documents.identification}
+      disabled
+    />
+    <div className="w-full">
+      <Label htmlFor="identification" className="font-medium">
+        Government-Issued ID <span className="text-red-500">*</span>
+      </Label>
+      <p className="text-sm text-muted-foreground">
+        Copy of passport or national ID card
+      </p>
+
+      <Input
+        type="file"
+        accept="image/*,.pdf"
+        required
+        className="mt-2"
+        onChange={(e) =>
+          handleFileUpload("identification", e.target.files?.[0] || null)
+        }
+        disabled={submissionSuccess}
+      />
+    </div>
+  </div>
+
+  {/* Passport Photo (MANDATORY) */}
+  <div className="flex items-start space-x-3">
+    <Checkbox
+      id="photo"
+      checked={formData.documents.photo}
+      disabled
+    />
+    <div className="w-full">
+      <Label htmlFor="photo" className="font-medium">
+        Passport-Sized Photo <span className="text-red-500">*</span>
+      </Label>
+      <p className="text-sm text-muted-foreground">
+        Recent passport-sized photograph
+      </p>
+
+      <Input
+        type="file"
+        accept="image/*"
+        required
+        className="mt-2"
+        onChange={(e) =>
+          handleFileUpload("photo", e.target.files?.[0] || null)
+        }
+        disabled={submissionSuccess}
+      />
+    </div>
+  </div>
+</div>
 
                 <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg mt-8">
                   <h4 className="font-semibold mb-4">Document Submission Instructions</h4>
@@ -973,11 +1184,11 @@ export function EnhancedApplicationForm() {
                       <div>
                         <p className="text-sm text-muted-foreground">Campus</p>
                         <p>
-                          {formData.academicInfo.Campus === "AddisAbaba"
+                          {formData.academicInfo.campus === "AddisAbaba"
                             ? "Addis Ababa Campus"
-                            : formData.academicInfo.Campus === "Adama"
+                            : formData.academicInfo.campus === "Adama"
                               ? "Adama Campus"
-                            : formData.academicInfo.Campus === "Mekelle"
+                            : formData.academicInfo.campus === "Mekelle"
                               ? "Mekelle Campus"
                               : ""}
                         </p>
@@ -1108,7 +1319,14 @@ export function EnhancedApplicationForm() {
             ) : (
               <Button
                 type="submit"
-                disabled={!isAgreementComplete() || isSubmitting || submissionSuccess}
+               disabled={
+  !isAgreementComplete() ||
+  !uploadedFiles.identification ||
+  !uploadedFiles.photo ||
+  isSubmitting ||
+  submissionSuccess
+}
+
                 className="bg-primary hover:bg-primary/90 flex items-center gap-2"
               >
                 {isSubmitting ? (

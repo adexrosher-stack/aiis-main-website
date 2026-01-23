@@ -1,9 +1,7 @@
-import type React from "react"
+
 import type { Metadata } from "next"
 import "./globals.css"
 import ClientLayout from "./client-layout"
-
-
 
 export const metadata: Metadata = {
   title: "African Institute for International Studies",
@@ -15,6 +13,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <ClientLayout>{children}</ClientLayout>
+  return (
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className="bg-background text-foreground">
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  )
 }
-

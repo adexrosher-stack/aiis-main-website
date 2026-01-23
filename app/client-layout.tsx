@@ -26,23 +26,22 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Get the current path to determine if we're in the dashboard
-  const isDashboard = typeof window !== "undefined" ? window.location.pathname.startsWith("/dashboard") : false
+  const pathname = usePathname()
+  const isDashboard = pathname.startsWith("/dashboard")
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {!isDashboard && <Header />}
-          <main>
-            {typeof window !== "undefined" && <ScrollToTop />}
-            {children}
-          </main>
-          {!isDashboard && <Footer />}
-          <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <div className={inter.className}>
+        {!isDashboard && <Header />}
+
+        <main>
+          <ScrollToTop />
+          {children}
+        </main>
+
+        {!isDashboard && <Footer />}
+        <Toaster />
+      </div>
+    </ThemeProvider>
   )
 }
-
