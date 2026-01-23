@@ -1,22 +1,21 @@
-
-
-
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { getFaculty } from "@/lib/people"
 
-interface Props {
-  params: { id: string }
-}
+export default async function FacultyDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
 
-export default async function FacultyDetailPage({ params }: Props) {
   const faculty = await getFaculty()
 
   const person = faculty.find(
-    (p) => p.id === Number(params.id)
+    (p) => p.id === Number(id)
   )
 
-  if (!person) return notFound()
+  if (!person) notFound()
 
   return (
     <section className="container mx-auto py-20">

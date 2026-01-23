@@ -1,21 +1,16 @@
-
-
-
 import { notFound } from "next/navigation"
 import { getPublicPosts, getPublicPostBySlug } from "@/lib/public-posts"
 import { mapPostToUI } from "@/lib/post-mapper"
-import EventDetailClient from "../components/EventDetailClient"
+import EventDetailClient from "@/components/EventDetailClient"
 
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
 
-
-interface Props {
-  params: { slug: string }
-}
-
-export default async function Page({ params }: Props) {
-  const {slug}=params
   const post = await getPublicPostBySlug(slug)
-
   if (!post) notFound()
 
   const allPosts = (await getPublicPosts()).map(mapPostToUI)
