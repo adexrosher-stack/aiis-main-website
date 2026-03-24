@@ -31,21 +31,22 @@ export default function EventsPage() {
   const [filter, setFilter] = useState("all")
 
   /* ---------- FETCH POSTS ---------- */
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await getPublicPosts(1)
-        const mapped = res.data.map(mapPostToUI)
-        setPosts(mapped)
-      } catch (err) {
-        console.error("Failed to load posts", err)
-      } finally {
-        setLoading(false)
-      }
+ useEffect(() => {
+  const fetchPosts = async () => {
+    try {
+      const result = await getPublicPosts(1);
+      const rawPosts = result.posts ?? [];           
+      const mapped = rawPosts.map(mapPostToUI);
+      setPosts(mapped);
+    } catch (err) {
+      console.error("Failed to load posts", err);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    fetchPosts()
-  }, [])
+  fetchPosts();
+}, []);
 
   /* ---------- FILTER ---------- */
   const filteredPosts = posts.filter((post) => {

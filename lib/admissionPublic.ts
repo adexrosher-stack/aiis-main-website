@@ -39,7 +39,7 @@ export interface AdmissionPayload {
 }
 
 export async function submitAdmission(payload: AdmissionPayload): Promise<void> {
-  const response = await fetch("http://127.0.0.1:8000/api/admissions", {
+  const response = await fetch("https://admin.guadaye.com/api/admissions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -46,3 +46,12 @@ export default async function FacultyDetailPage({
     </section>
   )
 }
+
+/* ✅ REQUIRED for output: export */
+export async function generateStaticParams() {
+  const faculty = await getFaculty()
+
+  return faculty.map((person) => ({
+    id: String(person.id),
+  }))
+}

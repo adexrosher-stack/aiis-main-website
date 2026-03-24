@@ -15,7 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react"
 
-import { getPublicPosts } from "@/lib/public-posts"
+import { getPublicPosts } from "@/lib/public-posts.api"
 import { mapPostToUI, UIPost } from "@/lib/map-post-to-ui"
 
 export default function KnowledgeNews() {
@@ -27,7 +27,7 @@ export default function KnowledgeNews() {
     async function loadPosts() {
       try {
         const data = await getPublicPosts()
-        const mapped = data.map(mapPostToUI)
+        const mapped = data.posts.map(mapPostToUI)
         setPosts(mapped)
       } catch (err) {
         console.error("Failed to load public posts", err)

@@ -1,4 +1,4 @@
-const STORAGE_URL = "http://127.0.0.1:8000/storage"
+const STORAGE_URL = "https://api.guadaye.com/storage"
 
 export function resolveImage(path: string | null) {
   if (!path) return "/placeholder.svg"

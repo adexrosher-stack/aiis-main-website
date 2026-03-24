@@ -33,44 +33,54 @@ export type UIPost = {
 }
 
 /* ---------- MAPPER ---------- */
-export function mapPostToUI(post: PublicPost): UIPost {
-  if (!post) {
-    throw new Error("mapPostToUI called with undefined post")
+export function mapPostToUI(raw: any): UIPost {
+  if (!raw || !raw.id) {
+    console.warn("Invalid post:", raw);
+    return {
+      id: 0,
+      slug: "",
+      title: "Untitled",
+      description: "",
+      content: "",
+      image: "/placeholder.svg",
+      gallery: [],
+      category: "Article" as const,
+      date: "",
+      featured_image_url: null,
+      published_at: "",
+      excerpt: "",
+    };
   }
 
-  const gallery: string[] = [
-    post.featured_image_url,
-    ...(Array.isArray(post.images)
-      ? post.images.map((img) => img.url)
-      : []),
-  ].filter(Boolean) as string[]
+  const featuredPath = raw.featured_image;
+  const featuredUrl = featuredPath ? `/storage/${featuredPath}` : null;
+
+  const gallery: string[] = featuredUrl ? [featuredUrl] : [];
+
+  const typeToCategory: Record<string, UIPost["category"]> = {
+    event: "Event",
+    news: "News",
+    article: "Article",
+  };
 
   return {
-    id: post.id,
-    slug: post.slug,
-
-    title: post.title,
-    description: post.excerpt ?? "",
-    content: post.content ?? "",
-
-    image: gallery[0] || "/placeholder.svg",
+    id: raw.id,
+    slug: raw.slug || "",
+    title: raw.title || "No title",
+    description: raw.excerpt || raw.description || "",
+    content: raw.content ?? "",
+    image: featuredUrl || "/placeholder.svg",
     gallery,
-
-    category:
-      post.type === "event"
-        ? "Event"
-        : post.type === "news"
-        ? "News"
-        : post.type === "article"
-        ? "Article"
-        : "Blog",
-
-    date: post.published_at
-      ? new Date(post.published_at).toLocaleDateString()
-      : "",
-
-    featured_image_url: post.featured_image_url ?? null,
-    published_at: post.published_at ?? "",
-    excerpt: post.excerpt ?? "",
-  }
+    category: typeToCategory[raw.type] || "Article",
+    date: raw.published_at
+      ? new Date(raw.published_at).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : "No date",
+    featured_image_url: featuredUrl,
+    published_at: raw.published_at ?? "",
+    excerpt: raw.excerpt ?? "",
+  };
 }

@@ -1,17 +1,42 @@
 
 
 
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getFaculty, getBoard } from "@/lib/people"
+import { useEffect, useState } from "react"
 
-export default async function FacultyPage() {
-  const [faculty, board] = await Promise.all([
-    getFaculty(),
-    getBoard(),
-  ])
+export default function FacultyPage() {
+  const [faculty, setFaculty] = useState<any[]>([])
+  const [board, setBoard] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [facultyData, boardData] = await Promise.all([
+          getFaculty(),
+          getBoard(),
+        ])
+        setFaculty(facultyData)
+        setBoard(boardData)
+      } catch (error) {
+        console.error("Error fetching faculty/board data:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div>
